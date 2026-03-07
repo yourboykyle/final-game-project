@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://db05ij545y7wa"]
+
+[ext_resource type="PackedScene" uid="uid://bbrsvqe0p684n" path="res://rooms/RoomBase.tscn" id="1_x3mou"]
+[ext_resource type="Script" uid="uid://dl1tiunmoouls" path="res://rooms/scripts/TreasureRoom.gd" id="2_wme08"]
+
+[node name="RoomBase" unique_id=1536920797 instance=ExtResource("1_x3mou")]
+script = ExtResource("2_wme08")
