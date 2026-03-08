@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://d12fmr0ra2qym"]
+
+[ext_resource type="Texture2D" uid="uid://cmorp77bqfe3c" path="res://assets/sprites/basesword.png" id="1_j3pj1"]
+
+[node name="BaseSword" type="Node2D" unique_id=1855008530]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1004532278]
+texture = ExtResource("1_j3pj1")
