@@ -1,1 +1,1 @@
-class_name Enemy extends Node
+class_name Enemy extends CharacterBody2D

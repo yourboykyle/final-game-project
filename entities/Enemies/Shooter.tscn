@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b4fncpyyosahg"]
+
+[ext_resource type="Script" uid="uid://lo7fu41bc45" path="res://entities/scripts/shooter.gd" id="1_fq6lv"]
+[ext_resource type="Texture2D" uid="uid://bp7k1t0kyra3n" path="res://icon.svg" id="1_juo6c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fq6lv"]
+size = Vector2(17.344173, 17.344173)
+
+[node name="Shooter" type="CharacterBody2D" unique_id=400690503]
+script = ExtResource("1_fq6lv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=234517361]
+texture = ExtResource("1_juo6c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2112944020]
+scale = Vector2(7.38, 7.38)
+shape = SubResource("RectangleShape2D_fq6lv")
