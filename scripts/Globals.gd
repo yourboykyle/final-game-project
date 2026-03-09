@@ -1,4 +1,6 @@
-class_name DataTypes
+extends Node
+
+@export var shooting_enabled = false
 
 enum RoomType {
 	START,

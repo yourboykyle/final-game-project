@@ -18,7 +18,7 @@ const DIRS = [
 func generate():
 
 	var start = Vector2i(0,0)
-	spawn_room(start, DataTypes.RoomType.START)
+	spawn_room(start, Globals.RoomType.START)
 
 	var frontier = [start]
 
@@ -40,12 +40,12 @@ func generate():
 			if neighbor_count(next) > 1:
 				continue
 			
-			var types = [DataTypes.RoomType.COMBAT, DataTypes.RoomType.TREASURE, DataTypes.RoomType.BOSS, DataTypes.RoomType.SHOP]
+			var types = [Globals.RoomType.COMBAT, Globals.RoomType.TREASURE, Globals.RoomType.BOSS, Globals.RoomType.SHOP]
 			var roomType = types.pick_random()
 			spawn_room(next, roomType)
 			frontier.append(next)
 
-func spawn_room(grid_pos: Vector2i, roomType: DataTypes.RoomType):
+func spawn_room(grid_pos: Vector2i, roomType: Globals.RoomType):
 	var scene = registry.get_room_scene(roomType)
 	var room = scene.instantiate()
 

@@ -1,4 +1,4 @@
 extends RoomBase
 
 func _ready():
-	room_type = DataTypes.RoomType.SHOP
+	room_type = Globals.RoomType.SHOP

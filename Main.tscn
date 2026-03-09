@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://c4lk6gg77u8k8" path="res://scripts/DungeonGenerator.gd" id="1_glv2v"]
 [ext_resource type="Script" uid="uid://1jrnoabrsjjh" path="res://Main.gd" id="1_r0du0"]
 [ext_resource type="PackedScene" uid="uid://cogac7gp67q5t" path="res://entities/Player.tscn" id="2_uu6xs"]
-[ext_resource type="PackedScene" uid="uid://cipl0eoyasmb2" path="res://entities/Crosshair.tscn" id="4_cm0pq"]
 
 [node name="Main" type="Node2D" unique_id=1546933838]
 script = ExtResource("1_r0du0")
@@ -14,7 +13,4 @@ script = ExtResource("1_glv2v")
 [node name="DungeonContainer" type="Node2D" parent="." unique_id=586539347]
 
 [node name="Player" parent="." unique_id=1945325549 instance=ExtResource("2_uu6xs")]
-
-[node name="Crosshair" parent="." unique_id=1871775000 instance=ExtResource("4_cm0pq")]
-z_index = 2
-scale = Vector2(2, 2)
+SPEED = 1000
