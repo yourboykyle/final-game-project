@@ -7,10 +7,14 @@
 [node name="Main" type="Node2D" unique_id=1546933838]
 script = ExtResource("1_r0du0")
 
-[node name="DungeonGenerator" type="Node" parent="." unique_id=978604570]
+[node name="DungeonGenerator" type="Node2D" parent="." unique_id=640323964]
 script = ExtResource("1_glv2v")
 
-[node name="DungeonContainer" type="Node2D" parent="." unique_id=586539347]
+[node name="DungeonContainer" type="Node2D" parent="." unique_id=824870314]
+
+[node name="RoomContainer" type="Node2D" parent="." unique_id=586539347]
 
 [node name="Player" parent="." unique_id=1945325549 instance=ExtResource("2_uu6xs")]
 SPEED = 1000
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=728295121]

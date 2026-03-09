@@ -1,12 +1,16 @@
 extends Node
 
 @onready var container = $"../DungeonContainer"
+
 var registry = RoomRegistry.new()
 
 var dungeon_layout = {}
 var dungeon_size = 64
-var room_spacing = 768
+var room_spacing = Globals.room_size
 var max_rooms = 20
+
+var current_room = null
+var current_grid = Vector2i.ZERO
 
 const DIRS = [
 	Vector2i(1,0),
@@ -15,13 +19,15 @@ const DIRS = [
 	Vector2i(0,-1)
 ]
 
+
 func generate():
+
+	dungeon_layout.clear()
 
 	var start = Vector2i(0,0)
 	spawn_room(start, Globals.RoomType.START)
 
 	var frontier = [start]
-
 
 	while frontier.size() > 0 and dungeon_layout.size() < max_rooms:
 
@@ -39,25 +45,62 @@ func generate():
 			
 			if neighbor_count(next) > 1:
 				continue
-			
-			var types = [Globals.RoomType.COMBAT, Globals.RoomType.TREASURE, Globals.RoomType.BOSS, Globals.RoomType.SHOP]
+
+			var types = [
+				Globals.RoomType.COMBAT,
+				Globals.RoomType.TREASURE,
+				Globals.RoomType.BOSS,
+				Globals.RoomType.SHOP
+			]
+
 			var roomType = types.pick_random()
+
 			spawn_room(next, roomType)
 			frontier.append(next)
 
+	# load the starting room
+	load_room(start)
+
+
 func spawn_room(grid_pos: Vector2i, roomType: Globals.RoomType):
+
 	var scene = registry.get_room_scene(roomType)
-	var room = scene.instantiate()
 
-	room.initialize(grid_pos)
+	dungeon_layout[grid_pos] = {
+		"type": roomType,
+		"scene": scene
+	}
 
-	room.position = Vector2(
-		grid_pos.x * room_spacing,
-		grid_pos.y * room_spacing
-	)
 
-	container.add_child(room)
-	dungeon_layout[grid_pos] = room
+func load_room(grid_pos: Vector2i):
+
+	# remove previous room
+	if current_room:
+		current_room.queue_free()
+
+	var room_data = dungeon_layout[grid_pos]
+
+	current_room = room_data.scene.instantiate()
+
+	current_room.initialize(grid_pos)
+
+	container.add_child(current_room)
+
+	current_grid = grid_pos
+	
+	var player = $"../Player"
+	var player_spawn_coords = Globals.room_size / 2
+	player.position = Vector2(player_spawn_coords, player_spawn_coords)
+
+
+func change_room(direction: Globals.Direction):
+	var dir = Globals.DIR_VECTORS[direction]
+
+	var next = current_grid + dir
+
+	if dungeon_layout.has(next):
+		load_room(next)
+
 
 func neighbor_count(pos: Vector2i):
 
