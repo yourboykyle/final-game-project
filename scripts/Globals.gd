@@ -1,6 +1,9 @@
 extends Node
 
+var dungeon_generator
+
 @export var shooting_enabled = false
+
 var room_size = 96 * 16
 
 enum RoomType {

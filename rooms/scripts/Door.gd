@@ -3,5 +3,6 @@ extends Area2D
 @export var direction : Globals.Direction
 
 func _on_body_entered(body):
+	print("Body entered")
 	if body.name == "Player":
-		get_node("/root/Main/DungeonGenerator").change_room(direction)
+		Globals.dungeon_generator.change_room(direction)
