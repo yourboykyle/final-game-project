@@ -19,6 +19,8 @@ const DIRS = [
 	Vector2i(0,-1)
 ]
 
+func _ready():
+	Globals.dungeon_generator = self
 
 func generate():
 
@@ -94,6 +96,7 @@ func load_room(grid_pos: Vector2i):
 
 
 func change_room(direction: Globals.Direction):
+	print("Trying to change to room: " + Globals.Direction.keys()[direction])
 	var dir = Globals.DIR_VECTORS[direction]
 
 	var next = current_grid + dir

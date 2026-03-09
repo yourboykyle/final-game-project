@@ -7,5 +7,17 @@ extends Node2D
 
 var grid_position : Vector2i
 
-func initialize(pos: Vector2i):
-	grid_position = pos
+func initialize(grid_pos: Vector2i):
+	var gen = Globals.dungeon_generator
+
+	if !gen.dungeon_layout.has(grid_pos + Globals.DIR_VECTORS[Globals.Direction.NORTH]):
+		$DoorNorth.queue_free()
+
+	if !gen.dungeon_layout.has(grid_pos + Globals.DIR_VECTORS[Globals.Direction.SOUTH]):
+		$DoorSouth.queue_free()
+
+	if !gen.dungeon_layout.has(grid_pos + Globals.DIR_VECTORS[Globals.Direction.EAST]):
+		$DoorEast.queue_free()
+
+	if !gen.dungeon_layout.has(grid_pos + Globals.DIR_VECTORS[Globals.Direction.WEST]):
+		$DoorWest.queue_free()
