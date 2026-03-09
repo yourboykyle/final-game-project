@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://brq5f6soaef84" path="res://entities/scripts/Player.gd" id="1_ojs4q"]
 [ext_resource type="Texture2D" uid="uid://bnd2qj5j3hxgc" path="res://assets/sprites/player.png" id="2_ojs4q"]
+[ext_resource type="PackedScene" uid="uid://8j34515jhvuj" path="res://items/Weapons/BaseGun.tscn" id="3_lw5ub"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ojs4q"]
 radius = 5.487805
@@ -10,7 +11,6 @@ height = 13.414635
 [node name="Player" type="CharacterBody2D" unique_id=1945325549]
 z_index = 2
 script = ExtResource("1_ojs4q")
-SPEED = null
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=383463702]
 texture = ExtResource("2_ojs4q")
@@ -21,3 +21,6 @@ scale = Vector2(7.38, 7.38)
 shape = SubResource("CapsuleShape2D_ojs4q")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1668519223]
+
+[node name="BaseGun" parent="." unique_id=464835153 instance=ExtResource("3_lw5ub")]
+position = Vector2(50, -2)

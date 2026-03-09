@@ -1,1 +1,1 @@
-extends Weapon
+extends Gun
