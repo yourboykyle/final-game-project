@@ -11,6 +11,7 @@ var max_rooms = 20
 
 var current_room = null
 var current_grid = Vector2i.ZERO
+var changing_room = false
 
 const DIRS = [
 	Vector2i(1,0),
@@ -27,7 +28,7 @@ func generate():
 	dungeon_layout.clear()
 
 	var start = Vector2i(0,0)
-	spawn_room(start, Globals.RoomType.START)
+	add_room(start, Globals.RoomType.START)
 
 	var frontier = [start]
 
@@ -57,14 +58,14 @@ func generate():
 
 			var roomType = types.pick_random()
 
-			spawn_room(next, roomType)
+			add_room(next, roomType)
 			frontier.append(next)
 
 	# load the starting room
 	load_room(start)
 
 
-func spawn_room(grid_pos: Vector2i, roomType: Globals.RoomType):
+func add_room(grid_pos: Vector2i, roomType: Globals.RoomType):
 
 	var scene = registry.get_room_scene(roomType)
 
@@ -75,7 +76,6 @@ func spawn_room(grid_pos: Vector2i, roomType: Globals.RoomType):
 
 
 func load_room(grid_pos: Vector2i):
-
 	# remove previous room
 	if current_room:
 		current_room.queue_free()
@@ -96,13 +96,18 @@ func load_room(grid_pos: Vector2i):
 
 
 func change_room(direction: Globals.Direction):
-	print("Trying to change to room: " + Globals.Direction.keys()[direction])
+	if changing_room: return
+	changing_room = true
+	
 	var dir = Globals.DIR_VECTORS[direction]
 
 	var next = current_grid + dir
 
 	if dungeon_layout.has(next):
 		load_room(next)
+	
+	await get_tree().create_timer(0.5).timeout
+	changing_room = false
 
 
 func neighbor_count(pos: Vector2i):
