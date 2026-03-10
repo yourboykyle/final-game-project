@@ -1,10 +1,14 @@
 extends Node
 
-var dungeon_generator
+var dungeon_manager
+var crosshair_instance
 
-@export var shooting_enabled = false
+const CROSSHAIR = preload("res://interface/Crosshair.tscn")
 
-var room_size = 96 * 16
+@export var shooting_enabled = true
+
+var ROOM_SIZE = 96 * 16
+var ROOM_CENTER = Vector2(ROOM_SIZE / 2, ROOM_SIZE / 2)
 
 enum RoomType {
 	START,
@@ -33,4 +37,12 @@ const DIR_VECTORS = {
 	Direction.SOUTH: Vector2i(0, 1),
 	Direction.EAST: Vector2i(1, 0),
 	Direction.WEST: Vector2i(-1, 0)
+}
+
+const ROOM_COLORS = {
+	RoomType.START: Color.FUCHSIA,
+	RoomType.COMBAT: Color.GRAY,
+	RoomType.TREASURE: Color.GRAY,
+	RoomType.SHOP: Color.GRAY,
+	RoomType.BOSS: Color.GRAY
 }

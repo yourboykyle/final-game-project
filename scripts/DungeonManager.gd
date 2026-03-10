@@ -6,7 +6,7 @@ var registry = RoomRegistry.new()
 
 var dungeon_layout = {}
 var dungeon_size = 64
-var room_spacing = Globals.room_size
+var room_spacing = Globals.ROOM_SIZE
 var max_rooms = 20
 
 var current_room = null
@@ -21,7 +21,7 @@ const DIRS = [
 ]
 
 func _ready():
-	Globals.dungeon_generator = self
+	Globals.dungeon_manager = self
 
 func generate():
 
@@ -62,7 +62,8 @@ func generate():
 			frontier.append(next)
 
 	# load the starting room
-	load_room(start)
+	load_room(start, null)
+	$"../CanvasLayer/Minimap".build_minimap()
 
 
 func add_room(grid_pos: Vector2i, roomType: Globals.RoomType):
@@ -75,7 +76,7 @@ func add_room(grid_pos: Vector2i, roomType: Globals.RoomType):
 	}
 
 
-func load_room(grid_pos: Vector2i):
+func load_room(grid_pos: Vector2i, entry_dir: Variant = null):
 	# remove previous room
 	if current_room:
 		current_room.queue_free()
@@ -90,9 +91,28 @@ func load_room(grid_pos: Vector2i):
 
 	current_grid = grid_pos
 	
+	# Adjust the player's position to be close to the direction they entered from
 	var player = $"../Player"
-	var player_spawn_coords = Globals.room_size / 2
-	player.position = Vector2(player_spawn_coords, player_spawn_coords)
+	var center = Globals.ROOM_SIZE / 2
+	var spawn = Globals.ROOM_CENTER
+
+	var offset = 120 # distance away from door
+
+	if entry_dir != null:
+		match entry_dir:
+			Globals.Direction.NORTH:
+				spawn = Vector2(center, Globals.ROOM_SIZE - offset)
+
+			Globals.Direction.SOUTH:
+				spawn = Vector2(center, offset)
+
+			Globals.Direction.EAST:
+				spawn = Vector2(offset, center)
+
+			Globals.Direction.WEST:
+				spawn = Vector2(Globals.ROOM_SIZE - offset, center)
+
+	player.position = spawn
 
 
 func change_room(direction: Globals.Direction):
@@ -100,11 +120,10 @@ func change_room(direction: Globals.Direction):
 	changing_room = true
 	
 	var dir = Globals.DIR_VECTORS[direction]
-
 	var next = current_grid + dir
 
 	if dungeon_layout.has(next):
-		load_room(next)
+		load_room(next, direction)
 	
 	await get_tree().create_timer(0.5).timeout
 	changing_room = false

@@ -1,18 +1,15 @@
 extends Node2D
 
-const CROSSHAIR = preload("res://entities/crosshair.tscn")
-var crosshair_instance = null
-
 func _ready() -> void:
 	$DungeonManager.generate()
-	var player_spawn_coords = Globals.room_size / 2
-	$Player.position = Vector2(player_spawn_coords, player_spawn_coords)
+
+	$Player.position = Globals.ROOM_CENTER
 
 func _process(delta: float) -> void:
-	if Globals.shooting_enabled and crosshair_instance == null:
-		crosshair_instance = CROSSHAIR.instantiate()
-		add_child(crosshair_instance)
+	if Globals.shooting_enabled and Globals.crosshair_instance == null:
+		Globals.crosshair_instance = Globals.CROSSHAIR.instantiate()
+		add_child(Globals.crosshair_instance)
 
-	if !Globals.shooting_enabled and crosshair_instance != null:
-		crosshair_instance.queue_free()
-		crosshair_instance = null
+	if !Globals.shooting_enabled and Globals.crosshair_instance != null:
+		Globals.crosshair_instance.queue_free()
+		Globals.crosshair_instance = null

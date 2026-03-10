@@ -16,7 +16,7 @@ func _process(delta):
 # Guns attack function
 func attack():
 	if hitscan:
-		var dir = (crosshair.global_position - gun.global_position).normalized()
+		var dir = (Globals.crosshair_instance.global_position - gun.global_position).normalized()
 		shoot_hitscan(global_position, dir)
 	else:
 		shoot_projectile(gun)

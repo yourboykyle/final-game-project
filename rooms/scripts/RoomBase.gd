@@ -8,7 +8,7 @@ extends Node2D
 var grid_position : Vector2i
 
 func initialize(grid_pos: Vector2i):
-	var gen = Globals.dungeon_generator
+	var gen = Globals.dungeon_manager
 
 	if !gen.dungeon_layout.has(grid_pos + Globals.DIR_VECTORS[Globals.Direction.NORTH]):
 		$DoorNorth.queue_free()

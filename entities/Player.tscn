@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://brq5f6soaef84" path="res://entities/scripts/Player.gd" id="1_ojs4q"]
 [ext_resource type="Texture2D" uid="uid://bnd2qj5j3hxgc" path="res://assets/sprites/player.png" id="2_ojs4q"]
-[ext_resource type="PackedScene" uid="uid://8j34515jhvuj" path="res://items/Weapons/BaseGun.tscn" id="3_lw5ub"]
-[ext_resource type="PackedScene" uid="uid://be54qcw5ffm7a" path="res://items/Weapons/TestGun.tscn" id="4_ks8m5"]
+[ext_resource type="PackedScene" uid="uid://8j34515jhvuj" path="res://items/weapons/BaseGun.tscn" id="3_lw5ub"]
+[ext_resource type="PackedScene" uid="uid://be54qcw5ffm7a" path="res://items/weapons/TestGun.tscn" id="4_ks8m5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ojs4q"]
 radius = 5.487805

@@ -1,7 +1,6 @@
 class_name Weapon extends Equippable
 
 const BULLET = preload("res://entities/Bullet.tscn")
-@onready var crosshair = get_node("/root/Main/Crosshair")
 @onready var player_collision_shape = get_node("/root/Main/Player/CollsionShape")
 # Weapon attributes
 @export var weapon_name : String
@@ -28,9 +27,9 @@ func shoot_hitscan(origin, direction):
 	var space_state = get_world_2d().direct_space_state
 	
 	var end_pos = origin + direction * range
-	print("Origin: " + str(origin))
-	print("Direction: " + str(direction))
-	print("End pos: " + str(end_pos))
+	#print("Origin: " + str(origin))
+	#print("Direction: " + str(direction))
+	#print("End pos: " + str(end_pos))
 	var query = PhysicsRayQueryParameters2D.create(origin, end_pos)
 	query.exclude = [player_collision_shape, self]
 	
@@ -72,7 +71,7 @@ func shoot_projectile(weapon):
 	var bullet = BULLET.instantiate()
 	
 	# calculate the direction from the crosshair to the gun, and set the bullets direction to that
-	var dir = (crosshair.global_position - weapon.global_position).normalized()
+	var dir = (Globals.crosshair_instance.global_position - weapon.global_position).normalized()
 	bullet.direction = dir
 	
 	# set the bullets starting point to the guns position
