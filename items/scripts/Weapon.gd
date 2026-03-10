@@ -3,7 +3,6 @@ class_name Weapon extends Equippable
 const BULLET = preload("res://entities/Bullet.tscn")
 @onready var player_collision_shape = get_node("/root/Main/Player/CollsionShape")
 # Weapon attributes
-@export var weapon_name : String
 @export var fire_rate : float = 0.15
 @export var range : float = 1500
 var fire_timer = 0.0
