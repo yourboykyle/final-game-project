@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://be54qcw5ffm7a"]
+
+[ext_resource type="Script" uid="uid://ciljqp40fcbjo" path="res://items/scripts/TestGun.gd" id="1_v6b5a"]
+
+[node name="TestGun" type="Node2D" unique_id=499305279]
+script = ExtResource("1_v6b5a")
+hitscan = true
+weapon_name = "Test Gun"
+fire_rate = 0.05

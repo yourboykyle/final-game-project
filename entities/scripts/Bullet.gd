@@ -1,6 +1,6 @@
-extends Area2D
+class_name Bullet extends Area2D
 
-var speed = 600
+@export var speed = 600
 var direction = Vector2.ZERO
 
 func _ready():
@@ -8,3 +8,4 @@ func _ready():
 
 func _process(delta):
 	position += direction * speed * delta
+	

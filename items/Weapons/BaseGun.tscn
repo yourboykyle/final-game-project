@@ -5,6 +5,7 @@
 
 [node name="BaseGun" type="Node2D" unique_id=464835153]
 script = ExtResource("1_15i37")
+weapon_name = "Base Gun"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1942206103]
 texture = ExtResource("2_y2q1l")
