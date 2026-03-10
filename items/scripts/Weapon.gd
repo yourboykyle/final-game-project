@@ -6,7 +6,7 @@ const BULLET = preload("res://entities/Bullet.tscn")
 # Weapon attributes
 @export var weapon_name : String
 @export var fire_rate : float = 0.15
-@export var range : float = 1080
+@export var range : float = 1500
 var fire_timer = 0.0
 
 func try_attack():
