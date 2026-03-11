@@ -1,5 +1,9 @@
 extends CharacterBody2D
 
+signal oxygen_changed(current_oxygen: float, max_oxygen: float)
+
+@export var max_oxygen := 100.0
+var oxygen := max_oxygen
 @export var SPEED = 1000
 # Weapon Varaibles Start
 # Gets the players weapon holder
@@ -11,6 +15,8 @@ var current_weapon
 func _ready() -> void:
 	# Set current weapon to the weapon holders first child
 	current_weapon = weapon_holder.get_child(0)
+	oxygen = max_oxygen
+	emit_signal("oxygen_changed", oxygen, max_oxygen)
 
 func _process(delta):
 	#If the player attacks, try the current weapons attack
@@ -19,7 +25,7 @@ func _process(delta):
 		current_weapon.try_attack()
 	
 	sprite_2d.flip_h = get_global_mouse_position().x < global_position.x
-	 
+	_update_oxygen(delta)
 
 func _physics_process(delta):
 	var input_vector = Vector2(
@@ -29,3 +35,8 @@ func _physics_process(delta):
 	
 	velocity = input_vector.normalized() * SPEED
 	move_and_slide()
+
+func _update_oxygen(delta):
+	var decay = Globals.oxygen_decay_rate * delta
+	oxygen = max(oxygen -decay, 0);
+	emit_signal("oxygen_changed", oxygen, max_oxygen)

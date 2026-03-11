@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cipl0eoyasmb2" path="res://interface/Crosshair.tscn" id="4_cm0pq"]
 [ext_resource type="PackedScene" uid="uid://bn3xisatdj0hl" path="res://interface/Minimap.tscn" id="5_fos0i"]
 [ext_resource type="PackedScene" uid="uid://brxc7ptf2eq08" path="res://entities/Enemies/enemy.tscn" id="6_enemy"]
+[ext_resource type="PackedScene" uid="uid://xsfsc4yv2q4o" path="res://interface/OxygenBar.tscn" id="7_lgr22"]
 
 [node name="Main" type="Node2D" unique_id=1546933838]
 script = ExtResource("1_r0du0")
@@ -22,6 +23,10 @@ script = ExtResource("1_glv2v")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1619416667]
 
 [node name="Minimap" parent="CanvasLayer" unique_id=234675160 instance=ExtResource("5_fos0i")]
+
+[node name="OxygenBar" parent="CanvasLayer" unique_id=1228586357 instance=ExtResource("7_lgr22")]
+offset_top = 3.0
+offset_bottom = 3.0
 
 [node name="Crosshair" parent="." unique_id=1871775000 instance=ExtResource("4_cm0pq")]
 visible = false
