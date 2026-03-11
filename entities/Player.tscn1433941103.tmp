@@ -29,6 +29,6 @@ shape = SubResource("CapsuleShape2D_ojs4q")
 position = Vector2(45, -1)
 script = ExtResource("3_l1ths")
 
-[node name="HitscanGun" parent="WeaponHolder" unique_id=499305279 instance=ExtResource("4_ks8m5")]
-
 [node name="BaseGun" parent="WeaponHolder" unique_id=464835153 instance=ExtResource("3_lw5ub")]
+
+[node name="HitscanGun" parent="WeaponHolder" unique_id=499305279 instance=ExtResource("4_ks8m5")]

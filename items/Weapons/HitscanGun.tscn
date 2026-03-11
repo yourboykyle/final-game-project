@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://be54qcw5ffm7a"]
 
-[ext_resource type="Script" uid="uid://ciljqp40fcbjo" path="res://items/scripts/TestGun.gd" id="1_ejl1l"]
+[ext_resource type="Script" uid="uid://ciljqp40fcbjo" path="res://items/scripts/HitscanGun.gd" id="1_ejl1l"]
 
 [node name="HitscanGun" type="Node2D" unique_id=499305279]
 script = ExtResource("1_ejl1l")

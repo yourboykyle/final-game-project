@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var weapon_holder = $WeaponHolder
 var current_weapon
 # Weapon Variables end
+@onready var sprite_2d: Sprite2D = $Sprite2D
 
 func _ready() -> void:
 	# Set current weapon to the weapon holders first child
@@ -16,6 +17,9 @@ func _process(delta):
 	if Input.is_action_pressed("attack"):
 		#Try the current weapons attack
 		current_weapon.try_attack()
+	
+	sprite_2d.flip_h = get_global_mouse_position().x < global_position.x
+	 
 
 func _physics_process(delta):
 	var input_vector = Vector2(

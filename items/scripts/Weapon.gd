@@ -6,12 +6,15 @@ const BULLET = preload("res://entities/Bullet.tscn")
 @export var fire_rate : float = 0.15
 @export var range : float = 1500
 @export var aoe : float = 10
-@export var damage : float = 5
+@export var damage : float = 34
 @export var linger_time : float = 0.0
 @export var projectile_speed: int = 1000
 @export var collision_mask : int = 1
 @export var hitscan : bool
 var fire_timer = 0.0
+
+func _ready() -> void:
+	add_to_group("weapons")
 
 func try_attack():
 	if !Globals.shooting_enabled:
