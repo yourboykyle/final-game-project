@@ -9,10 +9,15 @@ height = 16.0
 
 [node name="Bullet" type="Area2D" unique_id=1551868005]
 scale = Vector2(2, 2)
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("1_r16h3")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1767355776]
 texture = ExtResource("1_k50w0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=158497368]
+rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_k50w0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

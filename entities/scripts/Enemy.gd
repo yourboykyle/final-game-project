@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 @onready var player = get_parent().get_node("Player")
-var SPEED = 500
+var SPEED = 300
 var health = 100 
 var max_health = 100
 
@@ -26,6 +26,7 @@ func ready():
 	health_bar.value = health
  
 func take_damage(amount):
+	
 	health-= amount
 	health_bar.value = health 
 	if health <= 0: 

@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://brxc7ptf2eq08"]
 
-[ext_resource type="Script" uid="uid://ytu022u1lf8m" path="res://entities/scripts/enemy.gd" id="1_7k104"]
+[ext_resource type="Script" uid="uid://ytu022u1lf8m" path="res://entities/scripts/Enemy.gd" id="1_7k104"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4gyqm"]
-size = Vector2(26, 20)
+size = Vector2(69, 68)
 
 [sub_resource type="Gradient" id="Gradient_qi2p4"]
 
@@ -11,12 +11,12 @@ size = Vector2(26, 20)
 gradient = SubResource("Gradient_qi2p4")
 
 [node name="Enemy" type="CharacterBody2D" unique_id=174068874]
+collision_layer = 2
 script = ExtResource("1_7k104")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1426270438]
-position = Vector2(3, 0)
+position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_4gyqm")
-disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1196865565]
 texture = SubResource("GradientTexture2D_iifgy")
