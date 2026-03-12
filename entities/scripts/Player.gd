@@ -1,12 +1,18 @@
 extends CharacterBody2D
 
-@export var SPEED = 1000
+
 # Weapon Varaibles Start
 # Gets the players weapon holder
 @onready var weapon_holder = $WeaponHolder
 var current_weapon
 # Weapon Variables end
+
 @onready var sprite_2d: Sprite2D = $Sprite2D
+# Movement variables
+@export var SPEED = 1000
+@onready var dive_time: Timer = $DiveTime
+var diving : bool = false
+# Movement variables end
 
 func _ready() -> void:
 	# Set current weapon to the weapon holders first child
@@ -29,3 +35,32 @@ func _physics_process(delta):
 	
 	velocity = input_vector.normalized() * SPEED
 	move_and_slide()
+	
+	if Input.is_action_just_pressed("dive"):
+		dive()
+
+func take_damage(amount):
+	
+	if diving:
+		print("missed")
+		return
+	
+	""" put in the oxygen stuff later
+	health-= amount
+	health_bar.value = health 
+	if health <= 0: 
+		queue_free() 
+	"""
+	
+	print("ouch")
+
+
+func dive():
+	diving = true
+	
+	dive_time.start()
+
+
+func _on_dive_time_timeout() -> void:
+	
+	diving = false

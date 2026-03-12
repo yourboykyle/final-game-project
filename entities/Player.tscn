@@ -32,3 +32,9 @@ script = ExtResource("3_l1ths")
 [node name="HitscanGun" parent="WeaponHolder" unique_id=499305279 instance=ExtResource("4_ks8m5")]
 
 [node name="BaseGun" parent="WeaponHolder" unique_id=464835153 instance=ExtResource("3_lw5ub")]
+
+[node name="DiveTime" type="Timer" parent="." unique_id=206276636]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="DiveTime" to="." method="_on_dive_time_timeout"]

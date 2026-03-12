@@ -16,7 +16,7 @@ func _process(delta):
 func attack():
 	if hitscan:
 		var dir = (get_global_mouse_position() - gun.global_position).normalized()
-		hitbox(global_position, dir)
+		hitscan_attack(global_position, dir)
 	else:
 		shoot_projectile(gun)
 	

@@ -3,13 +3,20 @@ class_name Weapon extends Equippable
 const BULLET = preload("res://entities/Bullet.tscn")
 @onready var player = get_node("/root/Main/Player")
 # Weapon attributes
+#How fast the weapon shoots
 @export var fire_rate : float = 0.15
+#How far the raycast goes
 @export var range : float = 1500
+#Size of the raycast
 @export var aoe : float = 10
 @export var damage : float = 34
+#Linger is only visual
 @export var linger_time : float = 0.0
+#How fast projectile goes
 @export var projectile_speed: int = 1000
+#What layer it collides with
 @export var collision_mask : int = 1
+#If it shoots a raycast or projectile (true for raycast)
 @export var hitscan : bool
 var fire_timer = 0.0
 
@@ -24,14 +31,13 @@ func try_attack():
 		fire_timer = fire_rate
 		# Call attack function
 		attack()
-		queue_redraw() 
 
 # abstract attack class, ill make class abstract later
 func attack():
 	pass
 
-# Logic for weapons that create a hitbox
-func hitbox(origin, direction):
+# Logic for weapons use hitscan
+func hitscan_attack(origin, direction):
 	var space_state = get_world_2d().direct_space_state
 	var shape = RectangleShape2D.new()
 	shape.size = Vector2(range, aoe)
