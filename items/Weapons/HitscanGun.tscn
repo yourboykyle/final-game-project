@@ -8,7 +8,6 @@ fire_rate = 0.5
 range = null
 aoe = 5.0
 damage = null
-linger_time = 5.0
 projectile_speed = null
 collision_mask = null
 hitscan = true
