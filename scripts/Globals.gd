@@ -2,6 +2,7 @@ extends Node
 
 var dungeon_manager
 var crosshair_instance
+var oxygen_decay_rate := 0.5
 
 const CROSSHAIR = preload("res://interface/Crosshair.tscn")
 
