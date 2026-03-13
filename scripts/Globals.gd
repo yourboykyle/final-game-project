@@ -46,4 +46,6 @@ const ROOM_COLORS = {
 	RoomType.TREASURE: Color.GRAY,
 	RoomType.SHOP: Color.GRAY,
 	RoomType.BOSS: Color.GRAY
-}
+}  
+var spawned_rooms = {} 
+var room_enemies = {} 

@@ -3,5 +3,27 @@
 [ext_resource type="PackedScene" uid="uid://bbrsvqe0p684n" path="res://rooms/RoomBase.tscn" id="1_m6eoq"]
 [ext_resource type="Script" uid="uid://cgnclt2dkq5r0" path="res://rooms/scripts/CombatRoom.gd" id="2_x3f7y"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x3f7y"]
+size = Vector2(1570, 1550)
+
 [node name="RoomBase" unique_id=1536920797 instance=ExtResource("1_m6eoq")]
 script = ExtResource("2_x3f7y")
+
+[node name="RoomTrigger" type="Area2D" parent="." index="6" unique_id=1602358805]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomTrigger" index="0" unique_id=1458784911]
+position = Vector2(775, 765)
+shape = SubResource("RectangleShape2D_x3f7y")
+
+[node name="Spawnpoints" type="Node2D" parent="." index="7" unique_id=358638653]
+
+[node name="Marker2D" type="Marker2D" parent="Spawnpoints" index="0" unique_id=1825591790]
+position = Vector2(909, 260)
+
+[node name="Marker2D2" type="Marker2D" parent="Spawnpoints" index="1" unique_id=712939591]
+position = Vector2(957, 536)
+
+[node name="Marker2D3" type="Marker2D" parent="Spawnpoints" index="2" unique_id=858582687]
+position = Vector2(937, 824)
+
+[connection signal="body_entered" from="RoomTrigger" to="." method="_on_room_trigger_body_entered"]

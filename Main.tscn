@@ -33,5 +33,3 @@ visible = false
 z_index = 2
 scale = Vector2(2, 2)
 script = null
-
-[node name="Enemy" parent="." unique_id=174068874 instance=ExtResource("6_enemy")]
