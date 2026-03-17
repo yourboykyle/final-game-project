@@ -2,7 +2,7 @@ extends Node
 
 var dungeon_manager
 var crosshair_instance
-var oxygen_decay_rate := 0.5
+var oxygen_decay_rate := 1.0
 
 const CROSSHAIR = preload("res://interface/Crosshair.tscn")
 
@@ -42,10 +42,10 @@ const DIR_VECTORS = {
 
 const ROOM_COLORS = {
 	RoomType.START: Color.FUCHSIA,
-	RoomType.COMBAT: Color.GRAY,
-	RoomType.TREASURE: Color.GRAY,
+	RoomType.COMBAT: Color.RED,
+	RoomType.TREASURE: Color.GOLD,
 	RoomType.SHOP: Color.GRAY,
-	RoomType.BOSS: Color.GRAY
+	RoomType.BOSS: Color.BLUE
 }  
 var spawned_rooms = {} 
 var room_enemies = {} 

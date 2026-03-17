@@ -63,7 +63,7 @@ func generate():
 
 	# load the starting room
 	load_room(start, null)
-	$"../CanvasLayer/Minimap".build_minimap()
+	$"../CanvasLayer/GameplayUI/Minimap".build_minimap()
 
 
 func add_room(grid_pos: Vector2i, roomType: Globals.RoomType):
@@ -92,7 +92,7 @@ func load_room(grid_pos: Vector2i, entry_dir: Variant = null):
 	current_grid = grid_pos
 	
 	# Adjust the player's position to be close to the direction they entered from
-	var player = $"../Player"
+	var player = $"../DungeonContainer/Player"
 	var center = Globals.ROOM_SIZE / 2
 	var spawn = Globals.ROOM_CENTER
 

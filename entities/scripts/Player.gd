@@ -70,13 +70,16 @@ func _update_oxygen(delta):
 		#Start death if the player can die
 		death(can_die)
 
+func change_oxygen(amount):
+
+	oxygen = clamp(oxygen + amount, 0, max_oxygen)
+
+	emit_signal("oxygen_changed", oxygen, max_oxygen)
+
 func take_damage(amount):
-	
-	
 	if diving:
 		print("missed")
 		return
-	
 	
 	oxygen -= amount
 	emit_signal("oxygen_changed", oxygen, max_oxygen)
