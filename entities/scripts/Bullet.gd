@@ -1,13 +1,11 @@
 class_name Bullet extends Area2D
 
-@onready var weapon_holder = get_node("/root/Main/Player/WeaponHolder")
 var speed = 800
 var damage = 0
 
 var direction = Vector2.ZERO
 
 func _ready():
-	damage = weapon_holder.get_child(0).damage
 	rotation = direction.angle()
 
 func _process(delta):

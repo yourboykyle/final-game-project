@@ -18,9 +18,16 @@ var current_weapon
 @onready var sprite_2d: Sprite2D = $Sprite2D
 # Movement variables
 @export var SPEED = 1000
+@export var ACCELERATION = 1500
+@export var FRICTION = 800
 var speed_multiplier = 1
 @onready var dive_time: Timer = $DiveTime
 var diving : bool = false
+@export var flip_speed: float = 1250
+@export var flip_window: float = 0.5
+var can_flip = false
+var flip_normal = Vector2.ZERO
+var flip_timer = 0.0
 # Movement variables end
 
 func _ready() -> void:
@@ -43,21 +50,41 @@ func _physics_process(delta):
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
 		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	)
-	
+
 	if Input.is_action_pressed("boost"):
-		#Multiplier for movement
 		speed_multiplier = 1.5
 	else:
 		speed_multiplier = 1
-	
-	velocity = input_vector.normalized() * SPEED * speed_multiplier
-	move_and_slide()
-	
-	
+
+	var target_speed = SPEED * speed_multiplier
+
+	if input_vector.length() > 0:
+		# Accelerate toward the input direction
+		velocity = velocity.move_toward(input_vector.normalized() * target_speed, ACCELERATION * delta)
+	else:
+		# Decelerate to a stop when no input
+		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+
 	if Input.is_action_just_pressed("dive"):
 		dive()
-	
-	
+
+	if get_slide_collision_count() > 0:
+		var collision = get_slide_collision(0)
+		flip_normal = collision.get_normal()
+		flip_timer = flip_window
+		
+	if flip_timer > 0:
+		flip_timer -= delta
+		can_flip = true
+	else:
+		can_flip = false
+
+	if Input.is_action_just_pressed("flip") and can_flip:
+		velocity = flip_normal * flip_speed
+		can_flip = false
+		flip_timer = 0.0
+
+	move_and_slide()
 
 
 func _update_oxygen(delta):
@@ -78,7 +105,6 @@ func change_oxygen(amount):
 
 func take_damage(amount):
 	if diving:
-		print("missed")
 		return
 	
 	oxygen -= amount
@@ -92,7 +118,6 @@ func take_damage(amount):
 
 func dive():
 	diving = true
-	take_damage(1)
 	dive_time.start()
 
 func death(can_die):

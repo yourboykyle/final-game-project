@@ -5,11 +5,7 @@
 [node name="HitscanGun" type="Node2D" unique_id=499305279]
 script = ExtResource("1_ejl1l")
 fire_rate = 0.5
-range = null
 aoe = 5.0
-damage = null
-projectile_speed = null
-collision_mask = null
 hitscan = true
 item_name = "Test Gun"
-item_id = 3002
+item_id = 3001

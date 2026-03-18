@@ -15,8 +15,7 @@ const BULLET = preload("res://entities/Bullet.tscn")
 #How fast projectile goes
 @export var projectile_speed: int = 1000
 #What layer it collides with
-@export var collision_mask : int = 1
-#If it shoots a raycast or projectile (true for raycast)
+@export var collision_mask : int = 2
 @export var hitscan : bool
 var fire_timer = 0.0
 
@@ -45,7 +44,7 @@ func hitscan_attack(origin, direction):
 	query.shape = shape
 	query.transform = Transform2D(direction.angle(), origin + direction * range / 2)
 	query.exclude = [player, self]
-	#query.collision_mask = collision_mask
+	query.collision_mask = collision_mask
 	
 	var results = space_state.intersect_shape(query)
 	for result in results:
@@ -84,12 +83,10 @@ func hitscan_attack(origin, direction):
 
 # Function that shoots a projectile in the direction of a crosshair
 # Can probably reuse this for enemy logic 
-func shoot_projectile(weapon):
+func shoot_projectile(weapon, dir):
 	#create a bullet
 	var bullet = BULLET.instantiate()
 	
-	# calculate the direction from the crosshair to the gun, and set the bullets direction to that
-	var dir = (Globals.crosshair_instance.global_position - weapon.global_position).normalized()
 	bullet.direction = dir
 	bullet.damage = damage
 	bullet.speed = projectile_speed
@@ -98,3 +95,43 @@ func shoot_projectile(weapon):
 	bullet.global_position = weapon.global_position
 	#Add the child to the scene tree
 	get_tree().current_scene.add_child(bullet)
+
+func cast_hitbox(origin, direction, shape_type = "rectangle"):
+	var shape
+	
+	if shape_type == "rectangle":
+		shape = RectangleShape2D.new()
+		shape.size = Vector2(range, aoe)
+	elif shape_type == "circle":
+		shape = CircleShape2D.new()
+		shape.radius = aoe
+	
+	var hitbox_area = Area2D.new()
+	var col_shape = CollisionShape2D.new()
+	col_shape.shape = shape
+	hitbox_area.add_child(col_shape)
+	hitbox_area.position = origin + direction * range / 2
+	hitbox_area.rotation = direction.angle()
+	hitbox_area.collision_mask = collision_mask
+	get_tree().current_scene.add_child(hitbox_area)
+	
+	hitbox_area.body_entered.connect(func(body):
+		if body.has_method("take_damage"):
+			body.take_damage(damage)
+	)
+	
+	# Debug rect
+	var rect = ColorRect.new()
+	rect.color = Color(1, 0.5, 0, 0.5)
+	rect.size = Vector2(range, aoe)
+	rect.pivot_offset = Vector2(0, rect.size.y / 2)
+	rect.position = origin
+	rect.rotation = direction.angle()
+	get_tree().current_scene.add_child(rect)
+	
+	var tween = create_tween()
+	tween.tween_interval(max(linger_time, 0.05))
+	tween.tween_callback(func():
+		hitbox_area.queue_free()
+		rect.queue_free()
+	)

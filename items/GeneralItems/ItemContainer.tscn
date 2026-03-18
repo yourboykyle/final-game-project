@@ -2,19 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://be54qcw5ffm7a" path="res://items/Weapons/HitscanGun.tscn" id="1_l4lnq"]
 [ext_resource type="PackedScene" uid="uid://8j34515jhvuj" path="res://items/Weapons/BaseGun.tscn" id="2_g7lqh"]
+[ext_resource type="PackedScene" uid="uid://d12fmr0ra2qym" path="res://items/Weapons/BaseSword.tscn" id="3_g7lqh"]
 
 [node name="ItemContainer" type="Node2D" unique_id=1587473337]
 
-[node name="Weapons" type="Node2D" parent="." unique_id=707688584]
+[node name="BaseGun" parent="." unique_id=464835153 instance=ExtResource("2_g7lqh")]
 
-[node name="Guns" type="Node2D" parent="Weapons" unique_id=754705583]
+[node name="HitscanGun" parent="." unique_id=499305279 instance=ExtResource("1_l4lnq")]
 
-[node name="BaseGun" parent="Weapons/Guns" unique_id=464835153 instance=ExtResource("2_g7lqh")]
-
-[node name="HitscanGun" parent="Weapons/Guns" unique_id=499305279 instance=ExtResource("1_l4lnq")]
-
-[node name="Melee" type="Node2D" parent="Weapons" unique_id=450650773]
-
-[node name="Equippables" type="Node2D" parent="." unique_id=1957612646]
-
-[node name="GeneralItems" type="Node2D" parent="." unique_id=1432711151]
+[node name="BaseSword" parent="." unique_id=1855008530 instance=ExtResource("3_g7lqh")]

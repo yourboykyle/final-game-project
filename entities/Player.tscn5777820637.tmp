@@ -8,7 +8,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ojs4q"]
 radius = 5.487805
-height = 15.311653
+height = 13.414635
 
 [node name="Player" type="CharacterBody2D" unique_id=1945325549]
 z_index = 2
@@ -30,10 +30,10 @@ position = Vector2(45, -1)
 script = ExtResource("3_l1ths")
 
 [node name="HitscanGun" parent="WeaponHolder" unique_id=499305279 instance=ExtResource("4_ks8m5")]
+hitscan = false
 item_id = 0
 
 [node name="BaseGun" parent="WeaponHolder" unique_id=464835153 instance=ExtResource("3_lw5ub")]
-damage = 100.0
 item_id = 0
 
 [node name="DiveTime" type="Timer" parent="." unique_id=206276636]
