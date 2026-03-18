@@ -1,7 +1,7 @@
 class_name Weapon extends Equippable
 
 const BULLET = preload("res://entities/Bullet.tscn")
-@onready var player = get_node("/root/Main/Player")
+@onready var player = get_node("/root/Main/DungeonContainer/Player")
 # Weapon attributes
 #How fast the weapon shoots
 @export var fire_rate : float = 0.15

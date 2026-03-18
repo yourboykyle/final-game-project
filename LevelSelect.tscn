@@ -9,8 +9,11 @@ script = ExtResource("1_sf6f5")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=586231927]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 788.0
+offset_top = 256.0
+offset_right = 897.0
+offset_bottom = 419.0
+scale = Vector2(3, 3)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=924704635]
 layout_mode = 2
@@ -37,3 +40,5 @@ text = "3"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Level1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Level2" to="." method="_on_level_2_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Level3" to="." method="_on_level_3_pressed"]

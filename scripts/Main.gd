@@ -48,6 +48,7 @@ func load_level_select():
 
 func start_game(level_id):
 	clear_scene()
+	Globals.current_floor = level_id
 	
 	gameplayUI.show()
 	

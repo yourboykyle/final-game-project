@@ -7,7 +7,7 @@ var registry = RoomRegistry.new()
 var dungeon_layout = {}
 var dungeon_size = 64
 var room_spacing = Globals.ROOM_SIZE
-var max_rooms = 20
+var max_rooms = 0
 
 var current_room = null
 var current_grid = Vector2i.ZERO
@@ -24,14 +24,17 @@ func _ready():
 	Globals.dungeon_manager = self
 
 func generate():
-
 	dungeon_layout.clear()
+
+	# scale dungeon size with floor
+	max_rooms = Globals.GEN_BASE_ROOMS + Globals.current_floor * Globals.GEN_EXTRA_ROOMS_PER_FLOOR
 
 	var start = Vector2i(0,0)
 	add_room(start, Globals.RoomType.START)
 
 	var frontier = [start]
 
+	# Generate main layout (using just combat rooms, special ones added later)
 	while frontier.size() > 0 and dungeon_layout.size() < max_rooms:
 
 		var current = frontier.pick_random()
@@ -49,30 +52,22 @@ func generate():
 			if neighbor_count(next) > 1:
 				continue
 
-			var types = [
-				Globals.RoomType.COMBAT,
-				Globals.RoomType.TREASURE,
-				Globals.RoomType.BOSS,
-				Globals.RoomType.SHOP
-			]
-
-			var roomType = types.pick_random()
-
-			add_room(next, roomType)
+			add_room(next, Globals.RoomType.COMBAT)
 			frontier.append(next)
+
+	# Assign special rooms after generation
+	assign_special_rooms()
 
 	# load the starting room
 	load_room(start, null)
+
 	$"../CanvasLayer/GameplayUI/Minimap".build_minimap()
 
 
 func add_room(grid_pos: Vector2i, roomType: Globals.RoomType):
 
-	var scene = registry.get_room_scene(roomType)
-
 	dungeon_layout[grid_pos] = {
-		"type": roomType,
-		"scene": scene
+		"type": roomType
 	}
 
 
@@ -83,7 +78,9 @@ func load_room(grid_pos: Vector2i, entry_dir: Variant = null):
 
 	var room_data = dungeon_layout[grid_pos]
 
-	current_room = room_data.scene.instantiate()
+	# get correct scene based on FINAL type
+	var scene = registry.get_room_scene(room_data["type"])
+	current_room = scene.instantiate()
 
 	current_room.initialize(grid_pos)
 
@@ -91,12 +88,12 @@ func load_room(grid_pos: Vector2i, entry_dir: Variant = null):
 
 	current_grid = grid_pos
 	
-	# Adjust the player's position to be close to the direction they entered from
+	# Adjust the player's position based on entry direction
 	var player = $"../DungeonContainer/Player"
 	var center = Globals.ROOM_SIZE / 2
 	var spawn = Globals.ROOM_CENTER
 
-	var offset = 120 # distance away from door
+	var offset = 120
 
 	if entry_dir != null:
 		match entry_dir:
@@ -138,3 +135,44 @@ func neighbor_count(pos: Vector2i):
 			count += 1
 
 	return count
+
+
+# Special room assignment
+
+func assign_special_rooms():
+	assign_boss_room()
+	assign_treasure_rooms()
+
+
+func assign_boss_room():
+	var farthest = Vector2i.ZERO
+	var max_dist = -1
+
+	for pos in dungeon_layout.keys():
+		if pos == Vector2i.ZERO:
+			continue
+		
+		var dist = pos.length_squared()
+		if dist > max_dist:
+			max_dist = dist
+			farthest = pos
+
+	if dungeon_layout.has(farthest):
+		dungeon_layout[farthest]["type"] = Globals.RoomType.BOSS
+
+
+func assign_treasure_rooms():
+	var floor = Globals.current_floor
+	
+	# base + scaling
+	var chance = Globals.GEN_TREASURE_BASE_CHANCE + (floor * Globals.GEN_BONUS_TREASURE_CHANCE_PER_FLOOR)
+
+	for pos in dungeon_layout.keys():
+		if pos == Vector2i.ZERO:
+			continue
+		
+		if dungeon_layout[pos]["type"] != Globals.RoomType.COMBAT:
+			continue
+		
+		if randf() < chance:
+			dungeon_layout[pos]["type"] = Globals.RoomType.TREASURE

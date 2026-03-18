@@ -1,22 +1,30 @@
 extends Node
 
+# Procedural generation config
+const GEN_BASE_ROOMS = 10
+const GEN_EXTRA_ROOMS_PER_FLOOR = 3
+
+const GEN_TREASURE_BASE_CHANCE = 0.1
+const GEN_BONUS_TREASURE_CHANCE_PER_FLOOR = 0.02
+# End generation config
+
 var dungeon_manager
-var crosshair_instance
+var current_floor = 0
+
 var oxygen_decay_rate := 1.0
 
+var crosshair_instance
 const CROSSHAIR = preload("res://interface/Crosshair.tscn")
-
 @export var shooting_enabled = true
 
-var ROOM_SIZE = 96 * 16
+var ROOM_SIZE = 192 * 16 # tilemap width (in roombase) * pixels width of each tile
 var ROOM_CENTER = Vector2(ROOM_SIZE / 2, ROOM_SIZE / 2)
 
 enum RoomType {
 	START,
 	COMBAT,
 	TREASURE,
-	BOSS,
-	SHOP
+	BOSS
 }
 
 enum RoomExit {
@@ -43,9 +51,8 @@ const DIR_VECTORS = {
 const ROOM_COLORS = {
 	RoomType.START: Color.FUCHSIA,
 	RoomType.COMBAT: Color.RED,
-	RoomType.TREASURE: Color.GOLD,
-	RoomType.SHOP: Color.GRAY,
-	RoomType.BOSS: Color.BLUE
+	RoomType.BOSS: Color.BLUE,
+	RoomType.TREASURE: Color.GOLD
 }  
 var spawned_rooms = {} 
 var room_enemies = {} 

@@ -12,7 +12,7 @@ height = 13.414635
 
 [node name="Player" type="CharacterBody2D" unique_id=1945325549]
 z_index = 2
-collision_mask = 2
+collision_mask = 3
 script = ExtResource("1_ojs4q")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=383463702]

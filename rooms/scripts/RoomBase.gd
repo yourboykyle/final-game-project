@@ -11,13 +11,13 @@ func initialize(grid_pos: Vector2i):
 	var gen = Globals.dungeon_manager
 
 	if !gen.dungeon_layout.has(grid_pos + Globals.DIR_VECTORS[Globals.Direction.NORTH]):
-		$DoorNorth.queue_free()
+		$Doors/DoorNorth.queue_free()
 
 	if !gen.dungeon_layout.has(grid_pos + Globals.DIR_VECTORS[Globals.Direction.SOUTH]):
-		$DoorSouth.queue_free()
+		$Doors/DoorSouth.queue_free()
 
 	if !gen.dungeon_layout.has(grid_pos + Globals.DIR_VECTORS[Globals.Direction.EAST]):
-		$DoorEast.queue_free()
+		$Doors/DoorEast.queue_free()
 
 	if !gen.dungeon_layout.has(grid_pos + Globals.DIR_VECTORS[Globals.Direction.WEST]):
-		$DoorWest.queue_free()
+		$Doors/DoorWest.queue_free()
