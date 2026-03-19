@@ -4,11 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://bnd2qj5j3hxgc" path="res://assets/sprites/player.png" id="2_ojs4q"]
 [ext_resource type="Script" uid="uid://oaypvwc6vaws" path="res://entities/scripts/WeaponHolder.gd" id="3_l1ths"]
 [ext_resource type="PackedScene" uid="uid://8j34515jhvuj" path="res://items/Weapons/BaseGun.tscn" id="3_lw5ub"]
+[ext_resource type="PackedScene" uid="uid://d12fmr0ra2qym" path="res://items/Weapons/BaseSword.tscn" id="4_a1f57"]
 [ext_resource type="PackedScene" uid="uid://be54qcw5ffm7a" path="res://items/Weapons/HitscanGun.tscn" id="4_ks8m5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ojs4q"]
-radius = 5.487805
-height = 15.311653
+radius = 6.3008127
+height = 13.95664
 
 [node name="Player" type="CharacterBody2D" unique_id=1945325549]
 z_index = 2
@@ -28,6 +29,8 @@ shape = SubResource("CapsuleShape2D_ojs4q")
 [node name="WeaponHolder" type="Node2D" parent="." unique_id=987515641]
 position = Vector2(45, -1)
 script = ExtResource("3_l1ths")
+
+[node name="BaseSword" parent="WeaponHolder" unique_id=1855008530 instance=ExtResource("4_a1f57")]
 
 [node name="HitscanGun" parent="WeaponHolder" unique_id=499305279 instance=ExtResource("4_ks8m5")]
 item_id = 0
