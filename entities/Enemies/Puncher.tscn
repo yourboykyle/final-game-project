@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dnovehtupieqg"]
+
+[ext_resource type="Script" uid="uid://dcuok4m81ohud" path="res://entities/scripts/puncher.gd" id="1_v47mh"]
+[ext_resource type="Texture2D" uid="uid://dhsid5g3uibe4" path="res://assets/sprites/enemy.png" id="2_v47mh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v47mh"]
+radius = 5.284553
+height = 13.821138
+
+[node name="Puncher" type="CharacterBody2D" unique_id=1734590714]
+script = ExtResource("1_v47mh")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=167396302]
+texture = ExtResource("2_v47mh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1436239347]
+position = Vector2(-1, 2)
+scale = Vector2(7.38, 7.38)
+shape = SubResource("CapsuleShape2D_v47mh")

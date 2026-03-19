@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bjr0jpwonfdt8"]
+
+[ext_resource type="PackedScene" uid="uid://be54qcw5ffm7a" path="res://items/Weapons/HitscanGun.tscn" id="1_l4lnq"]
+[ext_resource type="PackedScene" uid="uid://8j34515jhvuj" path="res://items/Weapons/BaseGun.tscn" id="2_g7lqh"]
+[ext_resource type="PackedScene" uid="uid://d12fmr0ra2qym" path="res://items/Weapons/BaseSword.tscn" id="3_g7lqh"]
+
+[node name="ItemContainer" type="Node2D" unique_id=1587473337]
+
+[node name="BaseGun" parent="." unique_id=464835153 instance=ExtResource("2_g7lqh")]
+
+[node name="HitscanGun" parent="." unique_id=499305279 instance=ExtResource("1_l4lnq")]
+
+[node name="BaseSword" parent="." unique_id=1855008530 instance=ExtResource("3_g7lqh")]

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://d12fmr0ra2qym"]
+
+[ext_resource type="Texture2D" uid="uid://cmorp77bqfe3c" path="res://assets/sprites/basesword.png" id="1_j3pj1"]
+[ext_resource type="Script" uid="uid://bo42opgacslxp" path="res://items/scripts/BaseSword.gd" id="1_lxlpn"]
+
+[node name="BaseSword" type="Node2D" unique_id=1855008530]
+script = ExtResource("1_lxlpn")
+shape = "rectangle"
+fire_rate = 1.0
+range = 50.0
+aoe = 50.0
+linger_time = 0.5
+item_name = "Base Sword"
+item_id = 3003
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1004532278]
+texture = ExtResource("1_j3pj1")
