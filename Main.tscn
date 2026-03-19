@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://1jrnoabrsjjh" path="res://scripts/Main.gd" id="1_r0du0"]
 [ext_resource type="PackedScene" uid="uid://cipl0eoyasmb2" path="res://interface/Crosshair.tscn" id="4_cm0pq"]
 [ext_resource type="PackedScene" uid="uid://bn3xisatdj0hl" path="res://interface/Minimap.tscn" id="5_fos0i"]
+[ext_resource type="Script" uid="uid://88prq6atj8eo" path="res://scripts/Transition.gd" id="6_3dxm6"]
 [ext_resource type="PackedScene" uid="uid://xsfsc4yv2q4o" path="res://interface/OxygenBar.tscn" id="7_lgr22"]
 
 [node name="Main" type="Node2D" unique_id=1546933838]
@@ -30,3 +31,14 @@ offset_top = 3.0
 offset_bottom = 3.0
 
 [node name="MenuUI" type="Node2D" parent="CanvasLayer" unique_id=645599288]
+
+[node name="FadeOverlay" type="CanvasLayer" parent="." unique_id=1380634455]
+script = ExtResource("6_3dxm6")
+
+[node name="FadeRect" type="ColorRect" parent="FadeOverlay" unique_id=1022738156]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
