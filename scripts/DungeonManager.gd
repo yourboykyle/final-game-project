@@ -72,6 +72,10 @@ func add_room(grid_pos: Vector2i, roomType: Globals.RoomType):
 
 
 func load_room(grid_pos: Vector2i, entry_dir: Variant = null):
+
+	var fade_transition = get_node("/root/Main/FadeOverlay")
+	await fade_transition.fade_out()
+	
 	# remove previous room
 	if current_room:
 		current_room.queue_free()
@@ -110,7 +114,7 @@ func load_room(grid_pos: Vector2i, entry_dir: Variant = null):
 				spawn = Vector2(Globals.ROOM_SIZE - offset, center)
 
 	player.position = spawn
-
+	await fade_transition.fade_in()
 
 func change_room(direction: Globals.Direction):
 	if changing_room: return

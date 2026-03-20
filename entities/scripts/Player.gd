@@ -34,7 +34,8 @@ func _ready() -> void:
 	# Set current weapon to the weapon holders first child
 	current_weapon = weapon_holder.get_child(0)
 	oxygen = max_oxygen
-	emit_signal("oxygen_changed", oxygen, max_oxygen)
+	emit_signal("oxygen_changed", oxygen, max_oxygen) 
+	Globals.player = self
 
 func _process(delta):
 	#If the player attacks, try the current weapons attack
@@ -63,6 +64,7 @@ func _physics_process(delta):
 	if input_vector.length() > 0:
 		# Accelerate toward the input direction
 		velocity = velocity.move_toward(input_vector.normalized() * target_speed, ACCELERATION * delta * speed_multiplier)
+
 	else:
 		# Decelerate to a stop when no input
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
