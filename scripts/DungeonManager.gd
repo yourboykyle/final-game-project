@@ -72,6 +72,7 @@ func add_room(grid_pos: Vector2i, roomType: Globals.RoomType):
 
 
 func load_room(grid_pos: Vector2i, entry_dir: Variant = null):
+
 	var fade_transition = get_node("/root/Main/FadeOverlay")
 	await fade_transition.fade_out()
 	

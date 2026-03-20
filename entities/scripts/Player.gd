@@ -60,7 +60,8 @@ func _physics_process(delta):
 
 	if input_vector.length() > 0:
 		# Accelerate toward the input direction
-		velocity = velocity.move_toward(input_vector.normalized() * target_speed, ACCELERATION * delta)
+		velocity = velocity.move_toward(input_vector.normalized() * target_speed, ACCELERATION * delta * speed_multiplier)
+
 	else:
 		# Decelerate to a stop when no input
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
