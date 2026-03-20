@@ -39,6 +39,8 @@ func _ready() -> void:
 func _process(delta):
 	#If the player attacks, try the current weapons attack
 	if Input.is_action_pressed("attack"):
+		if diving:
+			return
 		#Try the current weapons attack
 		current_weapon.try_attack()
 	
@@ -80,7 +82,7 @@ func _physics_process(delta):
 		can_flip = false
 
 	if Input.is_action_just_pressed("flip") and can_flip:
-		velocity = flip_normal * flip_speed
+		velocity = flip_normal * flip_speed * speed_multiplier
 		can_flip = false
 		flip_timer = 0.0
 
