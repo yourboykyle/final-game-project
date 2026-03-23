@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Globals="*uid://ckdsikm0ou4s4"
 ItemDb="*uid://cv1an8xxi8klx"
+InventoryManager="*uid://g03isccl1sb7"
 
 [display]
 

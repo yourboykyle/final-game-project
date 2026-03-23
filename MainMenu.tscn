@@ -2,28 +2,39 @@
 
 [ext_resource type="Script" uid="uid://b5cn30ll0k0ya" path="res://scripts/MainMenu.gd" id="1_i26rj"]
 
-[node name="MainMenu" type="Control" unique_id=388722834]
-layout_mode = 3
-anchors_preset = 0
+[node name="MainMenu" type="HSplitContainer" unique_id=569172943]
+offset_right = 1868.0
+offset_bottom = 993.0
+split_offsets = PackedInt32Array(400)
+split_offset = 400
 script = ExtResource("1_i26rj")
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1120611034]
-layout_mode = 0
-offset_left = 723.0
-offset_top = 445.0
-offset_right = 857.0
-offset_bottom = 503.0
-scale = Vector2(4, 4)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1783409922]
+[node name="StashPanel" type="ScrollContainer" parent="." unique_id=336097505]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="CenterContainer/VBoxContainer" unique_id=2094578161]
+[node name="VBoxContainer" type="VBoxContainer" parent="StashPanel" unique_id=486439642]
+layout_mode = 2
+
+[node name="RightPanel" type="Control" parent="." unique_id=850847436]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="RightPanel" unique_id=1120611034]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 366.0
+offset_top = 342.0
+offset_right = 600.0
+offset_bottom = 569.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RightPanel/CenterContainer" unique_id=1783409922]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="RightPanel/CenterContainer/VBoxContainer" unique_id=2094578161]
 layout_mode = 2
 text = "Hold Your Breath"
 
-[node name="PlayButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1827035182]
+[node name="PlayButton" type="Button" parent="RightPanel/CenterContainer/VBoxContainer" unique_id=1827035182]
 layout_mode = 2
 text = "Play"
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="RightPanel/CenterContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]

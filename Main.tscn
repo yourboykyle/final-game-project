@@ -32,7 +32,6 @@ offset_bottom = 3.0
 
 [node name="MenuUI" type="Node2D" parent="CanvasLayer" unique_id=645599288]
 
-
 [node name="FadeOverlay" type="CanvasLayer" parent="." unique_id=1380634455]
 script = ExtResource("6_3dxm6")
 
@@ -43,4 +42,3 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
-
