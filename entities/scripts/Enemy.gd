@@ -25,7 +25,7 @@ func _physics_process(delta: float) -> void:
 func take_damage(amount):
 	health-= amount
 	health_bar.value = health 
-	var room_id = get_parent().combatroom_id
+	var room_id = get_parent().room_id
 	if Globals.room_enemies.has(room_id):
 		for data in Globals.room_enemies[room_id]:
 			if data["id"] == enemy_id:

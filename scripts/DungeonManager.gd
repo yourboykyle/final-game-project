@@ -84,7 +84,8 @@ func load_room(grid_pos: Vector2i, entry_dir: Variant = null):
 
 	# get correct scene based on FINAL type
 	var scene = registry.get_room_scene(room_data["type"])
-	current_room = scene.instantiate()
+	current_room = scene.instantiate() 
+	current_room.set_room_data(grid_pos)
 
 	current_room.initialize(grid_pos)
 
