@@ -71,6 +71,9 @@ func _physics_process(delta):
 
 	if Input.is_action_just_pressed("dive"):
 		dive()
+	
+	if Input.is_action_just_pressed("dash"):
+		pass
 
 	if get_slide_collision_count() > 0:
 		var collision = get_slide_collision(0)
