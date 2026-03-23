@@ -57,3 +57,7 @@ const ROOM_COLORS = {
 var spawned_rooms = {} 
 var room_enemies = {} 
 var player = null;
+
+enum MELEE_HITBOXES {
+	CONE
+}

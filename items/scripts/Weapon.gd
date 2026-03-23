@@ -4,14 +4,14 @@ const BULLET = preload("res://entities/Bullet.tscn")
 @onready var player = get_node("/root/Main/DungeonContainer/Player")
 # Weapon attributes
 #How fast the weapon shoots
-@export var fire_rate : float = 0.15
+@export var fire_rate : float = 1.0
 #How far the raycast goes
-@export var range : float = 1500
+@export var hitscan_range : float = 1500
 #Size of the raycast
 @export var aoe : float = 10
 @export var damage : float = 34
 #Linger is only visual
-@export var linger_time : float = 0.0
+@export var linger_time : float = 0.05
 #How fast projectile goes
 @export var projectile_speed: int = 1000
 #What layer it collides with
@@ -39,10 +39,10 @@ func attack():
 func hitscan_attack(origin, direction):
 	var space_state = get_world_2d().direct_space_state
 	var shape = RectangleShape2D.new()
-	shape.size = Vector2(range, aoe)
+	shape.size = Vector2(hitscan_range, aoe)
 	var query = PhysicsShapeQueryParameters2D.new()
 	query.shape = shape
-	query.transform = Transform2D(direction.angle(), origin + direction * range / 2)
+	query.transform = Transform2D(direction.angle(), origin + direction * hitscan_range / 2)
 	query.exclude = [player, self]
 	query.collision_mask = collision_mask
 	
@@ -57,7 +57,7 @@ func hitscan_attack(origin, direction):
 		var col_shape = CollisionShape2D.new()
 		col_shape.shape = shape
 		hitbox_area.add_child(col_shape)
-		hitbox_area.position = origin + direction * range / 2
+		hitbox_area.position = origin + direction * hitscan_range / 2
 		hitbox_area.rotation = direction.angle()
 		get_tree().current_scene.add_child(hitbox_area)
 		hitbox_area.body_entered.connect(func(body):
@@ -71,7 +71,7 @@ func hitscan_attack(origin, direction):
 	# Drawing the line for debug
 	var rect = ColorRect.new()
 	rect.color = Color(1, 0.8, 0, 0.5)
-	rect.size = Vector2(range, aoe)
+	rect.size = Vector2(hitscan_range, aoe)
 	rect.pivot_offset = Vector2(0, rect.size.y / 2)
 	rect.position = origin
 	rect.rotation = direction.angle()
@@ -96,42 +96,59 @@ func shoot_projectile(weapon, dir):
 	#Add the child to the scene tree
 	get_tree().current_scene.add_child(bullet)
 
-func cast_hitbox(origin, direction, shape_type = "rectangle"):
-	var shape
+
+func cone_attack(origin, direction, angle, radius):
+	var space_state = get_world_2d().direct_space_state
 	
-	if shape_type == "rectangle":
-		shape = RectangleShape2D.new()
-		shape.size = Vector2(range, aoe)
-	elif shape_type == "circle":
-		shape = CircleShape2D.new()
-		shape.radius = aoe
+	# Step 1: detect everything in a circle
+	var shape = CircleShape2D.new()
+	shape.radius = radius
 	
-	var hitbox_area = Area2D.new()
-	var col_shape = CollisionShape2D.new()
-	col_shape.shape = shape
-	hitbox_area.add_child(col_shape)
-	hitbox_area.position = origin + direction * range / 2
-	hitbox_area.rotation = direction.angle()
-	hitbox_area.collision_mask = collision_mask
-	get_tree().current_scene.add_child(hitbox_area)
+	var query = PhysicsShapeQueryParameters2D.new()
+	query.shape = shape
+	query.transform = Transform2D(0, origin)
+	query.collision_mask = collision_mask
+	query.exclude = [player]
 	
-	hitbox_area.body_entered.connect(func(body):
-		if body.has_method("take_damage"):
-			body.take_damage(damage)
-	)
+	var results = space_state.intersect_shape(query)
 	
-	# Debug rect
-	var rect = ColorRect.new()
-	rect.color = Color(1, 0.5, 0, 0.5)
-	rect.size = Vector2(range, aoe)
-	rect.pivot_offset = Vector2(0, rect.size.y / 2)
-	rect.position = origin
-	rect.rotation = direction.angle()
-	get_tree().current_scene.add_child(rect)
+	# Step 2: filter into a cone
+	var cone_angle = deg_to_rad(angle)
+	var threshold = cos(cone_angle / 2.0)
+	
+	for result in results:
+		var collider = result.collider
+		
+		if !collider:
+			continue
+		
+		var to_target = (collider.global_position - origin).normalized()
+		var dot = direction.dot(to_target)
+		
+		if dot >= threshold:
+			if collider.has_method("take_damage"):
+				collider.take_damage(damage)
+	
+	# Debug cone
+	draw_cone_debug(origin, direction, cone_angle, radius)
+
+func draw_cone_debug(origin, direction, angle, length):
+	var line = Line2D.new()
+	line.width = 2
+	
+	var points = [origin]
+	var steps = 20
+	
+	for i in range(steps + 1):
+		var t = -angle/2 + angle * (i / float(steps))
+		var dir = direction.rotated(t)
+		points.append(origin + dir * length)
+	
+	points.append(origin)
+	line.points = points
+	
+	get_tree().current_scene.add_child(line)
 	
 	var tween = create_tween()
-	tween.tween_interval(max(linger_time, 0.05))
-	tween.tween_callback(func():
-		hitbox_area.queue_free()
-		rect.queue_free()
-	)
+	tween.tween_interval(linger_time)
+	tween.tween_callback(line.queue_free)

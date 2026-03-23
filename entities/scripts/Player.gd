@@ -39,7 +39,7 @@ func _ready() -> void:
 
 func _process(delta):
 	#If the player attacks, try the current weapons attack
-	if Input.is_action_pressed("attack"):
+	if Input.is_action_just_pressed("attack"):
 		if diving:
 			return
 		#Try the current weapons attack
