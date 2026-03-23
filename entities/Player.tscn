@@ -11,7 +11,6 @@
 radius = 6.3008127
 height = 13.95664
 
-
 [node name="Player" type="CharacterBody2D" unique_id=1945325549]
 z_index = 2
 collision_mask = 3
@@ -31,9 +30,7 @@ shape = SubResource("CapsuleShape2D_ojs4q")
 position = Vector2(45, -1)
 script = ExtResource("3_l1ths")
 
-
 [node name="BaseSword" parent="WeaponHolder" unique_id=1855008530 instance=ExtResource("4_a1f57")]
-
 
 [node name="HitscanGun" parent="WeaponHolder" unique_id=499305279 instance=ExtResource("4_ks8m5")]
 item_id = 0
