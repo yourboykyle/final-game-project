@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var player = Globals.player 
 @onready var agent = $NavigationAgent2D 
 const WEAPON = preload("res://items/Weapons/BaseGun.tscn")
-var SPEED = 300
+var SPEED = 250
 var health = 100 
 var max_health = 100 
 var enemy_id = ""

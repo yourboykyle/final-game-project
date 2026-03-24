@@ -6,6 +6,7 @@
 [node name="BaseGun" type="Node2D" unique_id=464835153]
 script = ExtResource("1_15i37")
 attack_type = 2
+projectile_speed = 1500
 item_name = "Base Gun"
 item_id = 3002
 

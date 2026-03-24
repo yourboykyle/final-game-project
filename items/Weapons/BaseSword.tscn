@@ -8,6 +8,7 @@ script = ExtResource("1_lxlpn")
 fire_rate = 0.5
 hitscan_range = 100.0
 aoe = 50.0
+damage = 50.0
 item_name = "Base Sword"
 item_id = 3003
 

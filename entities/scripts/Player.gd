@@ -65,6 +65,10 @@ func _physics_process(delta):
 	)
 
 	if Input.is_action_pressed("boost"):
+		#if diving:s
+			#speed_multiplier = 1
+		#else:
+			#speed_multiplier = 1.5
 		speed_multiplier = 1.5
 	else:
 		speed_multiplier = 1
