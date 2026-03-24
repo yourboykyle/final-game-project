@@ -17,7 +17,7 @@ func _ready():
 	stash = InventoryContainer.new(stash_capacity)
 	hotbar = InventoryContainer.new(hotbar_capacity)
 	run_loot = InventoryContainer.new(run_loot_capacity)
-
+	
 	_init_debug_items()
 
 func add_to_stash(item_id: int, quantity: int = 1, metadata: Dictionary = {}) -> bool:

@@ -7,6 +7,7 @@ signal oxygen_changed(current_oxygen: float, max_oxygen: float)
 var oxygen := max_oxygen
 @onready var death_timer: Timer = $DeathTimer
 var can_die = true
+signal died
 #Life variables end
 
 # Weapon Varaibles Start
@@ -142,4 +143,5 @@ func _on_dive_time_timeout() -> void:
 
 
 func _on_death_timer_timeout() -> void:
-	print("died")
+	InventoryManager.clear_run_state()
+	died.emit()
