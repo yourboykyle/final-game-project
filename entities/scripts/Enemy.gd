@@ -2,12 +2,17 @@ extends CharacterBody2D
 
 
 @onready var player = Globals.player 
-@onready var agent = $NavigationAgent2D
+@onready var agent = $NavigationAgent2D 
+const WEAPON = preload("res://items/Weapons/BaseGun.tscn")
 var SPEED = 300
 var health = 100 
 var max_health = 100 
 var enemy_id = ""
 var stop_distance = 150
+var weapon = "" 
+var attack_timer = 0.0 
+var attack_cooldown = 1.0 
+var attack_range = 300 
 
 @onready var health_bar = $HealthBar
 
@@ -15,15 +20,35 @@ func _ready():
 	print("Enemy ready at:", global_position, "Parent:", get_parent().name) 
 	health_bar.max_value = max_health 
 	health_bar.value = health 
+	weapon = WEAPON.instantiate() 
+	add_child(weapon)
+	weapon.weapon_owner = self 
+	 
 func _physics_process(delta: float) -> void: 
-	agent.target_position = (player.global_position) 
+	
+	if player == null:
+		return
+
+	agent.target_position = player.global_position
+	
 	var distance = global_position.distance_to(player.global_position)
+
+	# --- Movement ---
 	if distance > stop_distance:
 		var next_point = agent.get_next_path_position() 
 		var direction = (next_point - global_position).normalized() 
 		velocity = direction * SPEED
 	else: 
 		velocity = Vector2.ZERO
+
+	# --- Shooting ---
+	attack_timer -= delta
+
+	if attack_timer <= 0 and distance <= attack_range:
+		var direction = (player.global_position - global_position).normalized()
+		weapon.shoot_projectile(weapon, direction)
+		attack_timer = attack_cooldown
+
 	move_and_slide()
 
  

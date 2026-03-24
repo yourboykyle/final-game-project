@@ -1,7 +1,6 @@
 class_name Weapon extends Equippable
 
 const BULLET = preload("res://entities/Bullet.tscn")
-@onready var player = get_node("/root/Main/DungeonContainer/Player")
 # Weapon attributes
 @export var attack_type: Globals.ATTACK_TYPE
 #How fast the weapon shoots
@@ -18,6 +17,7 @@ const BULLET = preload("res://entities/Bullet.tscn")
 #What layer it collides with
 @export var collision_mask : int = 2
 var fire_timer = 0.0
+var weapon_owner = ""
 
 func _ready() -> void:
 	add_to_group("weapons")
@@ -46,7 +46,7 @@ func rectangle_attack(origin, direction):
 	var query = PhysicsShapeQueryParameters2D.new()
 	query.shape = shape
 	query.transform = Transform2D(direction.angle(), origin + direction * hitscan_range / 2)
-	query.exclude = [player, self]
+	query.exclude = [weapon_owner, self]
 	query.collision_mask = collision_mask
 	
 	var results = space_state.intersect_shape(query)
@@ -70,7 +70,8 @@ func shoot_projectile(weapon, dir):
 	bullet.speed = projectile_speed
 	
 	# set the bullets starting point to the guns position
-	bullet.global_position = weapon.global_position
+	bullet.global_position = weapon.global_position + (dir*50) 
+	bullet.shooter = weapon_owner
 	#Add the child to the scene tree
 	get_tree().current_scene.add_child(bullet)
 
@@ -86,7 +87,7 @@ func cone_attack(origin, direction, angle, radius):
 	query.shape = shape
 	query.transform = Transform2D(0, origin)
 	query.collision_mask = collision_mask
-	query.exclude = [player]
+	query.exclude = [weapon_owner]
 	
 	var results = space_state.intersect_shape(query)
 	
