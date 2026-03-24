@@ -58,6 +58,8 @@ var spawned_rooms = {}
 var room_enemies = {} 
 var player = null;
 
-enum MELEE_HITBOXES {
-	CONE
+enum ATTACK_TYPE {
+	CONE,
+	RECTANGLE,
+	PROJECTILE
 }

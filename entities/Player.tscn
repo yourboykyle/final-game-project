@@ -29,10 +29,10 @@ shape = SubResource("CapsuleShape2D_ojs4q")
 [node name="WeaponHolder" type="Node2D" parent="." unique_id=987515641]
 script = ExtResource("3_l1ths")
 
-[node name="BaseSword" parent="WeaponHolder" unique_id=1855008530 instance=ExtResource("4_a1f57")]
-
 [node name="HitscanGun" parent="WeaponHolder" unique_id=499305279 instance=ExtResource("4_ks8m5")]
 item_id = 0
+
+[node name="BaseSword" parent="WeaponHolder" unique_id=1855008530 instance=ExtResource("4_a1f57")]
 
 [node name="BaseGun" parent="WeaponHolder" unique_id=464835153 instance=ExtResource("3_lw5ub")]
 damage = 100.0

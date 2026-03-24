@@ -9,14 +9,12 @@ class_name Gun extends Weapon
 func _ready() -> void:
 	pass
 
-func _process(delta):
-	fire_timer -= delta
-
 # Guns attack function
 func attack():
 	var dir = (get_global_mouse_position() - gun.global_position).normalized()
-	if self.hitscan:
-		hitscan_attack(global_position, dir)
-	else:
+	var origin = Vector2(gun.global_position.x, gun.global_position.y)
+	if attack_type == Globals.ATTACK_TYPE.RECTANGLE:
+		rectangle_attack(origin, dir)
+	elif attack_type == Globals.ATTACK_TYPE.PROJECTILE:
 		shoot_projectile(gun, dir)
 	
