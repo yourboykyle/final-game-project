@@ -43,7 +43,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="DeathTimer" type="Timer" parent="." unique_id=1178012298]
-wait_time = 10.0
+wait_time = 5.0
 one_shot = true
 
 [connection signal="timeout" from="DiveTime" to="." method="_on_dive_time_timeout"]

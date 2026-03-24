@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 signal oxygen_changed(current_oxygen: float, max_oxygen: float)
 
+var interactables
+
 # Life variables
 @export var max_oxygen := 100.0
 var oxygen := max_oxygen
@@ -37,6 +39,7 @@ func _ready() -> void:
 	oxygen = max_oxygen
 	emit_signal("oxygen_changed", oxygen, max_oxygen) 
 	Globals.player = self
+	interactables = get_tree().get_nodes_in_group(Globals.GROUP_STRINGS[Globals.Groups.INTERACTABLE])
 
 func _process(delta):
 	#If the player attacks, try the current weapons attack
@@ -46,6 +49,12 @@ func _process(delta):
 		#Try the current weapons attack
 		current_weapon.try_attack()
 	
+	if Input.is_action_just_pressed("interact"):
+		interactables = find_interactables()
+		for interactable in interactables:
+			#Can add a check for if its has the method but all interactables should have it
+			interactable.interact()
+			
 	sprite_2d.flip_h = get_global_mouse_position().x < global_position.x
 	_update_oxygen(delta)
 
@@ -132,10 +141,17 @@ func death(can_die):
 	#Check if they can die, if they can, set can die to false and start 10 seconds till super death
 	if can_die:
 		self.can_die = false
-		print("10 SECONDS UNTIL UNCONCIOUS")
+		print("5 SECONDS UNTIL UNCONCIOUS")
 		death_timer.start()
 	
 	return
+
+func find_interactables():
+	var found_interactables = get_tree().get_nodes_in_group(
+		Globals.GROUP_STRINGS[Globals.Groups.INTERACTABLE]
+	)
+	
+	return found_interactables
 
 func _on_dive_time_timeout() -> void:
 	

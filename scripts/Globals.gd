@@ -63,3 +63,11 @@ enum ATTACK_TYPE {
 	RECTANGLE,
 	PROJECTILE
 }
+
+enum Groups {
+	INTERACTABLE,
+}
+
+const GROUP_STRINGS = [
+	"interactable"
+]
