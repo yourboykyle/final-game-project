@@ -8,11 +8,12 @@ var SPEED = 300
 var health = 100 
 var max_health = 100 
 var enemy_id = ""
-var stop_distance = 150
+var stop_distance = 500
+var stopped = false
 var weapon = "" 
 var attack_timer = 0.0 
 var attack_cooldown = 1.0 
-var attack_range = 300 
+var attack_range = 500 
 
 @onready var health_bar = $HealthBar
 
@@ -32,21 +33,22 @@ func _physics_process(delta: float) -> void:
 	agent.target_position = player.global_position
 	
 	var distance = global_position.distance_to(player.global_position)
-
-	# --- Movement ---
-	if distance > stop_distance:
-		var next_point = agent.get_next_path_position() 
-		var direction = (next_point - global_position).normalized() 
-		velocity = direction * SPEED
+	var next_point = agent.get_next_path_position()
+	var direction = (next_point - global_position).normalized() 
+	if !stopped: 
+		if distance > stop_distance: 
+			velocity = direction * SPEED
+		else: 
+			velocity = Vector2i.ZERO 
+			if distance < stop_distance-150: 
+				stopped = true
 	else: 
-		velocity = Vector2.ZERO
-
-	# --- Shooting ---
+		velocity = -direction*SPEED
 	attack_timer -= delta
 
 	if attack_timer <= 0 and distance <= attack_range:
-		var direction = (player.global_position - global_position).normalized()
-		weapon.shoot_projectile(weapon, direction)
+		var shootdirection = (player.global_position - global_position).normalized()
+		weapon.shoot_projectile(weapon, shootdirection)
 		attack_timer = attack_cooldown
 
 	move_and_slide()

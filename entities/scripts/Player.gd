@@ -123,8 +123,9 @@ func change_oxygen(amount):
 func take_damage(amount):
 	if diving:
 		return
-	
-	oxygen -= amount
+	#Zach here - scaled amount by half 
+	#enemies were killing me in three hits (just for ease of testing)
+	oxygen -= amount*.5
 	emit_signal("oxygen_changed", oxygen, max_oxygen)
 	
 	if oxygen <= 0:

@@ -10,7 +10,7 @@ height = 16.0
 [node name="Bullet" type="Area2D" unique_id=1551868005]
 scale = Vector2(2, 2)
 collision_layer = 0
-collision_mask = 2
+collision_mask = 3
 script = ExtResource("1_r16h3")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1767355776]
