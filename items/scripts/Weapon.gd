@@ -15,11 +15,10 @@ const BULLET = preload("res://entities/Bullet.tscn")
 #What layer it collides with
 @export var collision_mask : int = 2
 var fire_timer = 0.0
-
 var weapon_owner = ""
 
 func _ready() -> void:
-	add_to_group("weapons")
+	pass
 
 func try_attack():
 	if !Globals.shooting_enabled:
@@ -65,7 +64,6 @@ func shoot_projectile(weapon, dir, projectile_speed):
 	var bullet = BULLET.instantiate()
 	
 	bullet.direction = dir
-	print(damage)
 	bullet.damage = damage
 	bullet.speed = projectile_speed
 	bullet.collision_mask = collision_mask
