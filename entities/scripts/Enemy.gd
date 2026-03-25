@@ -21,9 +21,10 @@ func _ready():
 	print("Enemy ready at:", global_position, "Parent:", get_parent().name) 
 	health_bar.max_value = max_health 
 	health_bar.value = health 
-	weapon = WEAPON.instantiate() 
+	weapon = WEAPON.instantiate()
 	add_child(weapon)
 	weapon.weapon_owner = self 
+	weapon.collision_mask = 1
 	 
 func _physics_process(delta: float) -> void: 
 	
@@ -48,7 +49,7 @@ func _physics_process(delta: float) -> void:
 
 	if attack_timer <= 0 and distance <= attack_range:
 		var shootdirection = (player.global_position - global_position).normalized()
-		weapon.shoot_projectile(weapon, shootdirection)
+		weapon.shoot_projectile(weapon, shootdirection, weapon.projectile_speed)
 		attack_timer = attack_cooldown
 
 	move_and_slide()

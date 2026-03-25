@@ -36,6 +36,7 @@ var flip_timer = 0.0
 func _ready() -> void:
 	# Set current weapon to the weapon holders first child
 	current_weapon = weapon_holder.get_child(0)
+	current_weapon.weapon_owner = self
 	oxygen = max_oxygen
 	emit_signal("oxygen_changed", oxygen, max_oxygen) 
 	Globals.player = self

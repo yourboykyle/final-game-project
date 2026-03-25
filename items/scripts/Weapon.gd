@@ -6,17 +6,16 @@ const BULLET = preload("res://entities/Bullet.tscn")
 #How fast the weapon shoots
 @export var fire_rate : float = 1.0
 #How far the raycast goes
-@export var hitscan_range : float = 1500
+@export var rectangle_range : float = 1500
 #Size of the raycast
 @export var aoe : float = 10
 @export var damage : float = 34
 #Linger is only visual
 @export var linger_time : float = 0.05
-#How fast projectile goes
-@export var projectile_speed: int = 1000
 #What layer it collides with
 @export var collision_mask : int = 2
 var fire_timer = 0.0
+
 var weapon_owner = ""
 
 func _ready() -> void:
@@ -42,10 +41,10 @@ func attack():
 func rectangle_attack(origin, direction):
 	var space_state = get_world_2d().direct_space_state
 	var shape = RectangleShape2D.new()
-	shape.size = Vector2(hitscan_range, aoe)
+	shape.size = Vector2(rectangle_range, aoe)
 	var query = PhysicsShapeQueryParameters2D.new()
 	query.shape = shape
-	query.transform = Transform2D(direction.angle(), origin + direction * hitscan_range / 2)
+	query.transform = Transform2D(direction.angle(), origin + direction * rectangle_range / 2)
 	query.exclude = [weapon_owner, self]
 	query.collision_mask = collision_mask
 	
@@ -61,13 +60,15 @@ func rectangle_attack(origin, direction):
 
 # Function that shoots a projectile in the direction of a crosshair
 # Can probably reuse this for enemy logic 
-func shoot_projectile(weapon, dir):
+func shoot_projectile(weapon, dir, projectile_speed):
 	#create a bullet
 	var bullet = BULLET.instantiate()
 	
 	bullet.direction = dir
+	print(damage)
 	bullet.damage = damage
 	bullet.speed = projectile_speed
+	bullet.collision_mask = collision_mask
 	
 	# set the bullets starting point to the guns position
 	bullet.global_position = weapon.global_position + (dir*50) 
@@ -136,7 +137,7 @@ func draw_rectangle_debug(origin, direction):
 	# Drawing the line for debug
 	var rect = ColorRect.new()
 	rect.color = Color(1, 0.8, 0, 0.5)
-	rect.size = Vector2(hitscan_range, aoe)
+	rect.size = Vector2(rectangle_range, aoe)
 	rect.pivot_offset = Vector2(0, rect.size.y / 2)
 	rect.position = origin + Vector2(0, -aoe/2)
 	rect.rotation = direction.angle()
