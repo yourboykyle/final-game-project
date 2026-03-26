@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bylpa0dio8kuk"]
+
+[ext_resource type="PackedScene" uid="uid://bbrsvqe0p684n" path="res://rooms/RoomBase.tscn" id="1_iu8yb"]
+
+[node name="RoomBase" unique_id=1536920797 instance=ExtResource("1_iu8yb")]
+
+[node name="Label" type="Label" parent="." index="4" unique_id=2017634568]
+offset_left = 1072.0
+offset_top = 1127.0
+offset_right = 2007.0
+offset_bottom = 1302.0
+theme_override_font_sizes/font_size = 128
+text = "WASD to move"
+
+[node name="Label2" type="Label" parent="." index="5" unique_id=1659974801]
+offset_left = 1304.0
+offset_top = 1228.0
+offset_right = 1815.0
+offset_bottom = 1926.0
+theme_override_font_sizes/font_size = 512
+text = "→"
+
+[node name="Label3" type="Label" parent="." index="6" unique_id=952147338]
+offset_left = 1094.0
+offset_top = 1816.0
+offset_right = 2029.0
+offset_bottom = 1991.0
+theme_override_font_sizes/font_size = 128
+text = "Shift to sprint"

@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bsqjwgop0q4uv"]
+
+[ext_resource type="PackedScene" uid="uid://bbrsvqe0p684n" path="res://rooms/RoomBase.tscn" id="1_wimfa"]
+
+[node name="RoomBase" unique_id=1536920797 instance=ExtResource("1_wimfa")]
+
+[node name="Label" type="Label" parent="." index="4" unique_id=6390137]
+offset_left = 462.0
+offset_top = 1362.0
+offset_right = 2671.0
+offset_bottom = 1711.0
+theme_override_font_sizes/font_size = 256

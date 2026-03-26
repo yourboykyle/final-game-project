@@ -25,7 +25,26 @@ func _ready():
 
 func generate():
 	dungeon_layout.clear()
+	
+	if Globals.current_floor == 0:
+		generate_tutorial()
+	else:
+		generate_procedural()
 
+
+	$"../CanvasLayer/GameplayUI/Minimap".build_minimap()
+
+func generate_tutorial():
+	# linear path
+	add_room(Vector2i(0,0), Globals.RoomType.TUTORIAL_START)
+	add_room(Vector2i(1,0), Globals.RoomType.TUTORIAL_MOVE)
+	add_room(Vector2i(2,0), Globals.RoomType.TUTORIAL_COMBAT)
+	add_room(Vector2i(3,0), Globals.RoomType.TUTORIAL_END)
+
+	# load first room
+	load_room(Vector2i(0,0), null)
+
+func generate_procedural():
 	# scale dungeon size with floor
 	max_rooms = Globals.GEN_BASE_ROOMS + Globals.current_floor * Globals.GEN_EXTRA_ROOMS_PER_FLOOR
 
@@ -60,9 +79,6 @@ func generate():
 
 	# load the starting room
 	load_room(start, null)
-
-	$"../CanvasLayer/GameplayUI/Minimap".build_minimap()
-
 
 func add_room(grid_pos: Vector2i, roomType: Globals.RoomType):
 

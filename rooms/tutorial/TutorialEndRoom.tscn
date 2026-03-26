@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://tbts3hbss3f6"]
+
+[ext_resource type="PackedScene" uid="uid://bbrsvqe0p684n" path="res://rooms/RoomBase.tscn" id="1_mabku"]
+
+[node name="RoomBase" unique_id=1536920797 instance=ExtResource("1_mabku")]
+
+[node name="Label" type="Label" parent="." index="4" unique_id=917224824]
+offset_left = 705.0
+offset_top = 949.0
+offset_right = 2403.0
+offset_bottom = 1302.0
+theme_override_font_sizes/font_size = 128
+text = "Move over the extraction
+point to finish your round!"

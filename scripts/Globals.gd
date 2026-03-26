@@ -24,7 +24,13 @@ enum RoomType {
 	START,
 	COMBAT,
 	TREASURE,
-	BOSS
+	BOSS,
+	
+	# Tutorial
+	TUTORIAL_START,
+	TUTORIAL_MOVE,
+	TUTORIAL_COMBAT,
+	TUTORIAL_END
 }
 
 enum RoomExit {

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://2agcase2d18s"]
+
+[ext_resource type="PackedScene" uid="uid://bbrsvqe0p684n" path="res://rooms/RoomBase.tscn" id="1_wiqe7"]
+
+[node name="RoomBase" unique_id=1536920797 instance=ExtResource("1_wiqe7")]
+
+[node name="Label" type="Label" parent="." index="4" unique_id=537329062]
+offset_left = 956.0
+offset_top = 1175.0
+offset_right = 2172.0
+offset_bottom = 1350.0
+theme_override_font_sizes/font_size = 128
+text = "Move mouse to aim"
+
+[node name="Label2" type="Label" parent="." index="5" unique_id=1335034917]
+offset_left = 1143.0
+offset_top = 1640.0
+offset_right = 1999.0
+offset_bottom = 1815.0
+theme_override_font_sizes/font_size = 128
+text = "Click to shoot"
