@@ -25,7 +25,9 @@ var current_weapon
 @export var FRICTION = 800
 var speed_multiplier = 1
 @onready var dive_time: Timer = $DiveTime
+@onready var dive_cd: Timer = $DiveCD
 var diving : bool = false
+var can_dive = true
 @export var flip_speed: float = 1250
 @export var flip_window: float = 1
 var can_flip = false
@@ -66,10 +68,6 @@ func _physics_process(delta):
 	)
 
 	if Input.is_action_pressed("boost"):
-		#if diving:s
-			#speed_multiplier = 1
-		#else:
-			#speed_multiplier = 1.5
 		speed_multiplier = 1.5
 	else:
 		speed_multiplier = 1
@@ -85,7 +83,11 @@ func _physics_process(delta):
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 
 	if Input.is_action_just_pressed("dive"):
-		dive()
+		if diving:
+			return
+		
+		if can_dive:
+			dive()
 	
 	if Input.is_action_just_pressed("dash"):
 		pass
@@ -156,10 +158,15 @@ func find_interactables():
 	return found_interactables
 
 func _on_dive_time_timeout() -> void:
-	
 	diving = false
+	can_dive = false
+	dive_cd.start()
 
 
 func _on_death_timer_timeout() -> void:
 	InventoryManager.clear_run_state()
 	died.emit()
+
+
+func _on_dive_cd_timeout() -> void:
+	can_dive = true

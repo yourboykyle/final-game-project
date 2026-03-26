@@ -46,5 +46,10 @@ one_shot = true
 wait_time = 5.0
 one_shot = true
 
+[node name="DiveCD" type="Timer" parent="." unique_id=654208793]
+wait_time = 0.15
+one_shot = true
+
 [connection signal="timeout" from="DiveTime" to="." method="_on_dive_time_timeout"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
+[connection signal="timeout" from="DiveCD" to="." method="_on_dive_cd_timeout"]
