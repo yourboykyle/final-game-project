@@ -3,5 +3,18 @@
 [ext_resource type="PackedScene" uid="uid://bbrsvqe0p684n" path="res://rooms/RoomBase.tscn" id="1_qjdti"]
 [ext_resource type="Script" uid="uid://biihrufkcjbm1" path="res://rooms/scripts/BossRoom.gd" id="2_5f03w"]
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_5f03w"]
+vertices = PackedVector2Array(2807.9375, 2616, 301.65625, 2616, 218.34375, 206.9375, 2794.0469, 193.04688)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(208, 197, 2804, 183, 2818, 2626, 292, 2626)])
+
 [node name="RoomBase" unique_id=1536920797 instance=ExtResource("1_qjdti")]
 script = ExtResource("2_5f03w")
+
+[node name="Spawnpoint" type="Node2D" parent="." index="4" unique_id=1718120287]
+
+[node name="Marker2D" type="Marker2D" parent="Spawnpoint" index="0" unique_id=24593107]
+position = Vector2(1561, 1507)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." index="5" unique_id=105535957]
+navigation_polygon = SubResource("NavigationPolygon_5f03w")

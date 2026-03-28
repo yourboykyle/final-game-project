@@ -2,14 +2,20 @@ class_name Melee extends Weapon
 
 @onready var melee = self
 @export var angle : float = 80.0
-@export var attack_radius: float = 150.0
+@export var attack_radius: float = 150.0 
+@onready var boss = $"res://entities/Enemies/Boss.tscn"
 
 func _ready() -> void:
 	pass
 
 
-func attack():
-	var dir = (get_global_mouse_position() - melee.global_position).normalized()
+func attack(): 
+	var dir 
+	if weapon_owner.is_in_group("boss"): 
+		dir = (Globals.player.global_position - melee.global_position).normalized()
+		print("I WORK") 
+	else: 
+		dir = (get_global_mouse_position() - melee.global_position).normalized()
 	var origin = Vector2(melee.global_position.x, melee.global_position.y)
 	if attack_type == Globals.ATTACK_TYPE.CONE:
 		cone_attack(origin, dir, angle, attack_radius)

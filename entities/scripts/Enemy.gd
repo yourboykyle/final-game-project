@@ -5,28 +5,33 @@ extends CharacterBody2D
 @onready var agent = $NavigationAgent2D 
 const WEAPON = preload("res://items/Weapons/BaseGun.tscn")
 var SPEED = 250
-var health = 100 
-var max_health = 100 
+var health
+@export var max_health = 100 
 var enemy_id = ""
 var stop_distance = 500
 var stopped = false
 var weapon = "" 
 var attack_timer = 0.0 
 var attack_cooldown = 1.0 
-var attack_range = 500 
+var attack_range = 500  
+@export var use_base_movement = true
+@export var use_base_ai = true
 
 @onready var health_bar = $HealthBar
 
 func _ready(): 
 	print("Enemy ready at:", global_position, "Parent:", get_parent().name) 
+	health = max_health;
 	health_bar.max_value = max_health 
-	health_bar.value = health 
+	health_bar.value = health
 	weapon = WEAPON.instantiate()
 	add_child(weapon)
 	weapon.weapon_owner = self 
 	weapon.collision_mask = 1
 	 
 func _physics_process(delta: float) -> void: 
+	if !use_base_ai: 
+		return 
 	
 	if player == null:
 		return
@@ -36,15 +41,16 @@ func _physics_process(delta: float) -> void:
 	var distance = global_position.distance_to(player.global_position)
 	var next_point = agent.get_next_path_position()
 	var direction = (next_point - global_position).normalized() 
-	if !stopped: 
-		if distance > stop_distance: 
-			velocity = direction * SPEED
+	if use_base_movement: 
+		if !stopped: 
+			if distance > stop_distance: 
+				velocity = direction * SPEED
+			else: 
+				velocity = Vector2i.ZERO 
+				if distance < stop_distance-150: 
+					stopped = true
 		else: 
-			velocity = Vector2i.ZERO 
-			if distance < stop_distance-150: 
-				stopped = true
-	else: 
-		velocity = -direction*SPEED
+			velocity = -direction*SPEED
 	attack_timer -= delta
 
 	if attack_timer <= 0 and distance <= attack_range:
