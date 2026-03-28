@@ -1,6 +1,6 @@
 extends "res://entities/scripts/Enemy.gd" 
 
-const proj = preload("res://items/Weapons/BaseGun.tscn") 
+const proj = preload("res://items/Weapons/BossGun.tscn") 
 const sword = preload("res://items/Weapons/BaseSword.tscn")
 
 enum State {
