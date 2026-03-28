@@ -1,12 +1,38 @@
 [gd_scene format=3 uid="uid://bsqjwgop0q4uv"]
 
 [ext_resource type="PackedScene" uid="uid://bbrsvqe0p684n" path="res://rooms/RoomBase.tscn" id="1_wimfa"]
+[ext_resource type="PackedScene" uid="uid://brxc7ptf2eq08" path="res://entities/Enemies/enemy.tscn" id="2_e0yke"]
 
 [node name="RoomBase" unique_id=1536920797 instance=ExtResource("1_wimfa")]
 
 [node name="Label" type="Label" parent="." index="4" unique_id=6390137]
-offset_left = 462.0
-offset_top = 1362.0
-offset_right = 2671.0
-offset_bottom = 1711.0
-theme_override_font_sizes/font_size = 256
+offset_left = -338.0
+offset_top = 1144.0
+offset_right = 2229.0
+offset_bottom = 1493.0
+theme_override_font_sizes/font_size = 128
+text = "Press CTRL To Dodge"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="." index="5" unique_id=1641292279]
+offset_left = -466.0
+offset_top = 1674.0
+offset_right = 2362.0
+offset_bottom = 2375.0
+theme_override_font_sizes/font_size = 128
+text = "Press Space to bounce 
+off surfaces"
+horizontal_alignment = 1
+
+[node name="Enemy" parent="." index="6" unique_id=38136452 instance=ExtResource("2_e0yke")]
+position = Vector2(2707, 1526)
+
+[node name="Label4" type="Label" parent="." index="7" unique_id=2066438142]
+offset_left = 1061.0
+offset_top = 1430.0
+offset_right = 2904.0
+offset_bottom = 1700.0
+theme_override_font_sizes/font_size = 64
+text = "Note: Watch out for the enemy!
+Taking damage lowers your oxygen "
+horizontal_alignment = 1

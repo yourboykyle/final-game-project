@@ -18,4 +18,14 @@ offset_top = 1640.0
 offset_right = 1999.0
 offset_bottom = 1815.0
 theme_override_font_sizes/font_size = 128
-text = "Click to shoot"
+text = "Click to attack"
+
+[node name="Label4" type="Label" parent="." index="6" unique_id=1790344437]
+offset_left = 1278.0
+offset_top = 1024.0
+offset_right = 3121.0
+offset_bottom = 1294.0
+theme_override_font_sizes/font_size = 64
+text = "Note: Oxygen (bottom left) passively drains.
+ Once it runs out, you have 10 seconds before you die!"
+horizontal_alignment = 1

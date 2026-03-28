@@ -1,14 +1,19 @@
 [gd_scene format=3 uid="uid://tbts3hbss3f6"]
 
 [ext_resource type="PackedScene" uid="uid://bbrsvqe0p684n" path="res://rooms/RoomBase.tscn" id="1_mabku"]
+[ext_resource type="PackedScene" uid="uid://bj4k1v3kedsxs" path="res://interactables/ExtractionArea.tscn" id="2_h22b4"]
 
 [node name="RoomBase" unique_id=1536920797 instance=ExtResource("1_mabku")]
 
 [node name="Label" type="Label" parent="." index="4" unique_id=917224824]
-offset_left = 705.0
-offset_top = 949.0
-offset_right = 2403.0
-offset_bottom = 1302.0
+offset_left = 737.0
+offset_top = 1000.0
+offset_right = 2435.0
+offset_bottom = 1353.0
 theme_override_font_sizes/font_size = 128
-text = "Move over the extraction
+text = "Press E on the extraction
 point to finish your round!"
+horizontal_alignment = 1
+
+[node name="ExtractionArea" parent="." index="5" unique_id=1658706922 instance=ExtResource("2_h22b4")]
+position = Vector2(1441, 1433)
