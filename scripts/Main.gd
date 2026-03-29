@@ -13,6 +13,7 @@ const DEATH_SCENE = preload("res://DeathScreen.tscn")
 
 var current_scene = null
 var player = null
+var dungeon_hotbar_ui: Node2D = null
 
 func _ready() -> void:
 	gameplayUI.hide()
@@ -33,6 +34,10 @@ func clear_dungeon():
 
 
 func load_main_menu():
+	if dungeon_hotbar_ui:
+		dungeon_hotbar_ui.queue_free()
+		dungeon_hotbar_ui = null
+
 	clear_scene()
 	
 	gameplayUI.hide()
@@ -53,6 +58,10 @@ func load_level_select():
 	current_scene.back_pressed.connect(load_main_menu)
 
 func load_death_screen():
+	if dungeon_hotbar_ui:
+		dungeon_hotbar_ui.queue_free()
+		dungeon_hotbar_ui = null
+
 	clear_scene()
 	clear_dungeon()
 	
@@ -74,5 +83,16 @@ func start_game(level_id):
 		player.oxygen_changed.connect(_on_player_oxygen_changed)
 		player.died.connect(func():load_death_screen())
 
+		dungeon_hotbar_ui = preload("res://interface/scripts/DungeonHotbarUI.gd").new()
+		gameplayUI.add_child(dungeon_hotbar_ui)
+
+		InventoryManager.select_hotbar_slot(0)
+		player._on_hotbar_slot_selected(0)
+
 	$DungeonManager.generate()
 	player.position = Globals.ROOM_CENTER
+
+func _process(delta: float) -> void:
+	for slot_num in range (1, 6):
+		if Input.is_action_just_pressed("hotbar_slot_%d" % slot_num):
+			InventoryManager.select_hotbar_slot(slot_num - 1)

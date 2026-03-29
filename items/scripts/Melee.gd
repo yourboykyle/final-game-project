@@ -11,7 +11,7 @@ func _ready() -> void:
 
 func attack(): 
 	var dir 
-	if weapon_owner.is_in_group("boss"): 
+	if weapon_owner and weapon_owner.is_in_group("boss"): 
 		dir = (Globals.player.global_position - melee.global_position).normalized()
 		print("I WORK") 
 	else: 

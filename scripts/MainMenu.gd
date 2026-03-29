@@ -26,9 +26,26 @@ func _ready():
 	_refresh_all()
 
 func _setup_stash():
+	#padding container
+	var margin_container = MarginContainer.new()
+	margin_container.add_theme_constant_override("margin_left", 30)
+	margin_container.add_theme_constant_override("margin_top", 10)
+	stash_panel.add_child(margin_container)
+
+	var main_vbox = VBoxContainer.new()
+	margin_container.add_child(main_vbox)
+	
+	var label_container = CenterContainer.new()
+	main_vbox.add_child(label_container)
+
+	var inv_label = Label.new()
+	inv_label.text = "Inventory:"
+	inv_label.add_theme_font_size_override("font_size", 16)
+	main_vbox.add_child(inv_label)
+
 	var grid = GridContainer.new()
-	grid.columns = 8
-	stash_panel.add_child(grid)
+	grid.columns = 5
+	main_vbox.add_child(grid)
 	
 	for i in range(InventoryManager.stash.capacity):
 		var slot_panel = Panel.new()

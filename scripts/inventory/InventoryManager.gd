@@ -9,9 +9,11 @@ var hotbar: InventoryContainer
 var run_loot: InventoryContainer
 
 var hotbar_snapshot: InventoryContainer
+var hotbar_selected_index: int = 0
 
 signal inventory_changed
 signal run_loot_changed
+signal hotbar_slot_selected(slot_index: int)
 
 func _ready():
 	stash = InventoryContainer.new(stash_capacity)
@@ -99,8 +101,14 @@ func from_dict(data: Dictionary):
 	run_loot.from_dict(data.get("run_loot", {}))
 	inventory_changed.emit()
 
+func select_hotbar_slot(index: int) -> void:
+	if index >= 0 and index < hotbar.capacity:
+		hotbar_selected_index = index
+		hotbar_slot_selected.emit(index)
+
 #Testing Only
 func _init_debug_items():
 	stash.add_item(3001, 1, {})
 	stash.add_item(3002, 1, {})
+	stash.add_item(3003, 1, {})
 	inventory_changed.emit()

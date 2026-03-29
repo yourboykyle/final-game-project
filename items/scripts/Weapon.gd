@@ -15,7 +15,7 @@ const BULLET = preload("res://entities/Bullet.tscn")
 #What layer it collides with
 @export var collision_mask : int = 2
 var fire_timer = 0.0
-var weapon_owner = ""
+var weapon_owner = null
 
 func _ready() -> void:
 	pass

@@ -39,10 +39,18 @@ func _ready() -> void:
 	# Set current weapon to the weapon holders first child
 	current_weapon = weapon_holder.get_child(0)
 	current_weapon.weapon_owner = self
+	
+	for child in weapon_holder.get_children():
+		child.hide()
+	
+	current_weapon.show()
+
 	oxygen = max_oxygen
 	emit_signal("oxygen_changed", oxygen, max_oxygen) 
 	Globals.player = self
 	interactables = get_tree().get_nodes_in_group(Globals.GROUP_STRINGS[Globals.Groups.INTERACTABLE])
+
+	InventoryManager.hotbar_slot_selected.connect(Callable(self, "_on_hotbar_slot_selected"))
 
 func _process(delta):
 	#If the player attacks, try the current weapons attack
@@ -50,6 +58,8 @@ func _process(delta):
 		if diving:
 			return
 		#Try the current weapons attack
+		if current_weapon == null:
+			return
 		current_weapon.try_attack()
 	
 	if Input.is_action_just_pressed("interact"):
@@ -170,3 +180,27 @@ func _on_death_timer_timeout() -> void:
 
 func _on_dive_cd_timeout() -> void:
 	can_dive = true
+
+func _on_hotbar_slot_selected(slot_index: int) -> void:
+	var item = InventoryManager.hotbar.get_item(slot_index)
+
+	for child in weapon_holder.get_children():
+		child.hide()
+
+	if item.is_empty():
+		current_weapon = null
+		return
+
+	var item_id = item["id"]
+	var weapon_index = -1
+
+	match item_id:
+		3001: weapon_index = 0
+		3002: weapon_index = 1
+		3003: weapon_index = 2
+	
+	if weapon_index >= 0 and weapon_index < weapon_holder.get_child_count():
+		current_weapon = weapon_holder.get_child(weapon_index)
+		current_weapon.show()
+	else:
+		current_weapon = null
