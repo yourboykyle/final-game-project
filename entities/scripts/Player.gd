@@ -64,6 +64,7 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("interact"):
 		interactables = find_interactables()
+		print(interactables)
 		for interactable in interactables:
 			#Can add a check for if its has the method but all interactables should have it
 			interactable.interact()
