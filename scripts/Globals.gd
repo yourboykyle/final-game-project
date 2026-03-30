@@ -17,6 +17,8 @@ var crosshair_instance
 const CROSSHAIR = preload("res://interface/Crosshair.tscn")
 @export var shooting_enabled = true
 
+const BOX = preload("res://rooms/Box.tscn")
+
 var ROOM_SIZE = 192 * 16 # tilemap width (in roombase) * pixels width of each tile
 var ROOM_CENTER = Vector2(ROOM_SIZE / 2, ROOM_SIZE / 2)
 

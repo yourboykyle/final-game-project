@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://couoxk82vyoy6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5uwim"]
+
+[sub_resource type="Gradient" id="Gradient_5uwim"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_csloj"]
+gradient = SubResource("Gradient_5uwim")
+width = 200
+height = 200
+fill_to = Vector2(0, 0)
+
+[node name="Box" type="StaticBody2D" unique_id=1018374974]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1107415980]
+scale = Vector2(10, 10)
+shape = SubResource("RectangleShape2D_5uwim")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1337088415]
+texture = SubResource("GradientTexture2D_csloj")

@@ -11,11 +11,14 @@ func _ready():
 
 
 func _on_room_trigger_body_entered(body: Node2D) -> void:
-	if body.name == "Player": 
+	if body.name == "Player":
+		spawn_boxes()
+		
 		if Globals.room_enemies.has(room_id):
 			restore_enemies(room_id) 
 		else:
-			spawn_and_save_enemies(room_id) 
+			spawn_and_save_enemies(room_id)
+
 func spawn_and_save_enemies(room_id): 
 	if spawn_points.is_empty(): 
 		return 
@@ -52,3 +55,38 @@ func save_enemy_positions():
 				if data["id"] == enemy.enemy_id:
 					data["position"] = enemy.position
 					data["health"] = enemy.health
+
+func spawn_boxes():
+	var room_size = Globals.ROOM_SIZE
+
+	var box_count = randi_range(2, 4)
+	var margin = 200  # distance from walls
+	var min_distance_between_boxes = 100
+
+	var spawned_positions = []
+
+	for i in range(box_count):
+		var box = Globals.BOX.instantiate()
+
+		var position = Vector2.ZERO
+		var attempts = 0
+
+		while attempts < 10:
+			var x = randf_range(margin, room_size - margin)
+			var y = randf_range(margin, room_size - margin)
+			position = Vector2(x, y)
+
+			var too_close = false
+			for p in spawned_positions:
+				if p.distance_to(position) < min_distance_between_boxes:
+					too_close = true
+					break
+
+			if !too_close:
+				break
+
+			attempts += 1
+
+		spawned_positions.append(position)
+		box.position = position
+		add_child(box)
