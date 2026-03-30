@@ -7,11 +7,13 @@
 size = Vector2(3113, 3107)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_x3f7y"]
-vertices = PackedVector2Array(103.96875, 112.921875, 2941.5938, 91.078125, 2921.3828, 601.1172, 722.0469, 630.1328, 97.02344, 2736.039, 713.9375, 2161.7422, 2892.1016, 2749.9531, 1028.0938, 2139.2969, 2913.8906, 628.1094, 1014.09375, 649.8828)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(6, 4, 5, 7), PackedInt32Array(8, 6, 7, 9)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(94, 103, 2952, 81, 2931, 611, 732, 640, 724, 2151, 1018, 2130, 1004, 640, 2924, 618, 2902, 2760, 87, 2746)])
+vertices = PackedVector2Array(2891.8281, 140.92188, 2849.1484, 2779.0469, 140.02344, 2792.9375, 146.96875, 120.07031)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(2859, 2789, 130, 2803, 137, 110, 2902, 131)])
+source_geometry_mode = 1
+source_geometry_group_name = &"navigation"
 
-[node name="RoomBase" unique_id=1536920797 instance=ExtResource("1_m6eoq")]
+[node name="RoomBase" unique_id=1536920797 groups=["navigation"] instance=ExtResource("1_m6eoq")]
 script = ExtResource("2_x3f7y")
 
 [node name="RoomTrigger" type="Area2D" parent="." index="4" unique_id=1602358805]

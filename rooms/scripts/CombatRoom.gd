@@ -2,17 +2,22 @@ extends RoomBase
 
 var enemy_scene = preload("res://entities/Enemies/enemy.tscn") 
 @onready var spawn_points = []
+@onready var nav_region = $NavigationRegion2D
 
 func _ready():
-	room_type = Globals.RoomType.COMBAT  
+	room_type = Globals.RoomType.COMBAT 
 	
 	if has_node("Spawnpoints"):
 		spawn_points = $Spawnpoints.get_children()
 
-
+func bake_navigation(): 
+	var nav_poly = nav_region.navigation_polygon
+	nav_region.bake_navigation_polygon()
 func _on_room_trigger_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		spawn_boxes()
+		await get_tree().process_frame 
+		bake_navigation() 
 		
 		if Globals.room_enemies.has(room_id):
 			restore_enemies(room_id) 
@@ -88,5 +93,6 @@ func spawn_boxes():
 			attempts += 1
 
 		spawned_positions.append(position)
-		box.position = position
+		box.position = position 
+		box.add_to_group("navigation")
 		add_child(box)

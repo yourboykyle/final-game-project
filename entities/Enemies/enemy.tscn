@@ -28,3 +28,4 @@ offset_bottom = -33.0
 value = 100.0
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1005246174]
+target_desired_distance = 20.0

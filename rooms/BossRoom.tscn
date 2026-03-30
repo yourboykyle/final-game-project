@@ -4,9 +4,9 @@
 [ext_resource type="Script" uid="uid://biihrufkcjbm1" path="res://rooms/scripts/BossRoom.gd" id="2_5f03w"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_5f03w"]
-vertices = PackedVector2Array(2807.9375, 2616, 301.65625, 2616, 218.34375, 206.9375, 2794.0469, 193.04688)
+vertices = PackedVector2Array(3031.9531, 3049.039, 49.859375, 3062.9531, 9.1328125, 11.8984375, 3018.039, -15.8984375)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(208, 197, 2804, 183, 2818, 2626, 292, 2626)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-1, 2, 3028, -26, 3042, 3059, 40, 3073)])
 
 [node name="RoomBase" unique_id=1536920797 instance=ExtResource("1_qjdti")]
 script = ExtResource("2_5f03w")
