@@ -22,6 +22,3 @@ Conventions:
 
 func _process(delta):
 	pass
-
-func get_id():
-	return item_id

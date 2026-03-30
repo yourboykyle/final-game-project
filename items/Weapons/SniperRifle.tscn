@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dqad0jehp48yc"]
+
+[ext_resource type="Script" uid="uid://8o32imaeb7si" path="res://items/scripts/SniperRifle.gd" id="1_37ptr"]
+
+[node name="SniperRifle" type="Node2D" unique_id=647256177]
+script = ExtResource("1_37ptr")
+attack_type = 1
+fire_rate = 5.0
+rectangle_range = 2000.0
+aoe = 5.0
+damage = 50.0
+item_name = "Sniper Rifle"
+item_id = 3006

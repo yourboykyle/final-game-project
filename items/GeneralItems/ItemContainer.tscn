@@ -3,6 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://be54qcw5ffm7a" path="res://items/Weapons/HitscanGun.tscn" id="1_l4lnq"]
 [ext_resource type="PackedScene" uid="uid://8j34515jhvuj" path="res://items/Weapons/BaseGun.tscn" id="2_g7lqh"]
 [ext_resource type="PackedScene" uid="uid://d12fmr0ra2qym" path="res://items/Weapons/BaseSword.tscn" id="3_g7lqh"]
+[ext_resource type="PackedScene" uid="uid://tbyeo045ivp2" path="res://items/Weapons/Axe.tscn" id="4_r43xr"]
+[ext_resource type="PackedScene" uid="uid://cpq3n1y0ow824" path="res://items/Weapons/MachineGun.tscn" id="5_njjan"]
+[ext_resource type="PackedScene" uid="uid://dqad0jehp48yc" path="res://items/Weapons/SniperRifle.tscn" id="6_pvju5"]
+[ext_resource type="PackedScene" uid="uid://d3ed1gmc0psqa" path="res://items/Weapons/Dagger.tscn" id="7_1wl5r"]
 
 [node name="ItemContainer" type="Node2D" unique_id=1587473337]
 
@@ -11,3 +15,11 @@
 [node name="HitscanGun" parent="." unique_id=499305279 instance=ExtResource("1_l4lnq")]
 
 [node name="BaseSword" parent="." unique_id=1855008530 instance=ExtResource("3_g7lqh")]
+
+[node name="Axe" parent="." unique_id=641689570 instance=ExtResource("4_r43xr")]
+
+[node name="MachineGun" parent="." unique_id=1112030320 instance=ExtResource("5_njjan")]
+
+[node name="SniperRifle" parent="." unique_id=647256177 instance=ExtResource("6_pvju5")]
+
+[node name="Dagger" parent="." unique_id=499811267 instance=ExtResource("7_1wl5r")]

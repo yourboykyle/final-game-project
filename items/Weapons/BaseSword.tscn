@@ -5,6 +5,7 @@
 
 [node name="BaseSword" type="Node2D" unique_id=1855008530]
 script = ExtResource("1_lxlpn")
+attack_radius = 200.0
 fire_rate = 0.5
 aoe = 50.0
 damage = 75.0

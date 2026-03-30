@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://tbyeo045ivp2"]
+
+[ext_resource type="Script" uid="uid://cxi2vd1sr3f6r" path="res://items/scripts/Axe.gd" id="1_5hc31"]
+
+[node name="Axe" type="Node2D" unique_id=641689570]
+script = ExtResource("1_5hc31")
+attack_radius = 300.0
+fire_rate = 5.0
+damage = 100.0
+item_name = "Axe"
+item_id = 3008

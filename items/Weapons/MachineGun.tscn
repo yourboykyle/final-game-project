@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cpq3n1y0ow824"]
+
+[ext_resource type="Script" uid="uid://cj5nw83anca44" path="res://items/scripts/MachineGun.gd" id="1_q1wwq"]
+
+[node name="MachineGun" type="Node2D" unique_id=1112030320]
+script = ExtResource("1_q1wwq")
+attack_type = 2
+fire_rate = 0.1
+damage = 5.0
+item_name = "Machine Gun"
+item_id = 3005

@@ -6,6 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://8j34515jhvuj" path="res://items/Weapons/BaseGun.tscn" id="3_lw5ub"]
 [ext_resource type="PackedScene" uid="uid://d12fmr0ra2qym" path="res://items/Weapons/BaseSword.tscn" id="4_a1f57"]
 [ext_resource type="PackedScene" uid="uid://be54qcw5ffm7a" path="res://items/Weapons/HitscanGun.tscn" id="4_ks8m5"]
+[ext_resource type="PackedScene" uid="uid://d3ed1gmc0psqa" path="res://items/Weapons/Dagger.tscn" id="7_dv4ir"]
+[ext_resource type="PackedScene" uid="uid://cpq3n1y0ow824" path="res://items/Weapons/MachineGun.tscn" id="7_p37y2"]
+[ext_resource type="PackedScene" uid="uid://dqad0jehp48yc" path="res://items/Weapons/SniperRifle.tscn" id="8_idcse"]
+[ext_resource type="PackedScene" uid="uid://tbyeo045ivp2" path="res://items/Weapons/Axe.tscn" id="10_vkqcq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ojs4q"]
 radius = 6.3008127
@@ -30,13 +34,19 @@ shape = SubResource("CapsuleShape2D_ojs4q")
 script = ExtResource("3_l1ths")
 
 [node name="HitscanGun" parent="WeaponHolder" unique_id=499305279 instance=ExtResource("4_ks8m5")]
-item_id = 0
 
 [node name="BaseGun" parent="WeaponHolder" unique_id=464835153 instance=ExtResource("3_lw5ub")]
-item_id = 0
 
 [node name="BaseSword" parent="WeaponHolder" unique_id=1855008530 instance=ExtResource("4_a1f57")]
 attack_radius = 200.0
+
+[node name="MachineGun" parent="WeaponHolder" unique_id=1112030320 instance=ExtResource("7_p37y2")]
+
+[node name="SniperRifle" parent="WeaponHolder" unique_id=647256177 instance=ExtResource("8_idcse")]
+
+[node name="Dagger" parent="WeaponHolder" unique_id=499811267 instance=ExtResource("7_dv4ir")]
+
+[node name="Axe" parent="WeaponHolder" unique_id=641689570 instance=ExtResource("10_vkqcq")]
 
 [node name="DiveTime" type="Timer" parent="." unique_id=206276636]
 wait_time = 0.5

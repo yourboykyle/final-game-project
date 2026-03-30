@@ -54,12 +54,14 @@ func _ready() -> void:
 
 func _process(delta):
 	#If the player attacks, try the current weapons attack
-	if Input.is_action_just_pressed("attack"):
+	if Input.is_action_pressed("attack"):
 		if diving:
 			return
 		#Try the current weapons attack
 		if current_weapon == null:
+			print("weapon null")
 			return
+			
 		current_weapon.try_attack()
 	
 	if Input.is_action_just_pressed("interact"):
@@ -199,6 +201,11 @@ func _on_hotbar_slot_selected(slot_index: int) -> void:
 		3001: weapon_index = 0
 		3002: weapon_index = 1
 		3003: weapon_index = 2
+		#3004 is a boss weapon that isn't in item container
+		3005: weapon_index = 3
+		3006: weapon_index = 4
+		3007: weapon_index = 5
+		3008: weapon_index = 6
 	
 	if weapon_index >= 0 and weapon_index < weapon_holder.get_child_count():
 		current_weapon = weapon_holder.get_child(weapon_index)

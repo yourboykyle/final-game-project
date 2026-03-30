@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://d3ed1gmc0psqa"]
+
+[ext_resource type="Script" uid="uid://bjl8fr6i8857g" path="res://items/scripts/Dagger.gd" id="1_glamo"]
+
+[node name="Dagger" type="Node2D" unique_id=499811267]
+script = ExtResource("1_glamo")
+fire_rate = 0.1
+damage = 25.0
+item_name = "Dagger"
+item_id = 3007

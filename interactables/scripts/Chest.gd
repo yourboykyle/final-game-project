@@ -16,7 +16,7 @@ func _ready() -> void:
 	contained_item = ItemDb.items[items[random_item]]
 
 func loot():
-	InventoryManager.add_to_stash(contained_item.get_id(), 1)
+	InventoryManager.add_to_stash(contained_item.item_id, 1)
 	queue_free()
 
 func interact():
