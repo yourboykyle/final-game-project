@@ -11,6 +11,8 @@ const GEN_BONUS_TREASURE_CHANCE_PER_FLOOR = 0.02
 var dungeon_manager
 var current_floor = 0
 
+var opened_chests : Array = []
+
 var oxygen_decay_rate := 1.0
 
 var crosshair_instance

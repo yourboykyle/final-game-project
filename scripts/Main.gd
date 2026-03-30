@@ -31,6 +31,8 @@ func clear_scene():
 func clear_dungeon():
 	for child in dungeon_container.get_children():
 		child.queue_free()
+	
+	Globals.opened_chests.clear()
 
 
 func load_main_menu():

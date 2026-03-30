@@ -2,10 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://bbrsvqe0p684n" path="res://rooms/RoomBase.tscn" id="1_x3mou"]
 [ext_resource type="Script" uid="uid://dl1tiunmoouls" path="res://rooms/scripts/TreasureRoom.gd" id="2_wme08"]
-[ext_resource type="PackedScene" uid="uid://cnbypgwgclwm0" path="res://interactables/Chest.tscn" id="3_eqagu"]
 
 [node name="RoomBase" unique_id=1536920797 instance=ExtResource("1_x3mou")]
 script = ExtResource("2_wme08")
-
-[node name="Chest" parent="." index="4" unique_id=1912640183 instance=ExtResource("3_eqagu")]
-position = Vector2(1573, 1503)
