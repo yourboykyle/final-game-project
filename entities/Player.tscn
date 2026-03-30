@@ -38,7 +38,6 @@ script = ExtResource("3_l1ths")
 [node name="BaseGun" parent="WeaponHolder" unique_id=464835153 instance=ExtResource("3_lw5ub")]
 
 [node name="BaseSword" parent="WeaponHolder" unique_id=1855008530 instance=ExtResource("4_a1f57")]
-attack_radius = 200.0
 
 [node name="MachineGun" parent="WeaponHolder" unique_id=1112030320 instance=ExtResource("7_p37y2")]
 
@@ -53,7 +52,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="DeathTimer" type="Timer" parent="." unique_id=1178012298]
-wait_time = 10.0
+wait_time = 7.5
 one_shot = true
 
 [node name="DiveCD" type="Timer" parent="." unique_id=654208793]

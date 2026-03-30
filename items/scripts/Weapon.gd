@@ -48,12 +48,13 @@ func rectangle_attack(origin, direction):
 	query.collision_mask = collision_mask
 	
 	var results = space_state.intersect_shape(query)
+	draw_rectangle_debug(origin, direction)
 	for result in results:
 		var collider = result.collider
 		if collider.has_method("take_damage"):
 			collider.take_damage(damage)
-	
-	draw_rectangle_debug(origin, direction)
+		else:
+			return
 
 
 

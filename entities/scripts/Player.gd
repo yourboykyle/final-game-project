@@ -158,7 +158,7 @@ func death(can_die):
 	#Check if they can die, if they can, set can die to false and start 10 seconds till super death
 	if can_die:
 		self.can_die = false
-		print("5 SECONDS UNTIL UNCONCIOUS")
+		print("7.5 SECONDS UNTIL UNCONCIOUS")
 		death_timer.start()
 	
 	return
