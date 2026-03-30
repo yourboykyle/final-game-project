@@ -15,6 +15,43 @@
 radius = 6.3008127
 height = 13.95664
 
+[sub_resource type="Animation" id="Animation_vkqcq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_p37y2"]
+resource_name = "dive"
+length = 0.51
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.51),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 0.5), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vkqcq"]
+_data = {
+&"RESET": SubResource("Animation_vkqcq"),
+&"dive": SubResource("Animation_p37y2")
+}
+
 [node name="Player" type="CharacterBody2D" unique_id=1945325549]
 z_index = 2
 collision_mask = 3
@@ -42,6 +79,7 @@ script = ExtResource("3_l1ths")
 [node name="MachineGun" parent="WeaponHolder" unique_id=1112030320 instance=ExtResource("7_p37y2")]
 
 [node name="SniperRifle" parent="WeaponHolder" unique_id=647256177 instance=ExtResource("8_idcse")]
+fire_rate = 3.0
 
 [node name="Dagger" parent="WeaponHolder" unique_id=499811267 instance=ExtResource("7_dv4ir")]
 
@@ -58,6 +96,9 @@ one_shot = true
 [node name="DiveCD" type="Timer" parent="." unique_id=654208793]
 wait_time = 0.15
 one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=845712464]
+libraries/ = SubResource("AnimationLibrary_vkqcq")
 
 [connection signal="timeout" from="DiveTime" to="." method="_on_dive_time_timeout"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

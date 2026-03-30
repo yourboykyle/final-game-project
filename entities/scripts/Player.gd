@@ -3,6 +3,7 @@ extends CharacterBody2D
 signal oxygen_changed(current_oxygen: float, max_oxygen: float)
 
 var interactables
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 # Life variables
 @export var max_oxygen := 100.0
@@ -152,6 +153,7 @@ func take_damage(amount):
 
 func dive():
 	diving = true
+	animation_player.play("dive")
 	dive_time.start()
 
 func death(can_die):
