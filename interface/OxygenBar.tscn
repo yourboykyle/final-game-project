@@ -3,23 +3,20 @@
 [ext_resource type="Script" uid="uid://d3agny4ns4tkj" path="res://interface/scripts/OxygenBar.gd" id="1_lsog2"]
 
 [node name="OxygenBar" type="Control" unique_id=903823042]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 3
 anchors_preset = 0
-offset_left = 50.0
-offset_right = 50.0
+offset_left = 18.0
+offset_top = 984.0
+offset_right = 118.0
+offset_bottom = 1084.0
 script = ExtResource("1_lsog2")
-
-[node name="Bar" type="ProgressBar" parent="." unique_id=969169793]
-layout_mode = 0
-offset_left = 43.0
-offset_top = 1038.0
-offset_right = 225.0
-offset_bottom = 1071.0
 
 [node name="OxygenLabel" type="Label" parent="." unique_id=3614626]
 layout_mode = 0
-offset_left = -35.0
-offset_top = 1042.0
-offset_right = 36.0
-offset_bottom = 1066.0
-text = "Oxygen:"
+offset_left = 16.0
+offset_top = 47.0
+offset_right = 86.0
+offset_bottom = 72.0
+text = "Oxygen"
+horizontal_alignment = 1
