@@ -51,7 +51,9 @@ func _physics_process(delta: float) -> void:
 				if distance < stop_distance-150: 
 					stopped = true
 		else: 
-			velocity = -direction*SPEED
+			velocity = -direction*SPEED 
+			if distance > 1000: 
+				stopped = false
 	attack_timer -= delta
 	
 	if velocity.x != 0:

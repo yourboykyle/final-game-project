@@ -15,6 +15,7 @@ size = Vector2(127, 136)
 
 [node name="Boss" type="CharacterBody2D" unique_id=1768426379 groups=["boss"]]
 collision_layer = 2
+motion_mode = 1
 script = ExtResource("1_fpp61")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1293377536]

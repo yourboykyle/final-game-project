@@ -12,10 +12,8 @@ enum State {
 }
 
 var state = State.IDLE
-
 var speed
 var sword_range := 250.0
-
 var sword_cooldown := 1.0
 var big_attack_cooldown := 10.0
 
@@ -75,7 +73,6 @@ func do_sword_attack():
 	add_child(weapon)
 	weapon.attack()
 	print("sword attack")
-
 func do_big_attack():
 	var weapon = proj.instantiate()
 	weapon.weapon_owner = self
