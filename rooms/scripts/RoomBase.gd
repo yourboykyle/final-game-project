@@ -37,7 +37,8 @@ func lock_doors():
 		$Doors/DoorEast.hide()
 	if $Doors/DoorWest:
 		$Doors/DoorWest/CollisionShape2D.set_disabled(true)
-		$Doors/DoorWest.hide()
+		$Doors/DoorWest.hide() 
+	Globals.doors_locked = true
 func unlock_doors(grid_pos:Vector2i): 
 	var gen = Globals.dungeon_manager
 	if gen.dungeon_layout.has(grid_pos + Globals.DIR_VECTORS[Globals.Direction.NORTH]):
@@ -58,7 +59,8 @@ func unlock_doors(grid_pos:Vector2i):
 	if gen.dungeon_layout.has(grid_pos + Globals.DIR_VECTORS[Globals.Direction.WEST]):
 		$Doors/DoorWest/CollisionShape2D.set_disabled(false)
 		$Doors/DoorWest.show()
-		print("adding west")
+		print("adding west") 
+	Globals.doors_locked = false
 	 
  
  

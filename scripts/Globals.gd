@@ -68,6 +68,7 @@ var spawned_rooms = {}
 var room_enemies = {} 
 var player = null;
 var boss_spawned = false;
+var doors_locked = false;
 
 enum ATTACK_TYPE {
 	CONE,
