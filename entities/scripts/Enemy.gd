@@ -16,6 +16,7 @@ var attack_cooldown = 1.0
 var attack_range = 500  
 @export var use_base_movement = true
 @export var use_base_ai = true
+@onready var sprite_2d: Sprite2D = $Sprite2D
 
 @onready var health_bar = $HealthBar
 
@@ -28,7 +29,7 @@ func _ready():
 	add_child(weapon)
 	weapon.weapon_owner = self 
 	weapon.collision_mask = 1
-	 
+
 func _physics_process(delta: float) -> void: 
 	if !use_base_ai: 
 		return 
@@ -52,6 +53,10 @@ func _physics_process(delta: float) -> void:
 		else: 
 			velocity = -direction*SPEED
 	attack_timer -= delta
+	
+	if velocity.x != 0:
+		sprite_2d.flip_h = velocity.x > 0
+
 
 	if attack_timer <= 0 and distance <= attack_range:
 		var shootdirection = (player.global_position - global_position).normalized()
