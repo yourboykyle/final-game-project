@@ -8,6 +8,9 @@ vertices = PackedVector2Array(3031.9531, 3049.039, 49.859375, 3062.9531, 9.13281
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-1, 2, 3028, -26, 3042, 3059, 40, 3073)])
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5f03w"]
+size = Vector2(3080, 3097)
+
 [node name="RoomBase" unique_id=1536920797 instance=ExtResource("1_qjdti")]
 script = ExtResource("2_5f03w")
 
@@ -18,3 +21,11 @@ position = Vector2(1561, 1507)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." index="5" unique_id=105535957]
 navigation_polygon = SubResource("NavigationPolygon_5f03w")
+
+[node name="Area2D" type="Area2D" parent="." index="6" unique_id=479305363]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0" unique_id=606033261]
+position = Vector2(1530, 1538.5)
+shape = SubResource("RectangleShape2D_5f03w")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
