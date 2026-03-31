@@ -12,7 +12,7 @@ func _ready():
 
 	var grid = GridContainer.new()
 	grid.columns = 8
-	#40 slots
+	#40 slots, maybe have upgrade later if theres time
 	add_child(grid)
 
 	for i in range(inventory_manager.stash_capacity):
@@ -20,16 +20,38 @@ func _ready():
 		slot_panel.custom_minimum_size = Vector2(60, 60)
 		slot_panel.modulate = Color.DARK_GRAY
 
-		var v_box = VBoxContainer.new()
-		slot_panel.add_child(v_box)
+		var overlay = Node2D.new()
+		slot_panel.add_child(overlay)
 
-		var label = Label.new()
-		label.text = str(i)
-		label.add_theme_font_size_override("font_size", 8)
-		v_box.add_child(label)
+		var sprite_rect = TextureRect.new()
+		sprite_rect.custom_minimum_size = Vector2(48, 48)
+		sprite_rect.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		sprite_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT
+		sprite_rect.position = Vector2(2, 8)
+		overlay.add_child(sprite_rect)
 
+		var item_label = Label.new()
+		item_label.text = ""
+		item_label.text_overrun_behavior = TextServer.OVERRUN_NO_TRIMMING
+		item_label.add_theme_font_size_override("font_size", 9)
+		item_label.position = Vector2(2, 2)
+		overlay.add_child(item_label)
+
+		var quant_label = Label.new()
+		quant_label.text = ""
+		quant_label.add_theme_font_size_override("font_size", 10)
+		quant_label.position = Vector2(2, 45)
+		overlay.add_child(quant_label)
+		
 		grid.add_child(slot_panel)
-		stash_slots.append({"panel": slot_panel, "label": label, "index": i})
+		
+		stash_slots.append({
+			"panel": slot_panel,
+			"sprite": sprite_rect,
+			"name": item_label,
+			"qty": quant_label,
+			"index": i
+		})
 	
 	inventory_manager.inventory_changed.connect(_on_inventory_changed)
 	_on_inventory_changed()
@@ -42,7 +64,12 @@ func _on_inventory_changed():
 
 		if item.is_empty():
 			panel.modulate = Color.DARK_GRAY
-			slot_info.label.text = ""
+			slot_info.sprite.texture = null
+			slot_info.name.text = ""
+			slot_info.qty.text = ""
 		else:
 			panel.modulate = Color.DARK_SLATE_GRAY
-			slot_info.label.text= "ID: %d\nQty: %d" % [item.id, item.quantity]
+			var item_data = ItemDb.get_item_data(item.id)
+			slot_info.sprite.texture = item_data.texture
+			slot_info.name.text = item_data.name
+			slot_info.qty.text = "Qty: %d" % item.quantity

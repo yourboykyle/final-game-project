@@ -22,17 +22,36 @@ func _create_slots() -> void:
 		panel.custom_minimum_size = Vector2(slot_size, slot_size)
 		panel.position = Vector2(start_x + (i * (slot_size + spacing)), 1000)
 
-		var vbox = VBoxContainer.new()
-		var label = Label.new()
-		label.text = "[empty]"
-		label.add_theme_font_size_override("font_size", 8)
-		vbox.add_child(label)
-		panel.add_child(vbox)
+		var overlay = Node2D.new()
+		panel.add_child(overlay)
+
+		var sprite_rect = TextureRect.new()
+		sprite_rect.custom_minimum_size = Vector2(48, 48)
+		sprite_rect.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		sprite_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT
+		sprite_rect.position = Vector2(2, 8)
+		overlay.add_child(sprite_rect)
+
+		var item_label = Label.new()
+		item_label.text = ""
+		item_label.text_overrun_behavior = TextServer.OVERRUN_NO_TRIMMING
+		item_label.add_theme_font_size_override("font_size", 9)
+		item_label.position = Vector2(2, 2)
+		overlay.add_child(item_label)
+
+		var quant_label = Label.new()
+		quant_label.text = ""
+		quant_label.add_theme_font_size_override("font_size", 10)
+		quant_label.position = Vector2(2, 45)
+		overlay.add_child(quant_label)
+
 		add_child(panel)
 
 		hotbar_slots.append({
 			"panel": panel,
-			"label": label,
+			"sprite": sprite_rect,
+			"name": item_label,
+			"qty": quant_label,
 			"index": i
 		})
 
@@ -48,7 +67,9 @@ func _update_display() -> void:
 	for slot in hotbar_slots:
 		var index = slot["index"]
 		var panel = slot["panel"]
-		var label = slot["label"]
+		var sprite = slot["sprite"]
+		var name = slot["name"]
+		var qty = slot["qty"]
 		var item = hotbar.get_item(index)
 
 		if index == InventoryManager.hotbar_selected_index:
@@ -60,6 +81,11 @@ func _update_display() -> void:
 				panel.modulate = Color(0.7, 0.8, 1.0)
 		
 		if not item.is_empty():
-			label.text = "ID: %d\nQty: %d" % [item["id"], item["quantity"]]
+			var item_data = ItemDb.get_item_data(item["id"])
+			sprite.texture = item_data.texture
+			name.text = item_data.name
+			qty.text = "Qty: %d" % item["quantity"]
 		else:
-			label.text = "[empty]"
+			sprite.texture = null
+			name.text = "[empty]"
+			qty.text = ""
