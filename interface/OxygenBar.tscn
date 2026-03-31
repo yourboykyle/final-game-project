@@ -14,9 +14,9 @@ script = ExtResource("1_lsog2")
 
 [node name="OxygenLabel" type="Label" parent="." unique_id=3614626]
 layout_mode = 0
-offset_left = 16.0
+offset_left = 56.0
 offset_top = 47.0
-offset_right = 86.0
+offset_right = 126.0
 offset_bottom = 72.0
 text = "Oxygen"
 horizontal_alignment = 1

@@ -102,9 +102,6 @@ func _physics_process(delta):
 		
 		if can_dive:
 			dive()
-	
-	if Input.is_action_just_pressed("dash"):
-		pass
 
 	if get_slide_collision_count() > 0:
 		var collision = get_slide_collision(0)
@@ -120,6 +117,8 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("flip") and can_flip:
 		velocity = flip_normal * flip_speed * speed_multiplier
 		can_flip = false
+		animation_player.play("RESET")
+		await $AnimationPlayer.animation_finished
 		animation_player.play("flip")
 		flip_timer = 0.0
 	
@@ -161,6 +160,8 @@ func take_damage(amount):
 
 func dive():
 	diving = true
+	animation_player.play("RESET")
+	await $AnimationPlayer.animation_finished
 	animation_player.play("dive")
 	dive_time.start()
 
@@ -193,6 +194,10 @@ func _on_death_timer_timeout() -> void:
 
 func _on_dive_cd_timeout() -> void:
 	can_dive = true
+
+func reset_sprite():
+	self.rotation = 0
+	self.scale = Vector2(1, 1)
 
 func _on_hotbar_slot_selected(slot_index: int) -> void:
 	var item = InventoryManager.hotbar.get_item(slot_index)
