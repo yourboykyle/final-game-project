@@ -79,6 +79,7 @@ func take_damage(amount):
 				health_bar.value = health
 				break  
 	if health <= 0:
+		Globals.enemy_defeated.emit(position)
 		if Globals.room_enemies.has(room_id):
 			for i in range(Globals.room_enemies[room_id].size()):
 				var data = Globals.room_enemies[room_id][i]

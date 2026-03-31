@@ -1,5 +1,9 @@
 class_name RoomBase
 extends Node2D
+var chest_scene = preload("res://interactables/Chest.tscn") 
+var bubble_scene = preload("res://interactables/Bubble.tscn") 
+var chest
+var bubble
 
 @export var room_id : String
 @export var room_type : Globals.RoomType
@@ -25,6 +29,7 @@ func initialize(grid_pos: Vector2i):
 func set_room_data(pos:Vector2i): 
 	grid_position = pos
 	room_id = str(pos)
+
 func lock_doors(): 
 	if $Doors/DoorNorth: 
 		$Doors/DoorNorth.hide()
@@ -38,6 +43,7 @@ func lock_doors():
 	if $Doors/DoorWest:
 		$Doors/DoorWest/CollisionShape2D.set_disabled(true)
 		$Doors/DoorWest.hide()
+
 func unlock_doors(grid_pos:Vector2i): 
 	var gen = Globals.dungeon_manager
 	if gen.dungeon_layout.has(grid_pos + Globals.DIR_VECTORS[Globals.Direction.NORTH]):
@@ -60,7 +66,22 @@ func unlock_doors(grid_pos:Vector2i):
 		$Doors/DoorWest.show()
 		print("adding west")
 	 
- 
- 
- 
+
+func create_chest(posx, posy):
+	chest = chest_scene.instantiate()
 	
+	add_child(chest)
+	chest.connect("opened", _on_chest_opened)
+	chest.position = Vector2(posx, posy)
+
+func _on_chest_opened():
+	Globals.opened_chests.append(room_id)
+	if is_instance_valid(chest):
+		remove_child(chest)
+		chest = null
+
+func create_bubble(posx, posy):
+	bubble = bubble_scene.instantiate()
+	
+	add_child(bubble)
+	bubble.position = Vector2(posx, posy)

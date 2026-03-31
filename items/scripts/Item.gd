@@ -22,6 +22,3 @@ Conventions:
 
 func _process(delta):
 	pass
-
-func get_sprite():
-	return sprite_2d

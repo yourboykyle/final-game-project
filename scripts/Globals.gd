@@ -12,6 +12,7 @@ var dungeon_manager
 var current_floor = 0
 
 var opened_chests : Array = []
+signal enemy_defeated(position: Vector2)
 
 var oxygen_decay_rate := 1.0
 

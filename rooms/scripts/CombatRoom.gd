@@ -7,6 +7,8 @@ var enemy_scene = preload("res://entities/Enemies/enemy.tscn")
 func _ready():
 	room_type = Globals.RoomType.COMBAT 
 	
+	Globals.enemy_defeated.connect(_on_enemy_defeated)
+	
 	if has_node("Spawnpoints"):
 		spawn_points = $Spawnpoints.get_children()
 
@@ -86,13 +88,24 @@ func spawn_boxes():
 				if p.distance_to(position) < min_distance_between_boxes:
 					too_close = true
 					break
-
+		
 			if !too_close:
 				break
-
+		
 			attempts += 1
-
+		
 		spawned_positions.append(position)
 		box.position = position 
 		box.add_to_group("navigation")
 		add_child(box)
+
+func _on_enemy_defeated(enemy_position):
+	print("defeated")
+	for enemy in get_children():
+		if enemy.is_in_group("enemy") and enemy.health > 0:
+			return
+	
+	if !Globals.opened_chests.has(room_id):
+		create_chest(enemy_position.x, enemy_position.y)
+	
+	create_bubble(enemy_position.x + 256, enemy_position.y)
