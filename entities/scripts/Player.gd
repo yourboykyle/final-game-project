@@ -71,8 +71,13 @@ func _process(delta):
 		for interactable in interactables:
 			#Can add a check for if its has the method but all interactables should have it
 			interactable.interact()
-			
-	sprite_2d.flip_h = get_global_mouse_position().x < global_position.x
+	
+	var mouse_dir_x = (get_global_mouse_position() - global_position).normalized().x
+	if mouse_dir_x > 0.45:
+		sprite_2d.flip_h = false
+	elif mouse_dir_x < -0.45:
+		sprite_2d.flip_h = true
+
 	_update_oxygen(delta)
 
 func _physics_process(delta):
