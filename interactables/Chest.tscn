@@ -15,6 +15,7 @@ scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_fn3f1")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1043082323]
+texture_filter = 1
 scale = Vector2(3, 3)
 texture = ExtResource("2_tcmji")
 

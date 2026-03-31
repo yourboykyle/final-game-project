@@ -29,6 +29,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_p37y2"]
 resource_name = "dive"
@@ -46,10 +58,27 @@ tracks/0/keys = {
 "values": [Vector2(1, 1), Vector2(0.5, 0.5), Vector2(1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_b4uku"]
+resource_name = "flip"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 3.1415927, 6.2831855]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vkqcq"]
 _data = {
 &"RESET": SubResource("Animation_vkqcq"),
-&"dive": SubResource("Animation_p37y2")
+&"dive": SubResource("Animation_p37y2"),
+&"flip": SubResource("Animation_b4uku")
 }
 
 [node name="Player" type="CharacterBody2D" unique_id=1945325549]
@@ -58,6 +87,7 @@ collision_mask = 3
 script = ExtResource("1_ojs4q")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=383463702]
+texture_filter = 1
 texture = ExtResource("2_a1f57")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2000986265]
@@ -73,6 +103,11 @@ script = ExtResource("3_l1ths")
 [node name="HitscanGun" parent="WeaponHolder" unique_id=499305279 instance=ExtResource("4_ks8m5")]
 
 [node name="BaseGun" parent="WeaponHolder" unique_id=464835153 instance=ExtResource("3_lw5ub")]
+fire_rate = 1.0
+rectangle_range = 1500.0
+aoe = 10.0
+linger_time = 0.05
+collision_mask = 2
 
 [node name="BaseSword" parent="WeaponHolder" unique_id=1855008530 instance=ExtResource("4_a1f57")]
 

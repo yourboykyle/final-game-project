@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://df2tnupht33aj" path="res://assets/sprites/machinegun.png" id="2_aclii"]
 
 [node name="MachineGun" type="Node2D" unique_id=1112030320]
+texture_filter = 1
 script = ExtResource("1_q1wwq")
 projectile_speed = 2000
 attack_type = 2

@@ -120,7 +120,15 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("flip") and can_flip:
 		velocity = flip_normal * flip_speed * speed_multiplier
 		can_flip = false
+		animation_player.play("flip")
 		flip_timer = 0.0
+	
+	if current_weapon:
+		current_weapon.look_at(get_global_mouse_position())
+		var mouse_is_left = get_global_mouse_position().x < global_position.x
+		current_weapon.get_node("Sprite2D").flip_v = mouse_is_left
+		
+	
 
 	move_and_slide()
 

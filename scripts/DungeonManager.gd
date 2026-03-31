@@ -129,9 +129,10 @@ func load_room(grid_pos: Vector2i, entry_dir: Variant = null):
 
 			Globals.Direction.WEST:
 				spawn = Vector2(Globals.ROOM_SIZE - offset, center)
-
-	player.position = spawn
-	await fade_transition.fade_in()
+	
+	if player.position:
+		player.position = spawn
+		await fade_transition.fade_in()
 
 func change_room(direction: Globals.Direction):
 	if changing_room: return

@@ -18,7 +18,10 @@ Conventions:
 	Thanks!
 """
 @export var item_id : int
-
+@onready var sprite_2d: Sprite2D = $Sprite2D
 
 func _process(delta):
 	pass
+
+func get_sprite():
+	return sprite_2d

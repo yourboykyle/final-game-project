@@ -14,4 +14,5 @@ item_name = "Sniper Rifle"
 item_id = 3006
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=857617594]
+texture_filter = 1
 texture = ExtResource("2_p2at2")

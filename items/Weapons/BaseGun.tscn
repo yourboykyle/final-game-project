@@ -7,7 +7,12 @@
 script = ExtResource("1_15i37")
 projectile_speed = 1500
 attack_type = 2
+fire_rate = null
+rectangle_range = null
+aoe = null
 damage = 8.2
+linger_time = null
+collision_mask = null
 item_name = "Base Gun"
 item_id = 3002
 
