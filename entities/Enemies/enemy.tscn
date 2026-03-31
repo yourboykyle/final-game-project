@@ -1,25 +1,24 @@
 [gd_scene format=3 uid="uid://brxc7ptf2eq08"]
 
 [ext_resource type="Script" uid="uid://ytu022u1lf8m" path="res://entities/scripts/Enemy.gd" id="1_7k104"]
+[ext_resource type="Texture2D" uid="uid://bpdukk4kgtd2i" path="res://assets/sprites/RangedFish.png" id="2_mrf38"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gyqm"]
-size = Vector2(69, 68)
-
-[sub_resource type="Gradient" id="Gradient_qi2p4"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_iifgy"]
-gradient = SubResource("Gradient_qi2p4")
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mrf38"]
+radius = 29.994406
+height = 95.99964
 
 [node name="Enemy" type="CharacterBody2D" unique_id=38136452 groups=["enemy"]]
 collision_layer = 2
 script = ExtResource("1_7k104")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1426270438]
-position = Vector2(0.5, 0)
-shape = SubResource("RectangleShape2D_4gyqm")
+position = Vector2(1, -5)
+rotation = 1.5735371
+shape = SubResource("CapsuleShape2D_mrf38")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1196865565]
-texture = SubResource("GradientTexture2D_iifgy")
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_mrf38")
 
 [node name="HealthBar" type="ProgressBar" parent="." unique_id=1993505926]
 offset_top = -60.0

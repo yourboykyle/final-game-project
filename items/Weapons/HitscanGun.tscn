@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://be54qcw5ffm7a"]
 
 [ext_resource type="Script" uid="uid://ciljqp40fcbjo" path="res://items/scripts/HitscanGun.gd" id="1_ejl1l"]
+[ext_resource type="Texture2D" uid="uid://d1nfjy7mw8y64" path="res://assets/sprites/pistol.png" id="2_sj4oi"]
 
 [node name="HitscanGun" type="Node2D" unique_id=499305279]
 script = ExtResource("1_ejl1l")
@@ -9,3 +10,6 @@ fire_rate = 0.5
 aoe = 5.0
 item_name = "Test Gun"
 item_id = 3001
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1341002348]
+texture = ExtResource("2_sj4oi")
