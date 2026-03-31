@@ -4,6 +4,7 @@
 
 [node name="MachineGun" type="Node2D" unique_id=1112030320]
 script = ExtResource("1_q1wwq")
+projectile_speed = 2000
 attack_type = 2
 fire_rate = 0.1
 damage = 5.0

@@ -21,6 +21,7 @@ func initialize(grid_pos: Vector2i):
 
 	if !gen.dungeon_layout.has(grid_pos + Globals.DIR_VECTORS[Globals.Direction.WEST]):
 		$Doors/DoorWest.queue_free()
+
 func set_room_data(pos:Vector2i): 
 	grid_position = pos
 	room_id = str(pos)
