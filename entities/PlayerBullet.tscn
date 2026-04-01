@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bv04j83i4jeqg"]
+
+[ext_resource type="Texture2D" uid="uid://bqwi0n28kvcia" path="res://assets/sprites/playerbullet.png" id="2_o5cie"]
+
+[sub_resource type="GDScript" id="GDScript_5p0wy"]
+script/source = "extends Bullet
+"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o5cie"]
+radius = 4.0
+height = 16.0
+
+[node name="PlayerBullet" type="Area2D" unique_id=606360966]
+collision_layer = 0
+collision_mask = 3
+script = SubResource("GDScript_5p0wy")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=838267083]
+texture_filter = 1
+texture = ExtResource("2_o5cie")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=575175182]
+position = Vector2(0, -1)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_o5cie")
