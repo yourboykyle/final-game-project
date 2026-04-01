@@ -85,19 +85,21 @@ func cone_attack(origin, direction, angle, radius):
 	
 	var query = PhysicsShapeQueryParameters2D.new()
 	query.shape = shape
-	query.transform = Transform2D(0, origin)
+	query.transform = Transform2D(0, origin) 
+	print(weapon_owner)
+	if weapon_owner.is_in_group("boss"):
+			collision_mask = 1
+			print("check")
 	query.collision_mask = collision_mask
 	query.exclude = [weapon_owner]
 	
 	var results = space_state.intersect_shape(query)
-	
 	# Step 2: filter into a cone
 	var cone_angle = deg_to_rad(angle)
 	var threshold = cos(cone_angle / 2.0)
 	
 	for result in results:
 		var collider = result.collider
-		
 		if !collider:
 			continue
 		

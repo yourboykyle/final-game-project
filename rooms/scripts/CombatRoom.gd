@@ -19,8 +19,7 @@ func _on_room_trigger_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		spawn_boxes()
 		await get_tree().process_frame 
-		bake_navigation() 
-		
+		bake_navigation()
 		if Globals.room_enemies.has(room_id):
 			restore_enemies(room_id) 
 		else:
