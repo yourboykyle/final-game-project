@@ -1,8 +1,9 @@
 extends RoomBase
 
-var enemy_scene = preload("res://entities/Enemies/enemy.tscn") 
+var enemy_scene = preload("res://entities/Enemies/enemy.tscn")
+var boom_enemy_scene = preload("res://entities/Enemies/boomEnemy.tscn") 
 @onready var spawn_points = []
-@onready var nav_region = $NavigationRegion2D
+@onready var nav_region = $NavigationRegion2D 
 
 func _ready():
 	room_type = Globals.RoomType.COMBAT 
@@ -33,11 +34,16 @@ func spawn_and_save_enemies(room_id):
 	spawn_points.shuffle() 
 	var enemy_count = randi_range(1, spawn_points.size())
 	Globals.room_enemies[room_id] = [] 
-	for i in range(enemy_count): 
-		var enemy = enemy_scene.instantiate() 
+	for i in range(enemy_count):
+		var enemy
+		if (randi_range(1,1) == 1): 
+			enemy = boom_enemy_scene.instantiate() 
+		else:  
+			enemy = enemy_scene.instantiate() 
 		enemy.enemy_id = str(i) + "_" + str(randi)
 		enemy.position = spawn_points[i].position 
 		add_child(enemy) 
+		enemy.add_to_group("enemy") 
 		Globals.room_enemies[room_id].append({"id": enemy.enemy_id, "position": enemy.global_position, "health": enemy.health}) 
 func restore_enemies(room_id): 
 	for enemy_data in Globals.room_enemies[room_id]: 
@@ -46,6 +52,7 @@ func restore_enemies(room_id):
 		enemy.position = enemy_data["position"] 
 		enemy.set_health(enemy_data["health"])
 		add_child(enemy)
+		enemy.add_to_group("enemy")
 		enemy.update_healthBar(enemy_data["health"])
 
 func restore_pickups(room_id):

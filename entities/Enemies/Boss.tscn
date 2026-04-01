@@ -28,6 +28,7 @@ position = Vector2(29.5, 36)
 shape = SubResource("RectangleShape2D_8u51s")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=397771702]
+target_desired_distance = 20.0
 
 [node name="HealthBar" type="ProgressBar" parent="." unique_id=552033391]
 offset_left = -15.0
