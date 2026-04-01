@@ -113,7 +113,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="DeathTimer" type="Timer" parent="." unique_id=1178012298]
-wait_time = 5.0
+wait_time = 3.0
 one_shot = true
 
 [node name="DiveCD" type="Timer" parent="." unique_id=654208793]

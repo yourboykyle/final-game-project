@@ -18,7 +18,7 @@ func interact():
 	use_bubble()
 
 func use_bubble():
-	player.oxygen = player.oxygen + 20
+	player.change_oxygen(20)
 	queue_free()
 
 

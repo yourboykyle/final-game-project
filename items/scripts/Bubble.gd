@@ -4,7 +4,7 @@ func _ready():
 	pass
 
 func use_item(user):
-	user.change_oxygen(20)
+	user.change_oxygen(5)
 	var hotbar_index = InventoryManager.hotbar_selected_index
 	var slot = InventoryManager.hotbar.slots[hotbar_index]
 

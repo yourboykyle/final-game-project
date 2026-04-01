@@ -188,7 +188,7 @@ func death(can_die):
 	
 	if can_die:
 		self.can_die = false
-		print("5 SECONDS UNTIL UNCONCIOUS")
+		print("3 SECONDS UNTIL UNCONCIOUS")
 		death_timer.start()
 
 func find_interactables():
@@ -205,7 +205,6 @@ func _on_dive_time_timeout() -> void:
 
 
 func _on_death_timer_timeout() -> void:
-	print("timed out")
 	
 	if oxygen > 0:
 		can_die = true
