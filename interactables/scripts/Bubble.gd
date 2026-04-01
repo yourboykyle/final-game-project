@@ -2,6 +2,7 @@ extends Interactable
 
 var player = Globals.player
 var in_bubble_zone = false
+signal used
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,6 +20,7 @@ func interact():
 
 func use_bubble():
 	player.change_oxygen(20)
+	used.emit()
 	queue_free()
 
 

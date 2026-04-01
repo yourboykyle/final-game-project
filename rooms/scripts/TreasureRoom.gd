@@ -6,8 +6,7 @@ func _ready():
 	if !room_id_exists():
 		return
 	
-	if !Globals.opened_chests.has(room_id):
-		create_chest(1573.0, 1503.0)
+	create_chest(1573.0, 1503.0)
 
 #Idk if null check is unesscessary or I could get around it a better way but wtvr
 func room_id_exists():

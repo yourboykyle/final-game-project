@@ -72,9 +72,14 @@ func unlock_doors(grid_pos:Vector2i):
 	 
 
 func create_chest(posx, posy):
-	chest = chest_scene.instantiate()
+	if Globals.opened_chests.has(room_id):
+		return
+	
+	if !chest:
+		chest = chest_scene.instantiate()
 	
 	add_child(chest)
+	
 	chest.connect("opened", _on_chest_opened)
 	chest.position = Vector2(posx, posy)
 
@@ -85,7 +90,19 @@ func _on_chest_opened():
 		chest = null
 
 func create_bubble(posx, posy):
-	bubble = bubble_scene.instantiate()
+	if Globals.opened_bubbles.has(room_id):
+		return
+	
+	if !bubble:
+		bubble = bubble_scene.instantiate()
 	
 	add_child(bubble)
+	bubble.connect("used", _on_bubble_used)
 	bubble.position = Vector2(posx, posy)
+
+func _on_bubble_used():
+	Globals.opened_bubbles.append(room_id)
+	if is_instance_valid(bubble):
+		remove_child(bubble)
+		bubble = null
+	

@@ -3,6 +3,16 @@
 [ext_resource type="PackedScene" uid="uid://bbrsvqe0p684n" path="res://rooms/RoomBase.tscn" id="1_wimfa"]
 [ext_resource type="PackedScene" uid="uid://brxc7ptf2eq08" path="res://entities/Enemies/enemy.tscn" id="2_e0yke"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e0yke"]
+size = Vector2(141, 133)
+
+[sub_resource type="Gradient" id="Gradient_1fwsl"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_snvm0"]
+gradient = SubResource("Gradient_1fwsl")
+fill_from = Vector2(0.5760369, 0)
+fill_to = Vector2(0.5437788, 1)
+
 [node name="RoomBase" unique_id=1536920797 instance=ExtResource("1_wimfa")]
 
 [node name="Enemy" parent="." index="4" unique_id=38136452 instance=ExtResource("2_e0yke")]
@@ -16,3 +26,17 @@ offset_bottom = 1493.0
 theme_override_font_sizes/font_size = 128
 text = "There's an enemy, take it out!"
 horizontal_alignment = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="6" unique_id=1084864995]
+position = Vector2(162, -107)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0" unique_id=1118562534]
+position = Vector2(2422.5, 1521.5)
+shape = SubResource("RectangleShape2D_e0yke")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" index="1" unique_id=1932323135]
+position = Vector2(2424.875, 1520.25)
+scale = Vector2(2.2851565, 2.1640635)
+texture = SubResource("GradientTexture2D_snvm0")

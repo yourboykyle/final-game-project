@@ -42,19 +42,29 @@ func rectangle_attack(origin, direction):
 	var shape = RectangleShape2D.new()
 	shape.size = Vector2(rectangle_range, aoe)
 	var query = PhysicsShapeQueryParameters2D.new()
-	query.shape = shape
 	query.transform = Transform2D(direction.angle(), origin + direction * rectangle_range / 2)
+	query.shape = shape
 	query.exclude = [weapon_owner, self]
 	query.collision_mask = collision_mask
-	
+
 	var results = space_state.intersect_shape(query)
 	draw_rectangle_debug(origin, direction)
+
 	for result in results:
 		var collider = result.collider
-		if collider.has_method("take_damage"):
+		if !collider.has_method("take_damage"):
+			continue
+		
+		# Raycast from origin to this enemy to check for walls in between
+		var ray = PhysicsRayQueryParameters2D.create(origin, collider.global_position)
+		ray.exclude = [weapon_owner, self]
+		ray.collision_mask = collision_mask
+		var ray_result = space_state.intersect_ray(ray)
+		
+		# If nothing blocked the ray, or the ray hit this enemy directly, damage it
+		if ray_result.is_empty() or ray_result.collider == collider:
 			collider.take_damage(damage)
-		else:
-			return
+
 
 
 
@@ -79,7 +89,6 @@ func shoot_projectile(weapon, dir, projectile_speed):
 func cone_attack(origin, direction, angle, radius):
 	var space_state = get_world_2d().direct_space_state
 	
-	# Step 1: detect everything in a circle
 	var shape = CircleShape2D.new()
 	shape.radius = radius
 	
@@ -94,7 +103,7 @@ func cone_attack(origin, direction, angle, radius):
 	query.exclude = [weapon_owner]
 	
 	var results = space_state.intersect_shape(query)
-	# Step 2: filter into a cone
+	
 	var cone_angle = deg_to_rad(angle)
 	var threshold = cos(cone_angle / 2.0)
 	
@@ -103,14 +112,22 @@ func cone_attack(origin, direction, angle, radius):
 		if !collider:
 			continue
 		
+		if !collider.has_method("take_damage"):
+			continue
+		
 		var to_target = (collider.global_position - origin).normalized()
 		var dot = direction.dot(to_target)
 		
 		if dot >= threshold:
-			if collider.has_method("take_damage"):
+			# Raycast to check for walls between origin and enemy
+			var ray = PhysicsRayQueryParameters2D.create(origin, collider.global_position)
+			ray.exclude = [weapon_owner, self]
+			ray.collision_mask = collision_mask
+			var ray_result = space_state.intersect_ray(ray)
+			
+			if ray_result.is_empty() or ray_result.collider == collider:
 				collider.take_damage(damage)
 	
-	# Debug cone
 	draw_cone_debug(origin, direction, cone_angle, radius)
 
 func draw_cone_debug(origin, direction, angle, length):

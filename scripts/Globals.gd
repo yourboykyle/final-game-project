@@ -12,6 +12,7 @@ var dungeon_manager
 var current_floor = 0
 
 var opened_chests : Array = []
+var opened_bubbles : Array = []
 signal enemy_defeated(position: Vector2)
 
 var oxygen_decay_rate := 1.0
@@ -70,8 +71,10 @@ const ROOM_COLORS = {
 	RoomType.BOSS: Color.BLUE,
 	RoomType.TREASURE: Color.GOLD
 }  
+
 var spawned_rooms = {} 
 var room_enemies = {} 
+var room_pickups = {}
 var player = null;
 var doors_locked = false; 
 var boss_spawned = false;

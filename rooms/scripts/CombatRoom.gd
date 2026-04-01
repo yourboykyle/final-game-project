@@ -22,6 +22,7 @@ func _on_room_trigger_body_entered(body: Node2D) -> void:
 		bake_navigation()
 		if Globals.room_enemies.has(room_id):
 			restore_enemies(room_id) 
+			restore_pickups(room_id)
 		else:
 			spawn_and_save_enemies(room_id)
 
@@ -46,10 +47,22 @@ func restore_enemies(room_id):
 		add_child(enemy)
 		enemy.update_healthBar(enemy_data["health"])
 
+func restore_pickups(room_id):
+	
+	if !Globals.room_pickups.has(room_id):
+		return
+	
+	for pickup_data in Globals.room_pickups[room_id]:
+		if pickup_data["type"] == "chest":
+			create_chest(pickup_data["position"].x, pickup_data["position"].y)
+		if pickup_data["type"] == "bubble":
+			create_bubble(pickup_data["position"].x, pickup_data["position"].y)
 
 func _on_room_trigger_body_exited(body: Node2D) -> void:
 	if body.name == "Player": 
 		save_enemy_positions()
+
+
 func save_enemy_positions():
 
 	if !Globals.room_enemies.has(room_id):
@@ -104,7 +117,12 @@ func _on_enemy_defeated(enemy_position):
 		if enemy.is_in_group("enemy") and enemy.health > 0:
 			return
 	
+	if !Globals.room_pickups.has(room_id):
+		Globals.room_pickups[room_id] = []
+	
 	if !Globals.opened_chests.has(room_id):
 		create_chest(enemy_position.x, enemy_position.y)
+		Globals.room_pickups[room_id].append({"type": "chest", "position": Vector2(enemy_position.x, enemy_position.y)})
 	
 	create_bubble(enemy_position.x + 256, enemy_position.y)
+	Globals.room_pickups[room_id].append({"type": "bubble", "position": Vector2(enemy_position.x+256, enemy_position.y)}) 
