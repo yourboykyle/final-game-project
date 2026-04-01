@@ -96,11 +96,12 @@ func cone_attack(origin, direction, angle, radius):
 	query.shape = shape
 	query.transform = Transform2D(0, origin) 
 	print(weapon_owner)
-	if weapon_owner.is_in_group("boss"):
-			collision_mask = 1
-			print("check")
-	query.collision_mask = collision_mask
-	query.exclude = [weapon_owner]
+	if weapon_owner:
+		if weapon_owner.is_in_group("boss"):
+				collision_mask = 1
+				print("check")
+		query.collision_mask = collision_mask
+		query.exclude = [weapon_owner]
 	
 	var results = space_state.intersect_shape(query)
 	
