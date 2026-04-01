@@ -28,7 +28,8 @@ offset_top = 1054.0
 offset_right = 2179.0
 offset_bottom = 1407.0
 theme_override_font_sizes/font_size = 128
-text = "Press space to bounce off surfaces
+text = "Press space to bounce off surfaces 
+(Including enemies)
 Try it against this box!"
 horizontal_alignment = 1
 

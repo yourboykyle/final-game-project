@@ -1,5 +1,6 @@
 extends "res://entities/scripts/Enemy.gd" 
 
+var explosion_radius = 500
 func _ready(): 
 	super._ready() 
 	use_base_ai = false
@@ -28,5 +29,6 @@ func _physics_process(delta: float) -> void:
 func trigger_explosion(): 
 	await get_tree().create_timer(1).timeout
 	take_damage(50) 
-	Globals.player.take_damage(25) 
+	if global_position.distance_to(player.global_position) <= explosion_radius:
+		Globals.player.take_damage(25) 
 	

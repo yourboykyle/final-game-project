@@ -38,6 +38,8 @@ var flip_timer = 0.0
 
 func _ready() -> void:
 	# Set current weapon to the weapon holders first child
+	self.add_to_group("player")
+	
 	current_weapon = weapon_holder.get_child(0)
 	current_weapon.weapon_owner = self
 	

@@ -21,3 +21,4 @@ rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_k50w0")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]

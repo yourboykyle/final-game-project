@@ -1,6 +1,8 @@
 class_name Weapon extends Equippable
 
 const BULLET = preload("res://entities/Bullet.tscn")
+const PLAYERBULLETTEXTURE = preload("res://assets/sprites/playerbullet.png")
+const ENEMYBULLETTEXTURE = preload("res://assets/sprites/enemybullet.png")
 # Weapon attributes
 @export var attack_type: Globals.ATTACK_TYPE
 #How fast the weapon shoots
@@ -71,7 +73,6 @@ func rectangle_attack(origin, direction):
 # Function that shoots a projectile in the direction of a crosshair
 # Can probably reuse this for enemy logic 
 func shoot_projectile(weapon, dir, projectile_speed):
-	#create a bullet
 	var bullet = BULLET.instantiate()
 	
 	bullet.direction = dir
@@ -84,6 +85,12 @@ func shoot_projectile(weapon, dir, projectile_speed):
 	bullet.shooter = weapon_owner
 	#Add the child to the scene tree
 	get_tree().current_scene.add_child(bullet)
+	
+	if !weapon_owner || weapon_owner.is_in_group("player"):
+		bullet.sprite_2d.texture = PLAYERBULLETTEXTURE
+	
+	if weapon_owner && (weapon_owner.is_in_group("enemy") || weapon_owner.is_in_group("boss")):
+		bullet.sprite_2d.texture = ENEMYBULLETTEXTURE
 
 
 func cone_attack(origin, direction, angle, radius):

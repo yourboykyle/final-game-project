@@ -2,6 +2,7 @@ class_name Bullet extends Area2D
 
 var speed = 800
 var damage = 0
+@onready var sprite_2d: Sprite2D = $Sprite2D
 
 var direction = Vector2.ZERO 
 var shooter = ""
@@ -21,3 +22,6 @@ func _on_body_entered(body):
 		body.take_damage(damage)
 	
 	queue_free()
+
+
+ 
