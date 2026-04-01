@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dd7y4ahbcq56x"]
 
-[ext_resource type="Script" uid="uid://cmrue4ekgplot" path="res://interactables/scripts/Bubble.gd" id="1_psoii"]
-[ext_resource type="Texture2D" uid="uid://bnd2qj5j3hxgc" path="res://assets/sprites/player.png" id="2_iy884"]
+[ext_resource type="Script" path="res://interactables/scripts/Bubble.gd" id="1_psoii"]
+[ext_resource type="Texture2D" uid="uid://cim5dqfdahg7d" path="res://assets/sprites/bubble.png" id="2_iy884"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_psoii"]
 radius = 57.14018
@@ -10,9 +10,12 @@ radius = 57.14018
 script = ExtResource("1_psoii")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=705125254]
+position = Vector2(5.722046e-06, 11.000002)
+scale = Vector2(4.5781255, 4.765625)
 texture = ExtResource("2_iy884")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1991241550]
+position = Vector2(1, 1)
 shape = SubResource("CircleShape2D_psoii")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

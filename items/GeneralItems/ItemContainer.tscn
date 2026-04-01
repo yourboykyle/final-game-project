@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cpq3n1y0ow824" path="res://items/Weapons/MachineGun.tscn" id="5_njjan"]
 [ext_resource type="PackedScene" uid="uid://dqad0jehp48yc" path="res://items/Weapons/SniperRifle.tscn" id="6_pvju5"]
 [ext_resource type="PackedScene" uid="uid://d3ed1gmc0psqa" path="res://items/Weapons/Dagger.tscn" id="7_1wl5r"]
+[ext_resource type="PackedScene" uid="uid://cxmrrwmtim00m" path="res://items/GeneralItems/Bubble.tscn" id="8_pvju5"]
 
 [node name="ItemContainer" type="Node2D" unique_id=1587473337]
 
@@ -23,3 +24,5 @@
 [node name="SniperRifle" parent="." unique_id=647256177 instance=ExtResource("6_pvju5")]
 
 [node name="Dagger" parent="." unique_id=499811267 instance=ExtResource("7_1wl5r")]
+
+[node name="Bubble" parent="." unique_id=1949644667 instance=ExtResource("8_pvju5")]
