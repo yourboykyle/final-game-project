@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://tbyeo045ivp2"]
 
 [ext_resource type="Script" uid="uid://cxi2vd1sr3f6r" path="res://items/scripts/Axe.gd" id="1_5hc31"]
+[ext_resource type="Texture2D" uid="uid://kwwqhb7h1cuk" path="res://assets/sprites/axe.png" id="2_4j1f6"]
 
 [node name="Axe" type="Node2D" unique_id=641689570]
 script = ExtResource("1_5hc31")
@@ -11,3 +12,5 @@ item_name = "Axe"
 item_id = 3008
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1664195817]
+texture_filter = 1
+texture = ExtResource("2_4j1f6")
