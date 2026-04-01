@@ -209,8 +209,9 @@ func _on_death_timer_timeout() -> void:
 	if oxygen > 0:
 		can_die = true
 		return
-	
+	print(InventoryManager.run_loot)
 	InventoryManager.clear_run_state()
+	print(InventoryManager.run_loot)
 	died.emit()
 
 
