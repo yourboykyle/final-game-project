@@ -111,4 +111,5 @@ func _init_debug_items():
 	stash.add_item(3001, 1, {})
 	stash.add_item(3002, 1, {})
 	stash.add_item(3003, 1, {})
+	stash.add_item(1001, 5, {})
 	inventory_changed.emit()
