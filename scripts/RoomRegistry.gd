@@ -12,6 +12,10 @@ var rooms = {
 	Globals.RoomType.TUTORIAL_MOVE: preload("res://rooms/tutorial/TutorialMoveRoom.tscn"),
 	Globals.RoomType.TUTORIAL_COMBAT: preload("res://rooms/tutorial/TutorialCombatRoom.tscn"),
 	Globals.RoomType.TUTORIAL_END: preload("res://rooms/tutorial/TutorialEndRoom.tscn"),
+	Globals.RoomType.TUTORIAL_MAP: preload("res://rooms/tutorial/TutorialMapRoom.tscn"),
+	Globals.RoomType.TUTORIAL_ATTACK: preload("res://rooms/tutorial/TutorialAttackRoom.tscn"),
+	Globals.RoomType.TUTORIAL_OXYGEN: preload("res://rooms/tutorial/TutorialOxygenRoom.tscn"),
+
 }
 
 func get_room_scene(type: Globals.RoomType):

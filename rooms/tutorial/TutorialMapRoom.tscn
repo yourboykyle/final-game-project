@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bgetdse4br6xd"]
+
+[ext_resource type="PackedScene" uid="uid://bbrsvqe0p684n" path="res://rooms/RoomBase.tscn" id="1_assws"]
+
+[node name="RoomBase" unique_id=1536920797 instance=ExtResource("1_assws")]
+
+[node name="Label" type="Label" parent="." index="4" unique_id=1979220698]
+offset_left = 228.0
+offset_top = 1075.0
+offset_right = 2795.0
+offset_bottom = 1424.0
+theme_override_font_sizes/font_size = 128
+text = "The top right is your minimap"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="." index="5" unique_id=1702672937]
+offset_left = 188.0
+offset_top = 1451.0
+offset_right = 2755.0
+offset_bottom = 2338.0
+theme_override_font_sizes/font_size = 128
+text = "Green: Current room
+Pink: Start room
+Red: Enemy oom
+Yellow: Treasure room
+Blue: Boss room"
+horizontal_alignment = 1

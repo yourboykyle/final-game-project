@@ -16,6 +16,8 @@ signal enemy_defeated(position: Vector2)
 
 var oxygen_decay_rate := 1.0
 
+var death_disabled = false
+
 var crosshair_instance
 const CROSSHAIR = preload("res://interface/Crosshair.tscn")
 @export var shooting_enabled = true
@@ -35,7 +37,10 @@ enum RoomType {
 	TUTORIAL_START,
 	TUTORIAL_MOVE,
 	TUTORIAL_COMBAT,
-	TUTORIAL_END
+	TUTORIAL_END,
+	TUTORIAL_MAP,
+	TUTORIAL_ATTACK,
+	TUTORIAL_OXYGEN,
 }
 
 enum RoomExit {

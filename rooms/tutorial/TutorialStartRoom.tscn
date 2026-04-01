@@ -27,13 +27,3 @@ offset_right = 2029.0
 offset_bottom = 1991.0
 theme_override_font_sizes/font_size = 128
 text = "Shift to sprint"
-
-[node name="Label4" type="Label" parent="." index="7" unique_id=1593666305]
-offset_left = 1712.0
-offset_top = 973.0
-offset_right = 3015.0
-offset_bottom = 1152.0
-theme_override_font_sizes/font_size = 64
-text = "Note: You can see where the next room is
-by looking at the mini map in the top right"
-horizontal_alignment = 1

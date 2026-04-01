@@ -6,14 +6,34 @@
 [node name="RoomBase" unique_id=1536920797 instance=ExtResource("1_mabku")]
 
 [node name="Label" type="Label" parent="." index="4" unique_id=917224824]
-offset_left = 737.0
-offset_top = 1000.0
-offset_right = 2435.0
-offset_bottom = 1353.0
+offset_left = -168.0
+offset_top = 1114.0
+offset_right = 1530.0
+offset_bottom = 1467.0
 theme_override_font_sizes/font_size = 128
-text = "Press E on the extraction
-point to finish your round!"
+text = "Press E to interact
+with things"
 horizontal_alignment = 1
 
 [node name="ExtractionArea" parent="." index="5" unique_id=1658706922 instance=ExtResource("2_h22b4")]
-position = Vector2(1441, 1433)
+position = Vector2(2029, 1465)
+
+[node name="Label2" type="Label" parent="." index="6" unique_id=631637630]
+offset_left = -16.0
+offset_top = 1698.0
+offset_right = 1682.0
+offset_bottom = 2051.0
+theme_override_font_sizes/font_size = 128
+text = "Like chests, bubbles,
+and extraction zones"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="." index="7" unique_id=348212265]
+offset_left = 1307.0
+offset_top = 1073.0
+offset_right = 3005.0
+offset_bottom = 1426.0
+theme_override_font_sizes/font_size = 128
+text = "Press E on this extraction
+zone to leave the dungeon"
+horizontal_alignment = 1

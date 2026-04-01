@@ -36,6 +36,7 @@ func clear_dungeon():
 
 
 func load_main_menu():
+	Globals.death_disabled = false
 	if dungeon_hotbar_ui:
 		dungeon_hotbar_ui.queue_free()
 		dungeon_hotbar_ui = null

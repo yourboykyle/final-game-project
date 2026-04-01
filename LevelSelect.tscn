@@ -2,6 +2,15 @@
 
 [ext_resource type="Script" uid="uid://dl7rh7tirl7dw" path="res://scripts/LevelSelect.gd" id="1_sf6f5"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sf6f5"]
+bg_color = Color(0.15691197, 0.34088326, 0.16112885, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ardn0"]
+bg_color = Color(0.54679227, 0.5467568, 0.17081317, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q3t17"]
+bg_color = Color(0.69600993, 0.18040496, 0.18440378, 1)
+
 [node name="LevelSelect" type="Control" unique_id=137278377]
 layout_mode = 3
 anchors_preset = 0
@@ -32,14 +41,17 @@ text = "Tutorial"
 
 [node name="Level1" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1051244853]
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_sf6f5")
 text = "1"
 
 [node name="Level2" type="Button" parent="CenterContainer/VBoxContainer" unique_id=2091706100]
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_ardn0")
 text = "2"
 
 [node name="Level3" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1030964463]
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_q3t17")
 text = "3"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]

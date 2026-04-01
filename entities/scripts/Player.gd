@@ -60,7 +60,6 @@ func _process(delta):
 			return
 		#Try the current weapons attack
 		if current_weapon == null:
-			print("weapon null")
 			return
 			
 		current_weapon.try_attack()
@@ -143,9 +142,10 @@ func _update_oxygen(delta):
 	emit_signal("oxygen_changed", oxygen, max_oxygen)
 	
 	# Check oxygen levels
-	if oxygen <= 0:
-		#Start death if the player can die
-		death(can_die)
+	if !Globals.death_disabled:
+		if oxygen <= 0:
+			#Start death if the player can die
+			death(can_die)
 
 func change_oxygen(amount):
 
@@ -159,8 +159,9 @@ func take_damage(amount):
 	oxygen -= amount
 	emit_signal("oxygen_changed", oxygen, max_oxygen)
 	
-	if oxygen <= 0:
-		death(can_die)
+	if !Globals.death_disabled:
+		if oxygen <= 0:
+				death(can_die)
 
 
 func dive():
@@ -172,12 +173,11 @@ func dive():
 
 func death(can_die):
 	#Check if they can die, if they can, set can die to false and start 10 seconds till super death
+	
 	if can_die:
 		self.can_die = false
-		print("7.5 SECONDS UNTIL UNCONCIOUS")
+		print("5 SECONDS UNTIL UNCONCIOUS")
 		death_timer.start()
-	
-	return
 
 func find_interactables():
 	var found_interactables = get_tree().get_nodes_in_group(
@@ -193,6 +193,12 @@ func _on_dive_time_timeout() -> void:
 
 
 func _on_death_timer_timeout() -> void:
+	print("timed out")
+	
+	if oxygen > 0:
+		can_die = true
+		return
+	
 	InventoryManager.clear_run_state()
 	died.emit()
 

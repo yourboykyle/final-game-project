@@ -35,11 +35,15 @@ func generate():
 	$"../CanvasLayer/GameplayUI/Minimap".build_minimap()
 
 func generate_tutorial():
+	Globals.death_disabled = true
 	# linear path
 	add_room(Vector2i(0,0), Globals.RoomType.TUTORIAL_START)
-	add_room(Vector2i(1,0), Globals.RoomType.TUTORIAL_MOVE)
-	add_room(Vector2i(2,0), Globals.RoomType.TUTORIAL_COMBAT)
-	add_room(Vector2i(3,0), Globals.RoomType.TUTORIAL_END)
+	add_room(Vector2i(1,0), Globals.RoomType.TUTORIAL_MAP)
+	add_room(Vector2i(2,0), Globals.RoomType.TUTORIAL_MOVE)
+	add_room(Vector2i(3,0), Globals.RoomType.TUTORIAL_OXYGEN)
+	add_room(Vector2i(4,0), Globals.RoomType.TUTORIAL_ATTACK)
+	add_room(Vector2i(5,0), Globals.RoomType.TUTORIAL_COMBAT)
+	add_room(Vector2i(6,0), Globals.RoomType.TUTORIAL_END)
 
 	# load first room
 	load_room(Vector2i(0,0), null)
