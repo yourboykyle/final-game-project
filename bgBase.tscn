@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bmx5ywdrctq3r"]
+
+[ext_resource type="Texture2D" uid="uid://bn7pcmoim4fmt" path="res://assets/sprites/128darksquare.png" id="1_cdtva"]
+
+[node name="Bgbase" type="Sprite2D" unique_id=991687150]
+texture = ExtResource("1_cdtva")

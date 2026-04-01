@@ -1,31 +1,27 @@
 [gd_scene format=3 uid="uid://dxkig2ra18ev4"]
 
 [ext_resource type="Script" uid="uid://byhsoehublffm" path="res://entities/scripts/boss.gd" id="1_fpp61"]
+[ext_resource type="Texture2D" uid="uid://bg4swhbfvfbtw" path="res://assets/sprites/boss.png" id="2_i6ift"]
 
-[sub_resource type="Gradient" id="Gradient_fpp61"]
-offsets = PackedFloat32Array(0, 0.5745192, 0.7379808, 0.80528843, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.5745192, 0.5745192, 0.5745192, 1, 0.7379808, 0.7379808, 0.7379808, 1, 0.80528843, 0.80528843, 0.80528843, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_i6ift"]
-gradient = SubResource("Gradient_fpp61")
-fill_from = Vector2(1, 0)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8u51s"]
-size = Vector2(127, 136)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i6ift"]
+radius = 55.5
+height = 124.0
 
 [node name="Boss" type="CharacterBody2D" unique_id=1768426379 groups=["boss"]]
+scale = Vector2(2, 2)
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_fpp61")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1293377536]
+texture_filter = 1
 position = Vector2(30.5, 36.5)
 scale = Vector2(1.953125, 2.140625)
-texture = SubResource("GradientTexture2D_i6ift")
+texture = ExtResource("2_i6ift")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1880967468]
 position = Vector2(29.5, 36)
-shape = SubResource("RectangleShape2D_8u51s")
+shape = SubResource("CapsuleShape2D_i6ift")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=397771702]
 target_desired_distance = 20.0
