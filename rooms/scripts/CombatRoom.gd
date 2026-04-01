@@ -2,6 +2,7 @@ extends RoomBase
 
 var enemy_scene = preload("res://entities/Enemies/enemy.tscn")
 var boom_enemy_scene = preload("res://entities/Enemies/boomEnemy.tscn") 
+var sucker_scene = preload("res://entities/Enemies/Sucker.tscn")
 @onready var spawn_points = []
 @onready var nav_region = $NavigationRegion2D 
 
@@ -35,9 +36,12 @@ func spawn_and_save_enemies(room_id):
 	var enemy_count = randi_range(1, spawn_points.size())
 	Globals.room_enemies[room_id] = [] 
 	for i in range(enemy_count):
-		var enemy
-		if (randi_range(1,1) == 1): 
+		var enemy 
+		var choice = randi_range(1,5)
+		if (choice == 1): 
 			enemy = boom_enemy_scene.instantiate() 
+		elif (choice == 2): 
+			enemy = sucker_scene.instantiate() 
 		else:  
 			enemy = enemy_scene.instantiate() 
 		enemy.enemy_id = str(i) + "_" + str(randi)

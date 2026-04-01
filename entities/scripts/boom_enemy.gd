@@ -10,7 +10,9 @@ func _ready():
 	health_bar.max_value = max_health
 	health_bar.value = max_health
 	health = max_health 
-	SPEED = 750
+	SPEED = 750 
+	if weapon: 
+		weapon.queue_free()
 func _physics_process(delta: float) -> void:
 	agent.target_position = player.global_position
 	var distance = global_position.distance_to(player.global_position)

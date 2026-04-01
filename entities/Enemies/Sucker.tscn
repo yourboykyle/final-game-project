@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://d2top6ww5s8s4"]
+
+[ext_resource type="Script" uid="uid://ct2127fmu255t" path="res://entities/scripts/sucker.gd" id="1_bh2oo"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_sbula"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bh2oo"]
+size = Vector2(53, 51)
+
+[node name="Sucker" type="CharacterBody2D" unique_id=1546950449]
+collision_layer = 2
+motion_mode = 1
+script = ExtResource("1_bh2oo")
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=1308773056]
+offset_top = -59.0
+offset_right = 4.0
+offset_bottom = -32.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=262024074]
+position = Vector2(9.536743e-07, 0)
+scale = Vector2(51.750004, 53.250004)
+texture = SubResource("PlaceholderTexture2D_sbula")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=700080586]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_bh2oo")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=550089024]
