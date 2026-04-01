@@ -212,6 +212,7 @@ func _on_death_timer_timeout() -> void:
 	print(InventoryManager.run_loot)
 	InventoryManager.clear_run_state()
 	print(InventoryManager.run_loot)
+	Globals.boss_spawned = false
 	died.emit()
 
 

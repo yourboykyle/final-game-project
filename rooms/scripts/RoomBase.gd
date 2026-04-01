@@ -12,7 +12,8 @@ var bubble
 var grid_position : Vector2i
 
 func initialize(grid_pos: Vector2i):
-	var gen = Globals.dungeon_manager
+	var gen = Globals.dungeon_manager 
+	Globals.doors_locked = false
 
 	if !gen.dungeon_layout.has(grid_pos + Globals.DIR_VECTORS[Globals.Direction.NORTH]):
 		$Doors/DoorNorth.queue_free()

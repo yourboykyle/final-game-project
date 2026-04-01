@@ -13,7 +13,6 @@ func attack():
 	var dir 
 	if weapon_owner and weapon_owner.is_in_group("boss"): 
 		dir = (Globals.player.global_position - melee.global_position).normalized()
-		print("I WORK") 
 	else: 
 		dir = (get_global_mouse_position() - melee.global_position).normalized()
 	var origin = Vector2(melee.global_position.x, melee.global_position.y)
