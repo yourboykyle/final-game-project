@@ -9,7 +9,7 @@ fire_rate = 0.1
 damage = 25.0
 item_name = "Dagger"
 item_id = 3007
-item_description = "DAGGERS"
+item_description = "Fast attack speed, low damage"
 
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=736549309]

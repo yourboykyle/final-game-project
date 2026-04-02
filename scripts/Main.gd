@@ -10,10 +10,12 @@ const MAIN_MENU = preload("res://MainMenu.tscn")
 const LEVEL_SELECT = preload("res://LevelSelect.tscn")
 const PLAYER_SCENE = preload("res://entities/Player.tscn")
 const DEATH_SCENE = preload("res://DeathScreen.tscn")
+const DEATH_EFFECT = preload("res://interface/DeathEffect.tscn")
 
 var current_scene = null
 var player = null
 var dungeon_hotbar_ui: Node2D = null
+var death_effect = null
 
 func _ready() -> void:
 	gameplayUI.hide()
@@ -51,6 +53,9 @@ func load_main_menu():
 	if dungeon_hotbar_ui:
 		dungeon_hotbar_ui.queue_free()
 		dungeon_hotbar_ui = null
+	if death_effect:
+		death_effect.queue_free()
+		death_effect = null
 
 	clear_scene()
 	
@@ -75,6 +80,9 @@ func load_death_screen():
 	if dungeon_hotbar_ui:
 		dungeon_hotbar_ui.queue_free()
 		dungeon_hotbar_ui = null
+	if death_effect:
+		death_effect.queue_free()
+		death_effect = null
 
 	clear_scene()
 	clear_dungeon()
@@ -96,6 +104,11 @@ func start_game(level_id):
 		
 		player.oxygen_changed.connect(_on_player_oxygen_changed)
 		player.died.connect(func():load_death_screen())
+
+		#red death effect on screen
+		death_effect = DEATH_EFFECT.instantiate()
+		add_child(death_effect)
+		player.death_effect = death_effect
 
 		dungeon_hotbar_ui = preload("res://interface/scripts/DungeonHotbarUI.gd").new()
 		gameplayUI.add_child(dungeon_hotbar_ui)

@@ -11,6 +11,8 @@ var oxygen := max_oxygen
 @onready var death_timer: Timer = $DeathTimer
 var can_die = true
 signal died
+var death_effect = null
+var is_in_death_state = false
 #Life variables end
 
 # Weapon Varaibles Start
@@ -169,6 +171,9 @@ func change_oxygen(amount):
 	oxygen = clamp(oxygen + amount, 0, max_oxygen)
 
 	emit_signal("oxygen_changed", oxygen, max_oxygen)
+	
+	if is_in_death_state and oxygen > 0:
+		_exit_death_state()
 
 func take_damage(amount):
 	if diving:
@@ -194,6 +199,9 @@ func death(can_die):
 	if can_die:
 		self.can_die = false
 		print("5 SECONDS UNTIL UNCONCIOUS")
+		is_in_death_state = true
+		if death_effect:
+			death_effect.show_effect()
 		death_timer.start()
 
 func find_interactables():
@@ -213,12 +221,21 @@ func _on_death_timer_timeout() -> void:
 	
 	if oxygen > 0:
 		can_die = true
+		_exit_death_state()
 		return
 	print(InventoryManager.run_loot)
 	InventoryManager.clear_run_state()
 	print(InventoryManager.run_loot)
 	Globals.boss_spawned = false
 	died.emit()
+
+
+func _exit_death_state() -> void:
+	is_in_death_state = false
+	can_die = true
+	death_timer.stop()
+	if death_effect:
+		death_effect.hide_effect()
 
 
 func _on_dive_cd_timeout() -> void:
