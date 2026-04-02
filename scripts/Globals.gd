@@ -92,3 +92,10 @@ enum Groups {
 const GROUP_STRINGS = [
 	"interactable"
 ]
+
+# Health scaling:
+const DIFF_HEALTH_BASE = 1.0
+const DIFF_HEALTH_PER_FLOOR = 0.5
+
+func get_health_multiplier(floor: int) -> float:
+	return DIFF_HEALTH_BASE + (floor - 1) * DIFF_HEALTH_PER_FLOOR

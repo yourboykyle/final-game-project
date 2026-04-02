@@ -13,7 +13,7 @@ var stop_distance = 500
 var stopped = false
 var weapon = "" 
 var attack_timer = 0.0 
-var attack_cooldown = 1.0 
+var attack_cooldown = 1.0
 var attack_range = 500  
 @export var use_base_movement = true
 @export var use_base_ai = true
@@ -21,7 +21,9 @@ var attack_range = 500
 
 @onready var health_bar = $HealthBar
 
-func _ready(): 
+func _ready():
+	max_health = floor(max_health * Globals.get_health_multiplier(Globals.current_floor))
+	
 	agent.avoidance_enabled = false
 	print("Enemy ready at:", global_position, "Parent:", get_parent().name) 
 	health = max_health;

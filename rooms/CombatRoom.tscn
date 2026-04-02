@@ -15,6 +15,7 @@ source_geometry_group_name = &"navigation"
 
 [node name="RoomBase" unique_id=1536920797 groups=["navigation"] instance=ExtResource("1_m6eoq")]
 script = ExtResource("2_x3f7y")
+room_type = 1
 
 [node name="RoomTrigger" type="Area2D" parent="." index="4" unique_id=1602358805]
 

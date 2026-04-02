@@ -11,7 +11,8 @@ const ENEMYBULLETTEXTURE = preload("res://assets/sprites/enemybullet.png")
 @export var rectangle_range : float = 1500
 #Size of the raycast
 @export var aoe : float = 10
-@export var damage : float = 34
+# main gun damage (hitscan gun uses this)
+@export var damage : float = 15
 #Linger is only visual
 @export var linger_time : float = 0.05
 #What layer it collides with

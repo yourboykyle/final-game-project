@@ -5,3 +5,4 @@
 
 [node name="RoomBase" unique_id=1536920797 instance=ExtResource("1_x3mou")]
 script = ExtResource("2_wme08")
+room_type = 2

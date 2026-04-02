@@ -15,7 +15,7 @@ var state = State.IDLE
 var speed
 var sword_range := 250.0
 var sword_cooldown := 1.0
-var big_attack_cooldown := 10.0
+var big_attack_cooldown := 5.0
 
 func _ready(): 
 	attack_timer = 2.0

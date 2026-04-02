@@ -118,7 +118,10 @@ func _physics_process(delta):
 		if diving:
 			return
 		
-		if can_dive:
+		var room = Globals.dungeon_manager.current_room
+		print("Current room:")
+		print(room.room_type)
+		if can_dive and room != null and room.room_type != Globals.RoomType.BOSS:
 			dive()
 
 	if get_slide_collision_count() > 0:
@@ -190,7 +193,7 @@ func death(can_die):
 	
 	if can_die:
 		self.can_die = false
-		print("3 SECONDS UNTIL UNCONCIOUS")
+		print("5 SECONDS UNTIL UNCONCIOUS")
 		death_timer.start()
 
 func find_interactables():
