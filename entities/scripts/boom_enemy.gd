@@ -11,6 +11,7 @@ func _ready():
 	health_bar.value = max_health
 	health = max_health 
 	SPEED = 750 
+	type = "boom" 
 	if weapon: 
 		weapon.queue_free()
 func _physics_process(delta: float) -> void:

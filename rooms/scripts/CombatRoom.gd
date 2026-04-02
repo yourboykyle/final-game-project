@@ -5,6 +5,8 @@ var boom_enemy_scene = preload("res://entities/Enemies/BoomEnemy.tscn")
 var sucker_scene = preload("res://entities/Enemies/Sucker.tscn")
 @onready var spawn_points = []
 @onready var nav_region = $NavigationRegion2D 
+var box_positions = []
+
 
 func _ready():
 	room_type = Globals.RoomType.COMBAT 
@@ -18,8 +20,13 @@ func bake_navigation():
 	var nav_poly = nav_region.navigation_polygon
 	nav_region.bake_navigation_polygon()
 func _on_room_trigger_body_entered(body: Node2D) -> void:
-	if body.name == "Player":
-		spawn_boxes()
+	if body.name == "Player": 
+		if !Globals.room_box_positions.has(room_id):
+			spawn_boxes() 
+		else: 
+			box_positions = Globals.room_box_positions[room_id] 
+			respawn_box()
+		
 		await get_tree().process_frame 
 		bake_navigation()
 		
@@ -28,7 +35,6 @@ func _on_room_trigger_body_entered(body: Node2D) -> void:
 			restore_pickups(room_id)
 		else:
 			spawn_and_save_enemies(room_id)
-
 func spawn_and_save_enemies(room_id): 
 	if spawn_points.is_empty(): 
 		return 
@@ -48,10 +54,16 @@ func spawn_and_save_enemies(room_id):
 		enemy.position = spawn_points[i].position 
 		add_child(enemy) 
 		enemy.add_to_group("enemy") 
-		Globals.room_enemies[room_id].append({"id": enemy.enemy_id, "position": enemy.global_position, "health": enemy.health}) 
+		Globals.room_enemies[room_id].append({"id": enemy.enemy_id, "type": enemy.type, "position": enemy.global_position, "health": enemy.health}) 
 func restore_enemies(room_id): 
-	for enemy_data in Globals.room_enemies[room_id]: 
-		var enemy = enemy_scene.instantiate()
+	for enemy_data in Globals.room_enemies[room_id]:
+		var enemy 
+		if enemy_data["type"] == "suck": 
+			enemy = sucker_scene.instantiate() 
+		elif enemy_data["type"] == "boom": 
+			enemy = boom_enemy_scene.instantiate()
+		else:
+			enemy = enemy_scene.instantiate()
 		enemy.enemy_id = enemy_data["id"] 
 		enemy.position = enemy_data["position"] 
 		enemy.set_health(enemy_data["health"])
@@ -83,7 +95,8 @@ func save_enemy_positions():
 	for enemy in get_children():
 		if enemy.is_in_group("enemy"):
 			for data in Globals.room_enemies[room_id]:
-				if data["id"] == enemy.enemy_id:
+				if data["id"] == enemy.enemy_id: 
+					data["type"] = enemy.type
 					data["position"] = enemy.position
 					data["health"] = enemy.health
 
@@ -93,7 +106,6 @@ func spawn_boxes():
 	var box_count = randi_range(2, 4)
 	var margin = 200  # distance from walls
 	var min_distance_between_boxes = 100
-
 	var spawned_positions = []
 
 	for i in range(box_count):
@@ -106,7 +118,6 @@ func spawn_boxes():
 			var x = randf_range(margin, room_size - margin)
 			var y = randf_range(margin, room_size - margin)
 			position = Vector2(x, y)
-
 			var too_close = false
 			for p in spawned_positions:
 				if p.distance_to(position) < min_distance_between_boxes:
@@ -119,8 +130,16 @@ func spawn_boxes():
 			attempts += 1
 		
 		spawned_positions.append(position)
+		box_positions.append(position)
+		Globals.room_box_positions[room_id] = box_positions
 		box.position = position 
 		box.add_to_group("navigation")
+		add_child(box) 
+func respawn_box():
+	print("check")
+	for pos in box_positions:
+		var box = Globals.BOX.instantiate()
+		box.position = pos
 		add_child(box)
 
 func _on_enemy_defeated(enemy_position):

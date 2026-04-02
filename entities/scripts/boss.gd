@@ -15,7 +15,8 @@ var state = State.IDLE
 var speed
 var sword_range := 250.0
 var sword_cooldown := 1.0
-var big_attack_cooldown := 5.0
+var big_attack_cooldown := 10.0 
+var cooldown = 5
 
 func _ready(): 
 	attack_timer = 2.0
@@ -24,11 +25,13 @@ func _ready():
 	super._ready() 
 	use_base_movement = false
 	use_base_ai = false
+	type = "boss"
 
 func _physics_process(delta: float) -> void: 
 	agent.target_position - player.global_position
 	var distance = global_position.distance_to(player.global_position)
-	attack_timer -= delta
+	attack_timer -= delta 
+	cooldown -= delta
 	match state:
 		State.IDLE:
 			state = State.CHASE
@@ -45,15 +48,17 @@ func _physics_process(delta: float) -> void:
 			do_sword_attack()
 			attack_timer = sword_cooldown
 			state = State.COOLDOWN
+			cooldown = .5
 		State.BIG_ATTACK:
 			velocity = Vector2.ZERO
 			move_and_slide()
 			do_big_attack()
-			attack_timer = big_attack_cooldown
+			attack_timer = big_attack_cooldown 
+			cooldown = 1
 			state = State.COOLDOWN
 		State.COOLDOWN:
-			chase_player()
-			if attack_timer <= 0:
+			velocity = Vector2.ZERO
+			if cooldown <= 0:
 				state = State.CHASE
 #movement
 func chase_player():

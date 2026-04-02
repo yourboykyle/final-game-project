@@ -14,7 +14,8 @@ var stopped = false
 var weapon = "" 
 var attack_timer = 0.0 
 var attack_cooldown = 1.0
-var attack_range = 500  
+var attack_range = 500
+var type
 @export var use_base_movement = true
 @export var use_base_ai = true
 @onready var sprite_2d: Sprite2D = $Sprite2D
@@ -32,7 +33,8 @@ func _ready():
 	weapon = WEAPON.instantiate()
 	add_child(weapon)
 	weapon.weapon_owner = self 
-	weapon.collision_mask = 1
+	weapon.collision_mask = 1 
+	type = "ranged"
 
 func _physics_process(delta: float) -> void: 
 	if !use_base_ai: 

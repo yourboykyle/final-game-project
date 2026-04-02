@@ -11,7 +11,8 @@ func _ready():
 	SPEED = 150 
 	agent.target_position = get_random_point()
 	if weapon: 
-		weapon.queue_free()
+		weapon.queue_free() 
+	type = "suck"
 func _physics_process(delta: float): 
 	state_time -= delta
 	if state == WANDER:
