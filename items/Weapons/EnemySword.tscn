@@ -4,4 +4,7 @@
 
 [node name="EnemySword" type="Node2D" unique_id=582181388]
 script = ExtResource("1_lkwlt")
+angle = 60.0
+attack_radius = 350.0
+collision_mask = 1
 item_name = "Enemy Sword"
