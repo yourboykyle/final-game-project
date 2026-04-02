@@ -1,7 +1,7 @@
 extends RoomBase
 
 var enemy_scene = preload("res://entities/Enemies/enemy.tscn")
-var boom_enemy_scene = preload("res://entities/Enemies/boomEnemy.tscn") 
+var boom_enemy_scene = preload("res://entities/Enemies/BoomEnemy.tscn") 
 var sucker_scene = preload("res://entities/Enemies/Sucker.tscn")
 @onready var spawn_points = []
 @onready var nav_region = $NavigationRegion2D 

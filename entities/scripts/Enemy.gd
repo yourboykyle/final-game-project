@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 @onready var player = Globals.player 
 @onready var agent = $NavigationAgent2D 
+
 const WEAPON = preload("res://items/Weapons/BaseGun.tscn")
 var SPEED = 250
 var health
@@ -21,6 +22,7 @@ var attack_range = 500
 @onready var health_bar = $HealthBar
 
 func _ready(): 
+	agent.avoidance_enabled = false
 	print("Enemy ready at:", global_position, "Parent:", get_parent().name) 
 	health = max_health;
 	health_bar.max_value = max_health 
