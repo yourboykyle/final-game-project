@@ -24,7 +24,7 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 64
-text = "Play Again"
+text = "Continue"
 
 [node name="Label" type="Label" parent="." unique_id=687524953]
 layout_mode = 0
