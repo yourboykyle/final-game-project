@@ -9,3 +9,5 @@ attack_type = 2
 damage = 5.0
 collision_mask = 1
 item_name = "BossGun"
+item_description = "Boss Gun...!!! Players will never have this womp womp"
+

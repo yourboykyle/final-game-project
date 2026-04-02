@@ -10,6 +10,7 @@ fire_rate = 0.5
 aoe = 50.0
 damage = 75.0
 item_name = "Base Sword"
+item_description = "BASE SWORD"
 item_id = 3003
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1004532278]

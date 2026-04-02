@@ -69,7 +69,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("attack"):
 		var hotbar_index = InventoryManager.hotbar_selected_index
 		var hotbar_item = InventoryManager.hotbar.get_item(hotbar_index)
-		#add new consumables by copying this iff statement and replacing the id.
+		# add new consumables by copying this iff statement and replacing the id.
 		if not hotbar_item.is_empty() and hotbar_item.id == 1001:
 			var bubble = ItemDb.get_item(1001)
 			bubble.use_item(self)

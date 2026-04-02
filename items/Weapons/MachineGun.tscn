@@ -12,6 +12,8 @@ fire_rate = 0.1
 damage = 5.0
 item_name = "Machine Gun"
 item_id = 3005
+item_description = "PEW PEW MACHINE GUN"
+
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1816799339]
 texture = ExtResource("2_aclii")

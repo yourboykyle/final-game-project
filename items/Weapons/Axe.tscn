@@ -10,6 +10,8 @@ fire_rate = 5.0
 damage = 100.0
 item_name = "Axe"
 item_id = 3008
+item_description = "THE AXE"
+
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1664195817]
 texture_filter = 1

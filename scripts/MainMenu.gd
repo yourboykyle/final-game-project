@@ -9,6 +9,7 @@ var stash_slots: Array = []
 var hotbar_ui: Node
 var selected_source_index: int = -1
 var selected_source_container: String = ""
+var tooltip: ItemTooltip
 
 func _ready():	
 	var vbox = $RightPanel/CenterContainer/VBoxContainer
@@ -51,6 +52,7 @@ func _setup_stash():
 		var slot_panel = Panel.new()
 		slot_panel.custom_minimum_size = Vector2(60, 60)
 		slot_panel.modulate = Color.LIGHT_BLUE
+		slot_panel.mouse_filter = Control.MOUSE_FILTER_STOP
 
 		var overlay = Node2D.new()
 		slot_panel.add_child(overlay)
@@ -85,13 +87,32 @@ func _setup_stash():
 			"index": i
 		})
 		
+		#click detection
 		slot_panel.gui_input.connect(_on_stash_slot_clicked.bindv([i]))
+		
+		#hover detection for item tooltips
+		slot_panel.mouse_entered.connect(_on_stash_slot_hover.bindv([i, true]))
+		slot_panel.mouse_exited.connect(_on_stash_slot_hover.bindv([i, false]))
+	
+	tooltip = ItemTooltip.new()
+	stash_panel.add_child(tooltip)
 	
 	InventoryManager.inventory_changed.connect(_refresh_all)
 
 func _on_stash_slot_clicked(event: InputEvent, slot_index: int):
 	if event is InputEventMouseButton and event.pressed:
 		_handle_selection(slot_index, "stash")
+
+func _on_stash_slot_hover(slot_index: int, is_hovering: bool):
+	if is_hovering:
+		var item = InventoryManager.stash.get_item(slot_index)
+		if not item.is_empty():
+			var item_data = ItemDb.get_item_data(item.id)
+			tooltip.show_tooltip(item_data)
+		else:
+			tooltip.hide_tooltip()
+	else:
+		tooltip.hide_tooltip()
 
 func _handle_selection(slot_index: int, container: String):
 	if selected_source_index == -1:

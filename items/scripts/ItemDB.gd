@@ -19,10 +19,14 @@ func get_item(id):
 
 func get_item_data(item_id: int) -> Dictionary:
 	if item_id not in items:
-		return {"name": "Unknown", "texture": null}
+		return {"name": "Unknown", "texture": null, "description": ""}
 	
 	var item_scene = items[item_id]
 	var name = item_scene.item_name 
+	var description = ""
+	
+	if item_scene.get("item_description") != null:
+		description = item_scene.item_description
 	
 	var texture: Texture2D = null
 	for child in item_scene.get_children():
@@ -30,4 +34,4 @@ func get_item_data(item_id: int) -> Dictionary:
 			texture = child.texture
 			break
 	
-	return {"name": name, "texture": texture}
+	return {"name": name, "texture": texture, "description": description}

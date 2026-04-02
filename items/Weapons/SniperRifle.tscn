@@ -12,6 +12,8 @@ aoe = 5.0
 damage = 50.0
 item_name = "Sniper Rifle"
 item_id = 3006
+item_description = "OG HEAVY SNIPER!!"
+
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=857617594]
 texture_filter = 1

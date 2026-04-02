@@ -14,6 +14,7 @@ damage = 8.2
 linger_time = null
 collision_mask = null
 item_name = "Base Gun"
+item_description = "BASE GUN"
 item_id = 3002
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1942206103]
