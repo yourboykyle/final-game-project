@@ -1,6 +1,6 @@
 extends "res://entities/scripts/Enemy.gd" 
 
-const base_sword = preload("res://items/Weapons/BaseSword.tscn") 
+const enemy_sword = preload("res://items/Weapons/EnemySword.tscn") 
 var attackfinished = true
 func _ready():
 	max_health = 200
@@ -9,7 +9,7 @@ func _ready():
 	type = "melee"
 	use_base_ai = false
 	use_base_movement = false 
-	weapon = base_sword.instantiate()
+	weapon = enemy_sword.instantiate()
 	add_child(weapon)
 	weapon.weapon_owner = self 
 	weapon.collision_mask = 1
