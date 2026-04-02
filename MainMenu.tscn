@@ -5,8 +5,9 @@
 [node name="MainMenu" type="HSplitContainer" unique_id=569172943]
 offset_right = 1868.0
 offset_bottom = 993.0
-split_offsets = PackedInt32Array(400)
-split_offset = 400
+#Thomas --- Change this to resize stash horizontal
+split_offsets = PackedInt32Array(450)
+split_offset = 450
 script = ExtResource("1_i26rj")
 
 [node name="StashPanel" type="ScrollContainer" parent="." unique_id=336097505]
