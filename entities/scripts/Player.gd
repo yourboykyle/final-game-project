@@ -120,10 +120,10 @@ func _physics_process(delta):
 		if diving:
 			return
 		
-		var room = Globals.dungeon_manager.current_room
-		print("Current room:")
-		print(room.room_type)
-		if can_dive and room != null and room.room_type != Globals.RoomType.BOSS:
+		#var room = Globals.dungeon_manager.current_room
+		#print("Current room:")
+		#print(room.room_type)
+		if can_dive: # commenting out for now and room != null and room.room_type != Globals.RoomType.BOSS:
 			dive()
 
 	if get_slide_collision_count() > 0:

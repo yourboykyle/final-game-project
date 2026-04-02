@@ -1,22 +1,26 @@
 [gd_scene format=3 uid="uid://cmm20j2thy3et"]
 
 [ext_resource type="Script" uid="uid://dfiendgyfeelc" path="res://entities/scripts/boom_enemy.gd" id="1_m8oyh"]
+[ext_resource type="Texture2D" uid="uid://blitlshsv7x1y" path="res://assets/sprites/boomer.png" id="2_015hc"]
+[ext_resource type="Texture2D" uid="uid://cbvl31xdx50qv" path="res://assets/sprites/explosion.png" id="3_tkbvi"]
 
-[sub_resource type="Gradient" id="Gradient_50x2n"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_m8oyh"]
-gradient = SubResource("Gradient_50x2n")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_015hc"]
-size = Vector2(66, 65)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_015hc"]
+radius = 32.968376
+height = 79.98853
 
 [node name="BoomEnemy" type="CharacterBody2D" unique_id=2089965742]
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_m8oyh")
 
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1448066266]
+texture_filter = 1
+texture = ExtResource("3_tkbvi")
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1423202245]
-texture = SubResource("GradientTexture2D_m8oyh")
+texture_filter = 1
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("2_015hc")
 
 [node name="HealthBar" type="ProgressBar" parent="." unique_id=1759057869]
 offset_top = -61.0
@@ -26,5 +30,6 @@ offset_bottom = -34.0
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=517395236]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2050271313]
-position = Vector2(1, 0.5)
-shape = SubResource("RectangleShape2D_015hc")
+position = Vector2(1.0000001, 3.0000005)
+rotation = 1.5759933
+shape = SubResource("CapsuleShape2D_015hc")
