@@ -43,9 +43,13 @@ func switch_state():
 		agent.target_position = get_random_point()
 		state_time = 10
 	else: 
-		state = SUCK 
-		suck_oxygen()
+		state = SUCK
 		state_time = randf_range(1.0,3.0) 
-func suck_oxygen(): 
-	print("SUCKING YOUR OXYGEN")
+		suck_oxygen()
+	
+func suck_oxygen():
+	while state == SUCK:
+		Globals.player.take_damage(.5) 
+		await get_tree().create_timer(.2).timeout
+		
 		

@@ -40,10 +40,11 @@ func spawn_and_save_enemies(room_id):
 		return 
 	spawn_points.shuffle() 
 	var enemy_count = randi_range(1, spawn_points.size())
+	enemy_count = 1
 	Globals.room_enemies[room_id] = [] 
 	for i in range(enemy_count):
 		var enemy 
-		var choice = randi_range(1,5)
+		var choice = randi_range(2,2)
 		if (choice == 1): 
 			enemy = boom_enemy_scene.instantiate() 
 		elif (choice == 2): 
