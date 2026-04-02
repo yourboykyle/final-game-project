@@ -19,7 +19,11 @@ Conventions:
 	Thanks!
 """
 @export var item_id : int
+@export var max_stack_size: int = 5
 @onready var sprite_2d: Sprite2D = $Sprite2D
+
+func _ready() -> void:
+	max_stack_size = 5
 
 func _process(delta):
 	pass

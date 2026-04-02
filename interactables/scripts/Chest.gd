@@ -22,7 +22,7 @@ func loot():
 		return
 	
 	is_looted = true
-	InventoryManager.run_loot.add_item(contained_item.item_id, 1)
+	InventoryManager.add_to_run_loot(contained_item.item_id, 1)
 	InventoryManager.run_loot_changed.emit()
 	opened.emit()
 	

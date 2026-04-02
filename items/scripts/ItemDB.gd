@@ -19,11 +19,15 @@ func get_item(id):
 
 func get_item_data(item_id: int) -> Dictionary:
 	if item_id not in items:
-		return {"name": "Unknown", "texture": null, "description": ""}
+		return {"name": "Unknown", "texture": null, "description": "", "max_stack_size": 5}
 	
 	var item_scene = items[item_id]
 	var name = item_scene.item_name 
 	var description = ""
+	var max_stack_size = item_scene.max_stack_size
+	
+	if item_scene is Weapon:
+		max_stack_size = 1
 	
 	if item_scene.get("item_description") != null:
 		description = item_scene.item_description
@@ -34,4 +38,4 @@ func get_item_data(item_id: int) -> Dictionary:
 			texture = child.texture
 			break
 	
-	return {"name": name, "texture": texture, "description": description}
+	return {"name": name, "texture": texture, "description": description, "max_stack_size": max_stack_size}

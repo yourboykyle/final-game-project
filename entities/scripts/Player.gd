@@ -194,7 +194,7 @@ func dive():
 	dive_time.start()
 
 func death(can_die):
-	#Check if they can die, if they can, set can die to false and start 10 seconds till super death
+	#Check if they can die, if they can, set can die to false and start 5 seconds till super death
 	
 	if can_die:
 		self.can_die = false

@@ -10,6 +10,7 @@ var hotbar_ui: Node
 var selected_source_index: int = -1
 var selected_source_container: String = ""
 var tooltip: ItemTooltip
+var trash_button: Button
 
 func _ready():	
 	var vbox = $RightPanel/CenterContainer/VBoxContainer
@@ -94,6 +95,15 @@ func _setup_stash():
 		slot_panel.mouse_entered.connect(_on_stash_slot_hover.bindv([i, true]))
 		slot_panel.mouse_exited.connect(_on_stash_slot_hover.bindv([i, false]))
 	
+	var button_hbox = HBoxContainer.new()
+	main_vbox.add_child(button_hbox)
+	
+	trash_button = Button.new()
+	trash_button.text = "Trash"
+	trash_button.pressed.connect(_on_trash_pressed)
+	trash_button.modulate = Color.GRAY
+	button_hbox.add_child(trash_button)
+	
 	tooltip = ItemTooltip.new()
 	stash_panel.add_child(tooltip)
 	
@@ -166,6 +176,19 @@ func _refresh_stash():
 	for slot_info in stash_slots:
 		if slot_info.index == selected_source_index and selected_source_container == "stash":
 			slot_info.panel.modulate = Color.YELLOW
+	
+	if selected_source_index != -1 and selected_source_container == "stash":
+		trash_button.modulate = Color.WHITE
+	else:
+		trash_button.modulate = Color.GRAY
 
 func _on_play_pressed():
 	play_pressed.emit()
+
+func _on_trash_pressed():
+	if selected_source_index != -1 and selected_source_container == "stash":
+		InventoryManager.stash.remove_item(selected_source_index)
+		selected_source_index = -1
+		selected_source_container = ""
+		InventoryManager.inventory_changed.emit()
+		_refresh_all()

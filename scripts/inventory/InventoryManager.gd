@@ -23,9 +23,17 @@ func _ready():
 	_init_debug_items()
 
 func add_to_stash(item_id: int, quantity: int = 1, metadata: Dictionary = {}) -> bool:
-	var result = stash.add_item(item_id, quantity, metadata)
+	var max_stack = _get_max_stack_size(item_id)
+	var result = stash.add_item(item_id, quantity, metadata, max_stack)
 	if result:
 		inventory_changed.emit()
+	return result
+
+func add_to_run_loot(item_id: int, quantity: int = 1, metadata: Dictionary = {}) -> bool:
+	var max_stack = _get_max_stack_size(item_id)
+	var result = run_loot.add_item(item_id, quantity, metadata, max_stack)
+	if result:
+		run_loot_changed.emit()
 	return result
 
 func move_stash_to_hotbar(stash_index: int) -> bool:
@@ -36,8 +44,9 @@ func move_stash_to_hotbar(stash_index: int) -> bool:
 	if hotbar.is_full():
 		return false
 	
+	var max_stack = _get_max_stack_size(item.id)
 	stash.remove_item(stash_index)
-	hotbar.add_item(item.id, item.get("quantity", 1), item.get("metadata", {}))
+	hotbar.add_item(item.id, item.get("quantity", 1), item.get("metadata", {}), max_stack)
 
 	inventory_changed.emit()
 	return true
@@ -50,8 +59,9 @@ func move_hotbar_to_stash(hotbar_index: int) -> bool:
 	if stash.is_full():
 		return false
 	
+	var max_stack = _get_max_stack_size(item.id)
 	hotbar.remove_item(hotbar_index)
-	stash.add_item(item.id, item.get("quantity", 1), item.get("metadata", {}))
+	stash.add_item(item.id, item.get("quantity", 1), item.get("metadata", {}), max_stack)
 
 	inventory_changed.emit()
 	return true
@@ -73,7 +83,8 @@ func extract_run_rewards():
 	for i in range(run_loot.capacity):
 		var item = run_loot.get_item(i)
 		if not item.is_empty():
-			stash.add_item(item.id, item.get("quantity", 1), item.get("metadata", {}))
+			var max_stack = _get_max_stack_size(item.id)
+			stash.add_item(item.id, item.get("quantity", 1), item.get("metadata", {}), max_stack)
 			run_loot.remove_item(i)
 	
 	run_loot_changed.emit()
@@ -106,9 +117,16 @@ func select_hotbar_slot(index: int) -> void:
 		hotbar_selected_index = index
 		hotbar_slot_selected.emit(index)
 
+func _get_max_stack_size(item_id: int) -> int:
+	var item_data = ItemDb.get_item_data(item_id)
+	return item_data.get("max_stack_size")
+
 #Testing Only
 func _init_debug_items():
-	stash.add_item(3001, 1, {})
-	stash.add_item(3003, 1, {})
-	stash.add_item(1001, 5, {})
+	var max_stack_3001 = _get_max_stack_size(3001)
+	var max_stack_3003 = _get_max_stack_size(3003)
+	var max_stack_1001 = _get_max_stack_size(1001)
+	stash.add_item(3001, 1, {}, max_stack_3001)
+	hotbar.add_item(3003, 1, {}, max_stack_3003)
+	stash.add_item(1001, 5, {}, max_stack_1001)
 	inventory_changed.emit()

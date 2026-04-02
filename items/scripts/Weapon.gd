@@ -21,7 +21,7 @@ var fire_timer = 0.0
 var weapon_owner = null
 
 func _ready() -> void:
-	pass
+	max_stack_size = 1
 
 func try_attack():
 	if !Globals.shooting_enabled:
