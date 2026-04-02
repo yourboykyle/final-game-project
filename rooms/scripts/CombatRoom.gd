@@ -2,7 +2,8 @@ extends RoomBase
 
 var enemy_scene = preload("res://entities/Enemies/enemy.tscn")
 var boom_enemy_scene = preload("res://entities/Enemies/BoomEnemy.tscn") 
-var sucker_scene = preload("res://entities/Enemies/Sucker.tscn")
+var sucker_scene = preload("res://entities/Enemies/Sucker.tscn") 
+var melee_enemy_scene = preload("res://entities/Enemies/MeleeEnemy.tscn")
 @onready var spawn_points = []
 @onready var nav_region = $NavigationRegion2D 
 var box_positions = []
@@ -40,15 +41,16 @@ func spawn_and_save_enemies(room_id):
 		return 
 	spawn_points.shuffle() 
 	var enemy_count = randi_range(1, spawn_points.size())
-	enemy_count = 1
 	Globals.room_enemies[room_id] = [] 
 	for i in range(enemy_count):
 		var enemy 
-		var choice = randi_range(2,2)
+		var choice = randi_range(1,5)
 		if (choice == 1): 
 			enemy = boom_enemy_scene.instantiate() 
 		elif (choice == 2): 
 			enemy = sucker_scene.instantiate() 
+		elif (choice == 3): 
+			enemy = melee_enemy_scene.instantiate() 
 		else:  
 			enemy = enemy_scene.instantiate() 
 		enemy.enemy_id = str(i) + "_" + str(randi)
@@ -62,7 +64,9 @@ func restore_enemies(room_id):
 		if enemy_data["type"] == "suck": 
 			enemy = sucker_scene.instantiate() 
 		elif enemy_data["type"] == "boom": 
-			enemy = boom_enemy_scene.instantiate()
+			enemy = boom_enemy_scene.instantiate() 
+		elif enemy_data["type"] == "melee": 
+			enemy = melee_enemy_scene.instantiate()
 		else:
 			enemy = enemy_scene.instantiate()
 		enemy.enemy_id = enemy_data["id"] 

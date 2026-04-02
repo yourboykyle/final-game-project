@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cq8s24jdjiosp"]
+
+[ext_resource type="Script" uid="uid://ca4fg5r8pbi70" path="res://entities/scripts/melee_enemy.gd" id="1_w25yk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8v7d1"]
+size = Vector2(59, 57)
+
+[sub_resource type="Gradient" id="Gradient_w25yk"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jlyh6"]
+gradient = SubResource("Gradient_w25yk")
+fill_from = Vector2(0, 0.029513888)
+fill_to = Vector2(0, 0.053819444)
+
+[node name="Meleeenemy" type="CharacterBody2D" unique_id=763209413]
+collision_layer = 2
+script = ExtResource("1_w25yk")
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=2095209910]
+offset_top = -61.0
+offset_right = 4.0
+offset_bottom = -34.0
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1702562029]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=358408795]
+position = Vector2(0.5, 2.5)
+shape = SubResource("RectangleShape2D_8v7d1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1949306422]
+texture = SubResource("GradientTexture2D_jlyh6")

@@ -7,9 +7,9 @@
 size = Vector2(3113, 3107)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_x3f7y"]
-vertices = PackedVector2Array(2891.8281, 140.92188, 2849.1484, 2779.0469, 140.02344, 2792.9375, 146.96875, 120.07031)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(2859, 2789, 130, 2803, 137, 110, 2902, 131)])
+vertices = PackedVector2Array(3035.1563, 36.9375, 3085.8281, 3092.9688, 18.992188, 3086.0234, 18, 20, 20, 20, 20, 19.0625)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 0, 4)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(3096, 3103, 9, 3096, 8, 9, 3045, 27)])
 source_geometry_mode = 1
 source_geometry_group_name = &"navigation"
 
