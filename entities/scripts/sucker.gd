@@ -1,10 +1,12 @@
 extends "res://entities/scripts/Enemy.gd"
 const SUCKERSUCKING = preload("uid://cpadpadua6vrw")
 const SUCKER = preload("uid://dh5b3nn01aysf")
+@onready var suck_timer: Timer = $SuckTimer
 
 enum{WANDER, SUCK} 
 var state = WANDER 
 var state_time = 10
+var sucking = false
 
 func _ready(): 
 	super._ready() 
@@ -35,6 +37,10 @@ func _physics_process(delta: float):
 		velocity = Vector2.ZERO 
 		if state_time <= 0: 
 			switch_state()
+	
+	if sucking:
+		Globals.player.take_damage(.1) 
+
 func get_random_point():
 	var nav_map = agent.get_navigation_map()
 	var layers = agent.navigation_layers
@@ -49,9 +55,14 @@ func switch_state():
 		state_time = randf_range(1.0,3.0) 
 		suck_oxygen()
 	
+	
 func suck_oxygen():
-	while state == SUCK:
-		sprite_2d.texture = SUCKERSUCKING
-		Globals.player.take_damage(.5) 
-		await get_tree().create_timer(.2).timeout
-		sprite_2d.texture = SUCKER
+	sprite_2d.texture = SUCKERSUCKING
+	sucking = true
+	
+	suck_timer.start()
+
+
+func _on_suck_timer_timeout() -> void:
+	sucking = false
+	sprite_2d.texture = SUCKER
