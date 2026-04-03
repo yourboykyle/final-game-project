@@ -5,6 +5,7 @@ extends Node2D
 @onready var container = $SceneContainer
 @onready var dungeon_container = $DungeonContainer
 @onready var minimap: Node2D = $CanvasLayer/GameplayUI/Minimap
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 const MAIN_MENU = preload("res://MainMenu.tscn")
 const LEVEL_SELECT = preload("res://LevelSelect.tscn")
@@ -49,6 +50,7 @@ func clear_room_data():
 
 
 func load_main_menu():
+	audio_stream_player.stop()
 	Globals.death_disabled = false
 	if dungeon_hotbar_ui:
 		dungeon_hotbar_ui.queue_free()
@@ -77,6 +79,7 @@ func load_level_select():
 	current_scene.back_pressed.connect(load_main_menu)
 
 func load_death_screen():
+	audio_stream_player.stop()
 	if dungeon_hotbar_ui:
 		dungeon_hotbar_ui.queue_free()
 		dungeon_hotbar_ui = null
@@ -94,6 +97,8 @@ func load_death_screen():
 
 func start_game(level_id):
 	clear_scene()
+	
+	audio_stream_player.play()
 	Globals.current_floor = level_id
 	
 	gameplayUI.show()

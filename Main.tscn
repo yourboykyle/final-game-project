@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://88prq6atj8eo" path="res://scripts/Transition.gd" id="6_3dxm6"]
 [ext_resource type="PackedScene" uid="uid://xsfsc4yv2q4o" path="res://interface/OxygenBar.tscn" id="7_lgr22"]
 [ext_resource type="Texture2D" uid="uid://bydgxlltublcr" path="res://assets/tilesets/128darksquares.png" id="7_trn2v"]
+[ext_resource type="AudioStream" uid="uid://bgth2wlmq7kkl" path="res://assets/sfx/holdyourbreaththeme.mp3" id="8_trn2v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_03owx"]
 texture = ExtResource("7_trn2v")
@@ -58,3 +59,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=462103033]
+stream = ExtResource("8_trn2v")
+volume_db = -15.0
+parameters/looping = true
