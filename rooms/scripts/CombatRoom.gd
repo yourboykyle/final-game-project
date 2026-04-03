@@ -45,9 +45,9 @@ func spawn_and_save_enemies(room_id):
 	for i in range(enemy_count):
 		var enemy 
 		var choice = randi_range(1,5)
-		if (choice == 1): 
+		if (choice == 1 and Globals.current_floor == 3): 
 			enemy = boom_enemy_scene.instantiate() 
-		elif (choice == 2): 
+		elif (choice == 2 and Globals.current_floor == 2): 
 			enemy = sucker_scene.instantiate() 
 		elif (choice == 3): 
 			enemy = melee_enemy_scene.instantiate() 

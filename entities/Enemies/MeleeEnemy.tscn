@@ -9,6 +9,7 @@ height = 95.99964
 
 [node name="Meleeenemy" type="CharacterBody2D" unique_id=763209413]
 collision_layer = 2
+motion_mode = 1
 script = ExtResource("1_w25yk")
 
 [node name="HealthBar" type="ProgressBar" parent="." unique_id=2095209910]
