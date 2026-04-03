@@ -11,8 +11,10 @@
 [node name="ItemContainer" type="Node2D" unique_id=1587473337]
 
 [node name="HitscanGun" parent="." unique_id=499305279 instance=ExtResource("1_l4lnq")]
+weight = 2
 
 [node name="BaseSword" parent="." unique_id=1855008530 instance=ExtResource("3_g7lqh")]
+weight = 2
 
 [node name="Axe" parent="." unique_id=641689570 instance=ExtResource("4_r43xr")]
 
@@ -23,3 +25,4 @@
 [node name="Dagger" parent="." unique_id=499811267 instance=ExtResource("7_1wl5r")]
 
 [node name="Bubble" parent="." unique_id=1949644667 instance=ExtResource("8_pvju5")]
+weight = 2

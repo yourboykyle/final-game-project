@@ -11,7 +11,9 @@ func _ready() -> void:
 	var items = []
 	
 	for item in ItemDb.items:
-		items.append(item)
+		var weight = ItemDb.items[item].weight
+		for i in weight:
+			items.append(item)
 	
 	var random_item = randi_range(0, len(items) - 1)
 	

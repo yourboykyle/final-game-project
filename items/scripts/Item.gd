@@ -2,6 +2,7 @@ class_name Item extends Node2D
 #Super class for all items
 @export var item_name : String
 @export var item_description: String = ""
+@export var weight = 1
 """
 This comment block is to explain item ids (will remove later)
 we'll input them manually for now cuz we don't have time to automate imo

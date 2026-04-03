@@ -10,6 +10,7 @@ fire_rate = 0.5
 aoe = 5.0
 item_name = "Fishcan"
 item_description = "Fires Hitscan Projectiles"
+weight = 2
 item_id = 3001
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1341002348]

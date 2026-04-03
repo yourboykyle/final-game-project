@@ -11,6 +11,7 @@ aoe = 50.0
 damage = 50.0
 item_name = "Sword Fish"
 item_description = "Basic Melee Weapon"
+weight = 2
 item_id = 3003
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1004532278]
