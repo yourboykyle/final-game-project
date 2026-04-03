@@ -1,6 +1,7 @@
 extends RoomBase 
 
 var boss_scene = preload("res://entities/Enemies/Boss.tscn")
+var angler_scene = preload("res://entities/Enemies/angler.tscn")
 @onready var spawn_point = []; 
 
 func _ready():
@@ -8,7 +9,11 @@ func _ready():
 	spawn_point = $Spawnpoint.get_children()
 	Globals.enemy_defeated.connect(_on_enemy_defeated)
 	if !(Globals.boss_spawned):
-		var boss = boss_scene.instantiate()
+		var boss 
+		if Globals.current_floor == 3: 
+			boss = angler_scene.instantiate()
+		else: 
+			boss = boss_scene.instantiate()
 		boss.position = spawn_point[0].position
 		add_child(boss)
 		Globals.boss_spawned = true
