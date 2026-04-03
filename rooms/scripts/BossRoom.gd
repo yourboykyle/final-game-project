@@ -25,27 +25,27 @@ func _on_enemy_defeated(enemy_position):
 	
 	if !Globals.rewards_spawned.has(room_id):
 		create_chest(enemy_position.x, enemy_position.y)
-		create_chest(enemy_position.x, enemy_position.y + 128)
-		create_chest(enemy_position.x, enemy_position.y - 128)
+		create_chest(enemy_position.x, enemy_position.y + 64)
+		create_chest(enemy_position.x, enemy_position.y - 64)
 		Globals.room_pickups[room_id].append({"type": "chest", "position": Vector2(enemy_position.x, enemy_position.y)})
-		Globals.room_pickups[room_id].append({"type": "chest", "position": Vector2(enemy_position.x, enemy_position.y + 128)})
-		Globals.room_pickups[room_id].append({"type": "chest", "position": Vector2(enemy_position.x, enemy_position.y- 128)})
+		Globals.room_pickups[room_id].append({"type": "chest", "position": Vector2(enemy_position.x, enemy_position.y + 64)})
+		Globals.room_pickups[room_id].append({"type": "chest", "position": Vector2(enemy_position.x, enemy_position.y- 64)})
 		
-		if Globals.current_floor == 2:
+		if Globals.current_floor >= 2:
+			create_chest(enemy_position.x - 64, enemy_position.y)
+			create_chest(enemy_position.x - 64, enemy_position.y + 64)
+			create_chest(enemy_position.x - 64, enemy_position.y - 64)
+			Globals.room_pickups[room_id].append({"type": "chest", "position": Vector2(enemy_position.x - 64, enemy_position.y)})
+			Globals.room_pickups[room_id].append({"type": "chest", "position": Vector2(enemy_position.x - 64, enemy_position.y + 64)})
+			Globals.room_pickups[room_id].append({"type": "chest", "position": Vector2(enemy_position.x - 64, enemy_position.y - 64)})
+		
+		if Globals.current_floor >= 3:
 			create_chest(enemy_position.x - 128, enemy_position.y)
 			create_chest(enemy_position.x - 128, enemy_position.y + 128)
 			create_chest(enemy_position.x - 128, enemy_position.y - 128)
-			Globals.room_pickups[room_id].append({"type": "chest", "position": Vector2(enemy_position.x - 128, enemy_position.y)})
+			Globals.room_pickups[room_id].append({"type": "chest", "position": Vector2(enemy_position.x - 256, enemy_position.y)})
 			Globals.room_pickups[room_id].append({"type": "chest", "position": Vector2(enemy_position.x - 128, enemy_position.y + 128)})
 			Globals.room_pickups[room_id].append({"type": "chest", "position": Vector2(enemy_position.x - 128, enemy_position.y - 128)})
-		
-		if Globals.current_floor == 3:
-			create_chest(enemy_position.x - 256, enemy_position.y)
-			create_chest(enemy_position.x - 256, enemy_position.y + 256)
-			create_chest(enemy_position.x - 256, enemy_position.y - 256)
-			Globals.room_pickups[room_id].append({"type": "chest", "position": Vector2(enemy_position.x - 256, enemy_position.y)})
-			Globals.room_pickups[room_id].append({"type": "chest", "position": Vector2(enemy_position.x - 256, enemy_position.y + 256)})
-			Globals.room_pickups[room_id].append({"type": "chest", "position": Vector2(enemy_position.x - 256, enemy_position.y - 256)})
 		
 		Globals.rewards_spawned[room_id] = true
 	
