@@ -161,5 +161,5 @@ func _on_enemy_defeated(enemy_position):
 		create_chest(enemy_position.x, enemy_position.y)
 		Globals.room_pickups[room_id].append({"type": "chest", "position": Vector2(enemy_position.x, enemy_position.y)})
 	
-	create_bubble(enemy_position.x + 256, enemy_position.y)
+	create_bubble(enemy_position.x + 128, enemy_position.y)
 	Globals.room_pickups[room_id].append({"type": "bubble", "position": Vector2(enemy_position.x+256, enemy_position.y)}) 

@@ -8,10 +8,9 @@ script = ExtResource("1_5hc31")
 attack_radius = 300.0
 fire_rate = 5.0
 damage = 120.0
-item_name = "Axe"
-item_id = 3008
+item_name = "Haxer Shark"
 item_description = "Slow attack speed, high damage"
-
+item_id = 3008
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1664195817]
 texture_filter = 1

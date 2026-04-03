@@ -10,10 +10,9 @@ fire_rate = 5.0
 rectangle_range = 2000.0
 aoe = 5.0
 damage = 60.0
-item_name = "Sniper Rifle"
+item_name = "Scoped Swimmer"
+item_description = "Fires Slow, Bigger Damage"
 item_id = 3006
-item_description = "Fires Slow Projectiles, Bigger Damage"
-
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=857617594]
 texture_filter = 1

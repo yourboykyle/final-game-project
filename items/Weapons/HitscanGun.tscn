@@ -8,7 +8,7 @@ script = ExtResource("1_ejl1l")
 attack_type = 1
 fire_rate = 0.5
 aoe = 5.0
-item_name = "Pistol"
+item_name = "Fishcan"
 item_description = "Fires Hitscan Projectiles"
 item_id = 3001
 

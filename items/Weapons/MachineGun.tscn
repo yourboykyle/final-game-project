@@ -9,11 +9,10 @@ script = ExtResource("1_q1wwq")
 projectile_speed = 2000
 attack_type = 2
 fire_rate = 0.1
-damage = 5.0
-item_name = "Machine Gun"
-item_id = 3005
+damage = 10.0
+item_name = "Octogun"
 item_description = "Fires Rapid Projectiles, Low Damage"
-
+item_id = 3005
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1816799339]
 texture = ExtResource("2_aclii")

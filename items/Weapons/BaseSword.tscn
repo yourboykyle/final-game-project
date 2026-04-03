@@ -9,7 +9,7 @@ attack_radius = 200.0
 fire_rate = 0.5
 aoe = 50.0
 damage = 50.0
-item_name = "Sword"
+item_name = "Sword Fish"
 item_description = "Basic Melee Weapon"
 item_id = 3003
 

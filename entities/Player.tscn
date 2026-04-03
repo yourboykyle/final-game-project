@@ -135,6 +135,9 @@ one_shot = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=845712464]
 libraries/ = SubResource("AnimationLibrary_vkqcq")
 
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1721682853]
+energy = 0.6
+
 [connection signal="timeout" from="DiveTime" to="." method="_on_dive_time_timeout"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
 [connection signal="timeout" from="DiveCD" to="." method="_on_dive_cd_timeout"]

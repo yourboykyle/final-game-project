@@ -15,6 +15,7 @@ var weapon = ""
 var attack_timer = 0.0 
 var attack_cooldown = 1.0
 var attack_range = 500
+var can_take_damage = true
 var type
 @export var use_base_movement = true
 @export var use_base_ai = true
@@ -75,6 +76,9 @@ func _physics_process(delta: float) -> void:
 
  
 func take_damage(amount):
+	if !can_take_damage:
+		return
+	
 	health-= amount
 	health_bar.value = health 
 	var room_id = get_parent().room_id

@@ -64,3 +64,6 @@ color = Color(0, 0, 0, 1)
 stream = ExtResource("8_trn2v")
 volume_db = -15.0
 parameters/looping = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1947666332]
+color = Color(0.8627451, 0.8627451, 0.8627451, 1)

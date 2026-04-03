@@ -13,10 +13,12 @@ func _ready():
 	health_bar.max_value = max_health
 	health_bar.value = max_health
 	health = max_health 
-	SPEED = 900 
+	SPEED = 900
+	can_take_damage = false
 	type = "boom" 
 	if weapon: 
 		weapon.queue_free()
+
 func _physics_process(delta: float) -> void:
 	agent.target_position = player.global_position
 	var distance = global_position.distance_to(player.global_position)
@@ -33,6 +35,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide() 
 	
 func trigger_explosion(): 
+	can_take_damage = true
 	sprite_2d.texture = EXPLODINGBOOMER
 	sprite_2d_2.show()
 	await get_tree().create_timer(1).timeout
