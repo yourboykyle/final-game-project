@@ -1,4 +1,6 @@
 extends "res://entities/scripts/Enemy.gd"
+const SUCKERSUCKING = preload("uid://cpadpadua6vrw")
+const SUCKER = preload("uid://dh5b3nn01aysf")
 
 enum{WANDER, SUCK} 
 var state = WANDER 
@@ -49,7 +51,7 @@ func switch_state():
 	
 func suck_oxygen():
 	while state == SUCK:
+		sprite_2d.texture = SUCKERSUCKING
 		Globals.player.take_damage(.5) 
 		await get_tree().create_timer(.2).timeout
-		
-		
+		sprite_2d.texture = SUCKER
