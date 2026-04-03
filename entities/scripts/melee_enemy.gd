@@ -4,7 +4,7 @@ const enemy_sword = preload("res://items/Weapons/EnemySword.tscn")
 var attackfinished = true
 func _ready():
 	max_health = 200
-	SPEED = 500 
+	SPEED = 800
 	super._ready()
 	type = "melee"
 	use_base_ai = false

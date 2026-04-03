@@ -13,7 +13,7 @@ func _ready():
 	health_bar.max_value = max_health
 	health_bar.value = max_health
 	health = max_health 
-	SPEED = 750 
+	SPEED = 900 
 	type = "boom" 
 	if weapon: 
 		weapon.queue_free()
