@@ -7,7 +7,7 @@
 texture_filter = 1
 script = ExtResource("1_8euei")
 item_name = "U: Damage"
-item_description = "Increases weapon damage by 5"
+item_description = "Goes in the upgrade slot. Increases weapon damage by 5"
 item_id = 4003
 max_stack_size = 1
 
