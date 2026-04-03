@@ -37,6 +37,8 @@ func clear_dungeon():
 	
 	clear_pickup_dictionaries()
 	clear_room_data()
+	
+	Globals.boss_spawned = false
 
 # Clear the rooms that had picked up items in them so future dungeons can generate pickups in those rooms
 func clear_pickup_dictionaries():
