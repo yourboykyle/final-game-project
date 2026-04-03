@@ -140,6 +140,7 @@ func spawn_boxes():
 		box.position = position 
 		box.add_to_group("navigation")
 		add_child(box) 
+
 func respawn_box():
 	print("check")
 	for pos in box_positions:
