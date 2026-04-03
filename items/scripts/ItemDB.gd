@@ -23,14 +23,11 @@ func get_item_data(item_id: int) -> Dictionary:
 	
 	var item_scene = items[item_id]
 	var name = item_scene.item_name 
-	var description = ""
+	var description = item_scene.item_description
 	var max_stack_size = item_scene.max_stack_size
 	
 	if item_scene is Weapon:
 		max_stack_size = 1
-	
-	if item_scene.get("item_description") != null:
-		description = item_scene.item_description
 	
 	var texture: Texture2D = null
 	for child in item_scene.get_children():

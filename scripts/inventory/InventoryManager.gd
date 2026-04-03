@@ -33,6 +33,7 @@ func add_to_run_loot(item_id: int, quantity: int = 1, metadata: Dictionary = {})
 	var max_stack = _get_max_stack_size(item_id)
 	var result = run_loot.add_item(item_id, quantity, metadata, max_stack)
 	if result:
+		Globals.items_collected += quantity
 		run_loot_changed.emit()
 	return result
 

@@ -12,6 +12,7 @@ func _process(delta: float) -> void:
 	pass
 
 func extract():
+	Globals.successful_extracts += 1
 	InventoryManager.extract_run_rewards()
 	
 	get_tree().current_scene.clear_dungeon()

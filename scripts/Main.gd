@@ -100,6 +100,7 @@ func start_game(level_id):
 	
 	audio_stream_player.play()
 	Globals.current_floor = level_id
+	Globals.games_entered += 1
 	
 	gameplayUI.show()
 	

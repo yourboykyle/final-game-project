@@ -8,6 +8,8 @@ var desc_label: Label
 var current_tween: Tween
 
 func _ready():
+	modulate = Color(1, 1, 1, 0)
+	
 	panel = PanelContainer.new()
 	panel.custom_minimum_size = Vector2(200, 0)
 	add_child(panel)

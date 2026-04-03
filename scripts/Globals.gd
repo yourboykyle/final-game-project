@@ -16,12 +16,20 @@ var opened_bubbles : Array = []
 signal enemy_defeated(position: Vector2)
 
 var oxygen_decay_rate := 1.0
-
+var xp: int = 0
 var death_disabled = false
 
 var crosshair_instance
 const CROSSHAIR = preload("res://interface/Crosshair.tscn")
 @export var shooting_enabled = true
+
+# Stats tracking
+var games_entered: int = 0
+var successful_extracts: int = 0
+var deaths: int = 0
+var entities_killed: int = 0
+var bosses_killed: int = 0
+var items_collected: int = 0
 
 const BOX = preload("res://rooms/Box.tscn")
 

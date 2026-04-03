@@ -11,6 +11,7 @@ var selected_source_index: int = -1
 var selected_source_container: String = ""
 var tooltip: ItemTooltip
 var trash_button: Button
+var stats_label: Control
 
 func _ready():	
 	var vbox = $RightPanel/CenterContainer/VBoxContainer
@@ -104,6 +105,43 @@ func _setup_stash():
 	trash_button.modulate = Color.GRAY
 	button_hbox.add_child(trash_button)
 	
+	#space
+	var spacer = Control.new()
+	spacer.custom_minimum_size = Vector2(0, 10)
+	main_vbox.add_child(spacer)
+	
+	#tab with instructions and stats page
+	var tab_container = TabContainer.new()
+	tab_container.custom_minimum_size = Vector2(0, 200)
+	main_vbox.add_child(tab_container)
+	
+	#instructons
+	var instructions_panel = Panel.new()
+	tab_container.add_child(instructions_panel)
+	tab_container.set_tab_title(0, "Instructions")
+	
+	var instructions_text = RichTextLabel.new()
+	instructions_text.text = "\n- Click an item to select it\n- Click again to deselect\n- Click different container to move\n- Use Trash button to delete selected item"
+	instructions_text.fit_content = true
+	instructions_text.anchor_left = 0
+	instructions_text.anchor_top = 0
+	instructions_text.anchor_right = 1
+	instructions_text.anchor_bottom = 1
+	instructions_panel.add_child(instructions_text)
+	
+	#stats
+	var stats_panel = Panel.new()
+	tab_container.add_child(stats_panel)
+	tab_container.set_tab_title(1, "Stats")
+	stats_label = RichTextLabel.new()
+	stats_label.text = "Games Entered: 0"
+	stats_label.anchor_left = 0
+	stats_label.anchor_top = 0
+	stats_label.anchor_right = 1
+	stats_label.anchor_bottom = 1
+	stats_label.fit_content = true
+	stats_panel.add_child(stats_label)
+	
 	tooltip = ItemTooltip.new()
 	stash_panel.add_child(tooltip)
 	
@@ -153,8 +191,23 @@ func _handle_selection(slot_index: int, container: String):
 
 func _refresh_all():
 	_refresh_stash()
+	_refresh_stats()
 	if hotbar_ui:
 		hotbar_ui.refresh_display()
+
+func _refresh_stats():
+	if stats_label:
+		stats_label.text = (
+			"Games Entered: %d\n" +
+			"Successful Extracts: %d\n" +
+			"Deaths: %d\n" +
+			"Entities Killed: %d\n" +
+			"Bosses Killed: %d\n" +
+			"Items Collected: %d\n" +
+			"XP Collected: %d"
+		) % [Globals.games_entered, Globals.successful_extracts,
+			Globals.deaths, Globals.entities_killed, Globals.bosses_killed,
+			Globals.items_collected, Globals.xp]
 
 func _refresh_stash():
 	for slot_info in stash_slots:
