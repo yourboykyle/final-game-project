@@ -13,6 +13,7 @@ Conventions:
 	If your item is just an item: start the id with a 1
 	If your item is equippable: start id with a 2
 	If your item is a weapon: start id with a 3
+	If your item is an upgrade: start id with a 4
 	then add the number of this particular item that has been added to the end
 	put in 0s for the 10s and 100s place if not used
 	

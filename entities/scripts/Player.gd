@@ -175,6 +175,19 @@ func change_oxygen(amount):
 	if is_in_death_state and oxygen > 0:
 		_exit_death_state()
 
+func change_max_oxygen(amount):
+	max_oxygen += amount
+	#refill to new max
+	oxygen = min(oxygen + amount, max_oxygen)
+	emit_signal("oxygen_changed", oxygen, max_oxygen)
+
+func change_speed(amount):
+	SPEED += amount
+
+func change_damage(amount):
+	for weapon in weapon_holder.get_children():
+		weapon.damage += amount
+
 func take_damage(amount):
 	if diving:
 		return

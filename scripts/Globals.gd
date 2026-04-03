@@ -14,14 +14,20 @@ var current_floor = 0
 var opened_chests : Array = []
 var opened_bubbles : Array = []
 signal enemy_defeated(position: Vector2)
+signal level_changed(new_level: int)
 
 var oxygen_decay_rate := 1.0
 var xp: int = 0
+var level: int = 0
 var death_disabled = false
+
+const MAX_LEVEL = 5
+const XP_PER_LEVEL = 100
 
 var crosshair_instance
 const CROSSHAIR = preload("res://interface/Crosshair.tscn")
 @export var shooting_enabled = true
+var music_enabled: bool = true
 
 # Stats tracking
 var games_entered: int = 0
@@ -125,3 +131,33 @@ func play_sfx(stream: AudioStream, volume_db: float = 2.5):
 	get_tree().current_scene.add_child(audio)
 	audio.play()
 	audio.finished.connect(audio.queue_free)
+
+#XP stuffs
+func get_xp_required_for_level(level: int) -> int:
+	var total = 0
+	for i in range(level):
+		total += (i + 1) * XP_PER_LEVEL
+	return total
+
+func get_xp_for_next_level() -> int:
+	if level >= MAX_LEVEL:
+		return 0
+	return (level + 1) * XP_PER_LEVEL
+
+func add_xp(amount: int) -> void:
+	xp += amount
+	
+	while level < MAX_LEVEL:
+		var xp_needed = get_xp_for_next_level()
+		if xp >= xp_needed:
+			xp -= xp_needed
+			level += 1
+			level_changed.emit(level)
+		else:
+			break
+
+func get_xp_progress() -> float:
+	if level >= MAX_LEVEL:
+		return 1.0
+	var xp_needed = get_xp_for_next_level()
+	return float(xp) / float(xp_needed)

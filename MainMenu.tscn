@@ -38,4 +38,78 @@ text = "Hold Your Breath"
 layout_mode = 2
 text = "Play"
 
+[node name="MusicToggleButton" type="Button" parent="RightPanel" unique_id=1827035183]
+layout_mode = 0
+offset_left = 1280.0
+offset_top = 20.0
+offset_right = 1380.0
+offset_bottom = 60.0
+text = "Music: ON"
+
+[node name="XPBar" type="Control" parent="RightPanel" unique_id=1827035184]
+layout_mode = 0
+offset_left = 850.0
+offset_top = 880.0
+offset_right = 1150.0
+offset_bottom = 950.0
+
+[node name="LevelLabel" type="Label" parent="RightPanel/XPBar" unique_id=1827035185]
+layout_mode = 0
+offset_top = 20.0
+offset_right = 80.0
+offset_bottom = 60.0
+text = "Level: 0/5"
+horizontal_alignment = 0
+
+[node name="XPProgress" type="ProgressBar" parent="RightPanel/XPBar" unique_id=1827035186]
+layout_mode = 0
+offset_left = 90.0
+offset_right = 330.0
+offset_bottom = 60.0
+value = 50.0
+show_percentage = false
+
+[node name="XPLabel" type="Label" parent="RightPanel/XPBar" unique_id=1827035187]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 15.0
+offset_right = 330.0
+offset_bottom = 45.0
+text = "0/100 XP"
+horizontal_alignment = 1
+
+[node name="XPInfoLabel" type="Label" parent="RightPanel" unique_id=1827035191]
+layout_mode = 0
+offset_left = 850.0
+offset_top = 975.0
+offset_right = 1150.0
+offset_bottom = 980.0
+text = "Gain XP from killing enemies, collecting items, and trashing items"
+horizontal_alignment = 0
+theme_overrides/font_sizes/font_size = 9
+
+[node name="UpgradeSlotsPanel" type="Control" parent="RightPanel" unique_id=1827035188]
+layout_mode = 0
+offset_left = 850.0
+offset_top = 780.0
+offset_right = 1150.0
+offset_bottom = 870.0
+
+[node name="UpgradeSlotsLabel" type="Label" parent="RightPanel/UpgradeSlotsPanel" unique_id=1827035189]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 200.0
+offset_bottom = 25.0
+text = "Upgrade Slots:"
+horizontal_alignment = 0
+theme_overrides/font_sizes/font_size = 14
+
+[node name="UpgradeSlotsContainer" type="HBoxContainer" parent="RightPanel/UpgradeSlotsPanel" unique_id=1827035190]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 30.0
+offset_right = 350.0
+offset_bottom = 90.0
+
 [connection signal="pressed" from="RightPanel/CenterContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]

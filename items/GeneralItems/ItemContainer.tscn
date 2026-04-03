@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://dqad0jehp48yc" path="res://items/Weapons/SniperRifle.tscn" id="6_pvju5"]
 [ext_resource type="PackedScene" uid="uid://d3ed1gmc0psqa" path="res://items/Weapons/Dagger.tscn" id="7_1wl5r"]
 [ext_resource type="PackedScene" uid="uid://cxmrrwmtim00m" path="res://items/GeneralItems/Bubble.tscn" id="8_pvju5"]
+[ext_resource type="PackedScene" uid="uid://bg8r4fk3eby88" path="res://items/GeneralItems/UpgradeOxygen.tscn" id="9_pvju5"]
+[ext_resource type="PackedScene" uid="uid://cebp2d9hj21r1" path="res://items/GeneralItems/UpgradeSpeed.tscn" id="10_pvju5"]
+[ext_resource type="PackedScene" uid="uid://cebp2d9hj21r2" path="res://items/GeneralItems/UpgradeDamage.tscn" id="11_pvju5"]
 
 [node name="ItemContainer" type="Node2D" unique_id=1587473337]
 
@@ -23,3 +26,9 @@
 [node name="Dagger" parent="." unique_id=499811267 instance=ExtResource("7_1wl5r")]
 
 [node name="Bubble" parent="." unique_id=1949644667 instance=ExtResource("8_pvju5")]
+
+[node name="UpgradeOxygen" parent="." unique_id=1949644668 instance=ExtResource("9_pvju5")]
+
+[node name="UpgradeSpeed" parent="." unique_id=1949644669 instance=ExtResource("10_pvju5")]
+
+[node name="UpgradeDamage" parent="." unique_id=1949644670 instance=ExtResource("11_pvju5")]

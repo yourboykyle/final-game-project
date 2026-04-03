@@ -65,7 +65,7 @@ func refresh_display():
 			slot_info.name.text = "[empty]"
 			slot_info.qty.text = ""
 		else:
-			panel.modulate = Color.SLATE_BLUE
+			panel.modulate = Color(0.6, 0.6, 0.6)
 			var item_data = ItemDb.get_item_data(item.id)
 			slot_info.sprite.texture = item_data.texture
 			slot_info.name.text = item_data.name

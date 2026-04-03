@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bg8r4fk3eby88"]
+
+[ext_resource type="Script" uid="uid://co1wn6hiqlk4t" path="res://items/scripts/UpgradeOxygen.gd" id="1_8euei"]
+[ext_resource type="Texture2D" uid="uid://qmi88kk6ij" path="res://assets/sprites/upgrade_oxygen.png" id="2_7xulb"]
+
+[node name="UpgradeOxygen" type="Node2D" unique_id=1949644668]
+texture_filter = 1
+script = ExtResource("1_8euei")
+item_name = "U: Oxygen"
+item_description = "Increases max oxygen capacity by 25"
+item_id = 4001
+max_stack_size = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1244767538]
+texture = ExtResource("2_7xulb")

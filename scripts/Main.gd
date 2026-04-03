@@ -92,6 +92,7 @@ func load_death_screen():
 
 	clear_scene()
 	clear_dungeon()
+	InventoryManager.clear_run_state()
 	
 	gameplayUI.hide()
 	
@@ -101,7 +102,10 @@ func load_death_screen():
 func start_game(level_id):
 	clear_scene()
 	
-	audio_stream_player.play()
+	if Globals.music_enabled:
+		audio_stream_player.play()
+	else:
+		audio_stream_player.stop()
 	Globals.current_floor = level_id
 	Globals.games_entered += 1
 	
@@ -124,6 +128,8 @@ func start_game(level_id):
 
 		InventoryManager.select_hotbar_slot(0)
 		player._on_hotbar_slot_selected(0)
+		
+		_apply_upgrades_to_player()
 
 	$DungeonManager.generate()
 	player.position = Globals.ROOM_CENTER
@@ -132,3 +138,11 @@ func _process(delta: float) -> void:
 	for slot_num in range (1, 6):
 		if Input.is_action_just_pressed("hotbar_slot_%d" % slot_num):
 			InventoryManager.select_hotbar_slot(slot_num - 1)
+
+func _apply_upgrades_to_player() -> void:
+	for i in range(InventoryManager.get_unlocked_upgrade_slots()):
+		var upgrade_item = InventoryManager.upgrades.get_item(i)
+		if not upgrade_item.is_empty():
+			var upgrade_scene = ItemDb.get_item(upgrade_item.id)
+			if upgrade_scene and upgrade_scene.has_method("apply_upgrade"):
+				upgrade_scene.apply_upgrade(player)

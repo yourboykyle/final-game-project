@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://6mdie36cyfeb"]
+
+[ext_resource type="Script" uid="uid://co1d7ndm2g4bg" path="res://items/scripts/UpgradeDamage.gd" id="1_8euei"]
+[ext_resource type="Texture2D" uid="uid://dy11ebwnl7igl" path="res://assets/sprites/upgrade_damage.png" id="2_b1gny"]
+
+[node name="UpgradeDamage" type="Node2D" unique_id=1949644670]
+texture_filter = 1
+script = ExtResource("1_8euei")
+item_name = "U: Damage"
+item_description = "Increases weapon damage by 5"
+item_id = 4003
+max_stack_size = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1244767540]
+texture = ExtResource("2_b1gny")

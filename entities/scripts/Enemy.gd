@@ -92,6 +92,9 @@ func take_damage(amount):
 		Globals.entities_killed += 1
 		if self.is_in_group("boss"):
 			Globals.bosses_killed += 1
+			Globals.add_xp(50)
+		else:
+			Globals.add_xp(25)
 		Globals.enemy_defeated.emit(position)
 		if Globals.room_enemies.has(room_id):
 			for i in range(Globals.room_enemies[room_id].size()):

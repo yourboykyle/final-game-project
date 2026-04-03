@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cebp2eahj21r1"]
+
+[ext_resource type="Script" uid="uid://uymhhjifmg7r" path="res://items/scripts/UpgradeSpeed.gd" id="1_8euei"]
+[ext_resource type="Texture2D" uid="uid://b0sdi8in526od" path="res://assets/sprites/upgrade_speed.png" id="2_33jj0"]
+
+[node name="UpgradeSpeed" type="Node2D" unique_id=1949644669]
+texture_filter = 1
+script = ExtResource("1_8euei")
+item_name = "U: Speed"
+item_description = "Goes in the upgrade slot. Increases movement speed by 200"
+item_id = 4002
+max_stack_size = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1244767539]
+texture = ExtResource("2_33jj0")

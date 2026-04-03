@@ -28,7 +28,7 @@ func loot():
 	InventoryManager.add_to_run_loot(contained_item.item_id, 1)
 	InventoryManager.run_loot_changed.emit()
 	opened.emit()
-	
+	Globals.add_xp(10)
 	call_deferred("queue_free")
 
 func interact():
