@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://dr3lsq4eamhdj"]
 
 [ext_resource type="Script" uid="uid://dl7rh7tirl7dw" path="res://scripts/LevelSelect.gd" id="1_sf6f5"]
+[ext_resource type="Texture2D" uid="uid://qdt7uvlrjg26" path="res://assets/sprites/layer1icon.png" id="2_0bmyu"]
+[ext_resource type="Texture2D" uid="uid://d4dokk2xhbdqg" path="res://assets/sprites/layer2icon.png" id="3_nb57j"]
+[ext_resource type="Texture2D" uid="uid://xbf2e1krs6k6" path="res://assets/sprites/layer3icon.png" id="4_gyrbw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sf6f5"]
 bg_color = Color(0.15691197, 0.34088326, 0.16112885, 1)
@@ -40,19 +43,22 @@ layout_mode = 2
 text = "Tutorial"
 
 [node name="Level1" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1051244853]
+texture_filter = 1
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_sf6f5")
-text = "1"
+icon = ExtResource("2_0bmyu")
 
 [node name="Level2" type="Button" parent="CenterContainer/VBoxContainer" unique_id=2091706100]
+texture_filter = 1
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_ardn0")
-text = "2"
+icon = ExtResource("3_nb57j")
 
 [node name="Level3" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1030964463]
+texture_filter = 1
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_q3t17")
-text = "3"
+icon = ExtResource("4_gyrbw")
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
