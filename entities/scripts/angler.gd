@@ -57,6 +57,11 @@ func _physics_process(delta:float):
 			print("ULTIMATE")
 		State.BITE: 
 			print("teleporting under and biting")
+			
+	
+	if velocity.x != 0:
+		sprite_2d.flip_h = velocity.x > 0
+	
 	move_and_slide()
 			 
 #movement

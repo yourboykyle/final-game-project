@@ -1,16 +1,17 @@
 [gd_scene format=3 uid="uid://4bnj7u3pxwef"]
 
 [ext_resource type="Script" uid="uid://ca0ujew0uog5r" path="res://entities/scripts/angler.gd" id="1_n8lrl"]
+[ext_resource type="Texture2D" uid="uid://b0qudlfakwvrm" path="res://assets/sprites/angler.png" id="2_a5ki8"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_a5ki8"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eyost"]
-size = Vector2(115, 83)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a5ki8"]
+radius = 38.98643
+height = 111.99013
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n8lrl"]
 size = Vector2(152, 138.75)
 
 [node name="Angler" type="CharacterBody2D" unique_id=981674041]
+scale = Vector2(2, 2)
 collision_layer = 2
 collision_mask = 5
 motion_mode = 1
@@ -22,13 +23,14 @@ offset_right = 4.0
 offset_bottom = -54.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=774163224]
+texture_filter = 1
 position = Vector2(0, -1)
-scale = Vector2(117.25001, 86.75001)
-texture = SubResource("PlaceholderTexture2D_a5ki8")
+texture = ExtResource("2_a5ki8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1183441164]
-position = Vector2(-1.5, -2.5)
-shape = SubResource("RectangleShape2D_eyost")
+position = Vector2(3, -1)
+rotation = 1.5751939
+shape = SubResource("CapsuleShape2D_a5ki8")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1875373158]
 
