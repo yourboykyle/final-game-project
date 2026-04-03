@@ -30,6 +30,11 @@ shape = SubResource("CapsuleShape2D_aje0m")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=550089024]
 
 [node name="SuckTimer" type="Timer" parent="." unique_id=1315505418]
+wait_time = 3.0
 one_shot = true
 
+[node name="SuckCd" type="Timer" parent="." unique_id=910609707]
+wait_time = 0.2
+
 [connection signal="timeout" from="SuckTimer" to="." method="_on_suck_timer_timeout"]
+[connection signal="timeout" from="SuckCd" to="." method="_on_suck_cd_timeout"]
