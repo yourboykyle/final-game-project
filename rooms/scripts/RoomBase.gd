@@ -44,7 +44,6 @@ func lock_doors():
 	if $Doors/DoorWest:
 		$Doors/DoorWest/CollisionShape2D.set_disabled(true)
 		$Doors/DoorWest.hide()
-		$Doors/DoorWest.hide() 
 	Globals.doors_locked = true
 
 func unlock_doors(grid_pos:Vector2i): 
@@ -68,6 +67,7 @@ func unlock_doors(grid_pos:Vector2i):
 		$Doors/DoorWest/CollisionShape2D.set_disabled(false)
 		$Doors/DoorWest.show()
 		print("adding west") 
+	
 	Globals.doors_locked = false
 	 
 

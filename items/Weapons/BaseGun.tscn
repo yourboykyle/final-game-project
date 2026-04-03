@@ -1,21 +1,12 @@
 [gd_scene format=3 uid="uid://8j34515jhvuj"]
 
 [ext_resource type="Script" uid="uid://cj3w28pobqhko" path="res://items/scripts/BaseGun.gd" id="1_15i37"]
-[ext_resource type="Texture2D" uid="uid://b7dc0fos30obv" path="res://assets/sprites/basegun.png" id="2_y2q1l"]
 
 [node name="BaseGun" type="Node2D" unique_id=464835153]
 script = ExtResource("1_15i37")
 projectile_speed = 1500
 attack_type = 2
-fire_rate = null
-rectangle_range = null
-aoe = null
 damage = 8.2
-linger_time = null
-collision_mask = null
 item_name = "Base Gun"
 item_description = "Fires Basic Projectiles"
 item_id = 3002
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1942206103]
-texture = ExtResource("2_y2q1l")

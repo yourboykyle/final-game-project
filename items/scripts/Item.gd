@@ -3,6 +3,8 @@ class_name Item extends Node2D
 @export var item_name : String
 @export var item_description: String = ""
 @export var weight = 1
+@export var sfx_volume_db: float = 2.5
+@export var sfx_stream: AudioStream
 """
 This comment block is to explain item ids (will remove later)
 we'll input them manually for now cuz we don't have time to automate imo
@@ -28,3 +30,6 @@ func _ready() -> void:
 
 func _process(delta):
 	pass
+
+func play_sound_effect():
+	Globals.play_sfx(sfx_stream, sfx_volume_db)

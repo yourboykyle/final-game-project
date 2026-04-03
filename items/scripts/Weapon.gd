@@ -39,8 +39,12 @@ func _process(delta):
 func attack():
 	pass
 
+
+
 # Logic for weapons use hitscan
 func rectangle_attack(origin, direction):
+	play_sound_effect()
+	
 	var space_state = get_world_2d().direct_space_state
 	var shape = RectangleShape2D.new()
 	shape.size = Vector2(rectangle_range, aoe)
@@ -74,6 +78,8 @@ func rectangle_attack(origin, direction):
 # Function that shoots a projectile in the direction of a crosshair
 # Can probably reuse this for enemy logic 
 func shoot_projectile(weapon, dir, projectile_speed):
+	play_sound_effect()
+
 	var bullet = BULLET.instantiate()
 	
 	bullet.direction = dir
@@ -95,6 +101,8 @@ func shoot_projectile(weapon, dir, projectile_speed):
 
 
 func cone_attack(origin, direction, angle, radius):
+	play_sound_effect()
+	
 	var space_state = get_world_2d().direct_space_state
 	
 	var shape = CircleShape2D.new()

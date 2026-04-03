@@ -24,6 +24,7 @@ func loot():
 		return
 	
 	is_looted = true
+	Globals.play_sfx(sfx_stream)
 	InventoryManager.add_to_run_loot(contained_item.item_id, 1)
 	InventoryManager.run_loot_changed.emit()
 	opened.emit()

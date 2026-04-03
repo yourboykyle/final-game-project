@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bjl8fr6i8857g" path="res://items/scripts/Dagger.gd" id="1_glamo"]
 [ext_resource type="Texture2D" uid="uid://cbi5wj1t65w35" path="res://assets/sprites/dagger.png" id="2_ctuy0"]
+[ext_resource type="AudioStream" uid="uid://bcv1g7i1mxsli" path="res://assets/sfx/swing.mp3" id="3_crynk"]
 
 [node name="Dagger" type="Node2D" unique_id=499811267]
 script = ExtResource("1_glamo")
@@ -10,6 +11,7 @@ damage = 25.0
 item_name = "Daggertooth"
 item_description = "Fast attack speed, low damage"
 item_id = 3007
+sfx_stream = ExtResource("3_crynk")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=736549309]
 texture_filter = 1

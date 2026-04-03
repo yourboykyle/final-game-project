@@ -19,6 +19,7 @@ func interact():
 	use_bubble()
 
 func use_bubble():
+	Globals.play_sfx(sfx_stream)
 	player.change_oxygen(20)
 	used.emit()
 	queue_free()

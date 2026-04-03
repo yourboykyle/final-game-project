@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dmolop4nn6rg1" path="res://items/scripts/Bubble.gd" id="1_8euei"]
 [ext_resource type="Texture2D" uid="uid://cim5dqfdahg7d" path="res://assets/sprites/bubble.png" id="1_k6v8h"]
+[ext_resource type="AudioStream" uid="uid://bs84rd7mhwham" path="res://assets/sfx/smallpop.mp3" id="3_q0ei8"]
 
 [node name="Bubble" type="Node2D" unique_id=1949644667]
 texture_filter = 1
@@ -9,6 +10,7 @@ script = ExtResource("1_8euei")
 item_name = "Bubble"
 item_description = "Consumable Bubble - Restores 5 Oxygen on use"
 weight = 2
+sfx_stream = ExtResource("3_q0ei8")
 item_id = 1001
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1244767537]

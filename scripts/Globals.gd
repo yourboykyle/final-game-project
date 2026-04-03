@@ -115,3 +115,13 @@ const DIFF_HEALTH_PER_FLOOR = 0.5
 
 func get_health_multiplier(floor: int) -> float:
 	return DIFF_HEALTH_BASE + (floor - 1) * DIFF_HEALTH_PER_FLOOR
+
+func play_sfx(stream: AudioStream, volume_db: float = 2.5):
+	if !stream:
+		return
+	var audio = AudioStreamPlayer.new()
+	audio.stream = stream
+	audio.volume_db = volume_db
+	get_tree().current_scene.add_child(audio)
+	audio.play()
+	audio.finished.connect(audio.queue_free)

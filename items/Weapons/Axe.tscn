@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cxi2vd1sr3f6r" path="res://items/scripts/Axe.gd" id="1_5hc31"]
 [ext_resource type="Texture2D" uid="uid://kwwqhb7h1cuk" path="res://assets/sprites/axe.png" id="2_4j1f6"]
+[ext_resource type="AudioStream" uid="uid://bcv1g7i1mxsli" path="res://assets/sfx/swing.mp3" id="3_wmjgg"]
 
 [node name="Axe" type="Node2D" unique_id=641689570]
 script = ExtResource("1_5hc31")
@@ -11,6 +12,7 @@ damage = 120.0
 item_name = "Haxer Shark"
 item_description = "Slow attack speed, high damage"
 item_id = 3008
+sfx_stream = ExtResource("3_wmjgg")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1664195817]
 texture_filter = 1

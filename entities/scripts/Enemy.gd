@@ -100,12 +100,12 @@ func take_damage(amount):
 				if data["id"] == enemy_id:
 					Globals.room_enemies[room_id].remove_at(i)
 					break
+		
 		if self.is_in_group("boss"):
 			get_parent().unlock_doors(get_parent().grid_position)
 			print(get_parent().name)
 			print("boss dead, unlocking rooms")
 		queue_free() 
-					
 func set_health(amount): 
 	health = amount 
 	if health <= 0: 
