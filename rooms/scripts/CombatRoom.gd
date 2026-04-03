@@ -157,9 +157,10 @@ func _on_enemy_defeated(enemy_position):
 	if !Globals.room_pickups.has(room_id):
 		Globals.room_pickups[room_id] = []
 	
-	if !Globals.opened_chests.has(room_id):
+	if !Globals.rewards_spawned.has(room_id):
 		create_chest(enemy_position.x, enemy_position.y)
 		Globals.room_pickups[room_id].append({"type": "chest", "position": Vector2(enemy_position.x, enemy_position.y)})
+		Globals.rewards_spawned[room_id] = true
 	
 	create_bubble(enemy_position.x + 128, enemy_position.y)
 	Globals.room_pickups[room_id].append({"type": "bubble", "position": Vector2(enemy_position.x+128, enemy_position.y)}) 

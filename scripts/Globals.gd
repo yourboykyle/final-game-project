@@ -83,10 +83,17 @@ const ROOM_COLORS = {
 var spawned_rooms = {} 
 var room_enemies = {} 
 var room_pickups = {}
+var rewards_spawned = {}
 var player = null;
 var doors_locked = false; 
 var boss_spawned = false; 
 var room_box_positions = {}
+
+func remove_room_pickup(room_id, position):
+	if room_pickups.has(room_id):
+		room_pickups[room_id] = room_pickups[room_id].filter(
+			func(p): return p["position"] != position
+		)
 
 enum ATTACK_TYPE {
 	CONE,

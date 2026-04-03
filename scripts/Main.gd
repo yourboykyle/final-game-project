@@ -35,13 +35,14 @@ func clear_dungeon():
 	for child in dungeon_container.get_children():
 		child.queue_free()
 	
-	clear_opened_arrays()
+	clear_pickup_dictionaries()
 	clear_room_data()
 
 # Clear the rooms that had picked up items in them so future dungeons can generate pickups in those rooms
-func clear_opened_arrays():
+func clear_pickup_dictionaries():
 	Globals.opened_chests.clear()
 	Globals.opened_bubbles.clear()
+	Globals.rewards_spawned.clear()
 
 func clear_room_data():
 	Globals.room_pickups.clear()

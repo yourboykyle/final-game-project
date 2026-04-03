@@ -2,7 +2,7 @@ class_name RoomBase
 extends Node2D
 var chest_scene = preload("res://interactables/Chest.tscn") 
 var bubble_scene = preload("res://interactables/Bubble.tscn") 
-var chest
+var chests: Array = []
 var bubble
 
 @export var room_id : String
@@ -75,19 +75,20 @@ func create_chest(posx, posy):
 	if Globals.opened_chests.has(room_id):
 		return
 	
-	if !chest:
-		chest = chest_scene.instantiate()
-	
-	add_child(chest)
-	
-	chest.connect("opened", _on_chest_opened)
-	chest.position = Vector2(posx, posy)
+	var new_chest = chest_scene.instantiate()
+	add_child(new_chest)
+	new_chest.position = Vector2(posx, posy)
+	new_chest.connect("opened", _on_chest_opened.bind(new_chest))
+	chests.append(new_chest)
 
-func _on_chest_opened():
-	Globals.opened_chests.append(room_id)
-	if is_instance_valid(chest):
-		remove_child(chest)
-		chest = null
+func _on_chest_opened(chest_instance):
+	if is_instance_valid(chest_instance):
+		Globals.remove_room_pickup(room_id, chest_instance.position)
+		remove_child(chest_instance)
+		chests.erase(chest_instance)
+	
+	if chests.is_empty():
+		Globals.opened_chests.append(room_id)
 
 func create_bubble(posx, posy):
 	if Globals.opened_bubbles.has(room_id):
@@ -104,5 +105,6 @@ func _on_bubble_used():
 	Globals.opened_bubbles.append(room_id)
 	if is_instance_valid(bubble):
 		remove_child(bubble)
+		Globals.remove_room_pickup(room_id, self.position)
 		bubble = null
 	
