@@ -13,8 +13,8 @@ damage = 50.0
 item_name = "Sword Fish"
 item_description = "Basic Melee Weapon"
 weight = 2
-item_id = 3003
 sfx_stream = ExtResource("3_x2okc")
+item_id = 3003
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1004532278]
 texture_filter = 1

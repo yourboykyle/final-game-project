@@ -43,7 +43,6 @@ func _ready() -> void:
 	self.add_to_group("player")
 	
 	current_weapon = weapon_holder.get_child(0)
-	current_weapon.weapon_owner = self
 	
 	for child in weapon_holder.get_children():
 		child.hide()
@@ -64,6 +63,7 @@ func _process(delta):
 			return
 		#Try the current weapons attack
 		if current_weapon != null:
+			current_weapon.weapon_owner = self
 			current_weapon.try_attack()
 
 			

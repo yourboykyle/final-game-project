@@ -14,16 +14,62 @@
 [node name="ItemContainer" type="Node2D" unique_id=1587473337]
 
 [node name="HitscanGun" parent="." unique_id=499305279 instance=ExtResource("1_l4lnq")]
+projectile_speed = null
+rectangle_range = null
+damage = null
+linger_time = null
+collision_mask = null
+sfx_volume_db = null
+max_stack_size = null
 
 [node name="BaseSword" parent="." unique_id=1855008530 instance=ExtResource("3_g7lqh")]
+angle = null
+attack_type = null
+rectangle_range = null
+linger_time = null
+collision_mask = null
+sfx_volume_db = null
+max_stack_size = null
 
 [node name="Axe" parent="." unique_id=641689570 instance=ExtResource("4_r43xr")]
+angle = null
+attack_type = null
+rectangle_range = null
+aoe = null
+linger_time = null
+collision_mask = null
+weight = null
+sfx_volume_db = null
+max_stack_size = null
 
 [node name="MachineGun" parent="." unique_id=1112030320 instance=ExtResource("5_njjan")]
+rectangle_range = null
+aoe = null
+linger_time = null
+collision_mask = null
+weight = null
+sfx_volume_db = null
+max_stack_size = null
 
 [node name="SniperRifle" parent="." unique_id=647256177 instance=ExtResource("6_pvju5")]
+projectile_speed = null
+linger_time = null
+collision_mask = null
+weight = null
+sfx_volume_db = null
+max_stack_size = null
 
 [node name="Dagger" parent="." unique_id=499811267 instance=ExtResource("7_1wl5r")]
+angle = null
+attack_radius = null
+attack_type = null
+rectangle_range = null
+aoe = null
+linger_time = null
+collision_mask = null
+weight = null
+sfx_volume_db = null
+max_stack_size = null
 
 [node name="Bubble" parent="." unique_id=1949644667 instance=ExtResource("8_pvju5")]
 

@@ -103,11 +103,6 @@ script = ExtResource("3_l1ths")
 [node name="HitscanGun" parent="WeaponHolder" unique_id=499305279 instance=ExtResource("4_ks8m5")]
 
 [node name="BaseGun" parent="WeaponHolder" unique_id=464835153 instance=ExtResource("3_lw5ub")]
-fire_rate = 1.0
-rectangle_range = 1500.0
-aoe = 10.0
-linger_time = 0.05
-collision_mask = 2
 
 [node name="BaseSword" parent="WeaponHolder" unique_id=1855008530 instance=ExtResource("4_a1f57")]
 
