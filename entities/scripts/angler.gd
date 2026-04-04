@@ -5,22 +5,30 @@ enum State{
 	DASH, 
 	RANGED, 
 	ULTIMATE,
-	BITE
+	BITE,
+	SHOOTING
 } 
+#BASE VARIABLES 
 var cooldown = 1.0
 var speed 
 var state = State.CHASE
+var has_hit_player = false 
+var flipped = true  
+#DASH VARIABLES
 var dash_timer = 0
 var dash_time = 2
 var dash_speed = 500
 var dash_direction 
 var dash_cooldown = 10 
-var has_hit_player = false 
+#BITE VARIABLES
 var bite_cooldown = 20
 var bite_timer = 5
 var bite_end = 1 
 var has_spawned = false 
-var flipped = true
+#RANGED VARIABLES
+var ranged_cooldown = 5 
+var salvos_left = 3
+var salvo_timer = 0
 func _ready(): 
 	attack_timer = 2.0
 	max_health = 1000 
@@ -43,6 +51,7 @@ func _physics_process(delta:float):
 			chase_player() 
 			dash_cooldown -= delta 
 			bite_cooldown -= delta 
+			ranged_cooldown -= delta
 			if bite_cooldown <= 0: 
 				state = State.BITE 
 				bite_timer = 5
@@ -58,6 +67,10 @@ func _physics_process(delta:float):
 				dash_timer = dash_time 
 				state = State.DASH 
 				return 
+			if ranged_cooldown <= 0: 
+				weapon.weapon_owner = self 
+				state = State.RANGED
+				return  
 		State.DASH:
 			velocity = dash_direction * dash_speed
 			dash_timer -= delta
@@ -66,7 +79,24 @@ func _physics_process(delta:float):
 				dash_cooldown = 10 
 				cooldown = 1 
 		State.RANGED: 
-			print("shooting teeth") 
+			velocity = Vector2.ZERO 
+			salvos_left = 3 
+			salvo_timer = 0
+			state = State.SHOOTING 
+		State.SHOOTING: 
+			salvo_timer -= delta
+			if salvo_timer <= 0 and salvos_left > 0: 
+				var shootdirection = (player.global_position - global_position).normalized()
+				var offset = deg_to_rad(15)
+				weapon.shoot_projectile(weapon, shootdirection.rotated(offset), weapon.projectile_speed)
+				weapon.shoot_projectile(weapon, shootdirection, weapon.projectile_speed)
+				weapon.shoot_projectile(weapon, shootdirection.rotated(-offset), weapon.projectile_speed) 
+				salvos_left -= 1
+				salvo_timer = .5 
+			if salvos_left <= 0: 
+				state = State.IDLE
+				cooldown = 1
+				ranged_cooldown = 5
 		State.ULTIMATE: 
 			print("ULTIMATE")
 		State.BITE: 
