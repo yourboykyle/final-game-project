@@ -5,13 +5,14 @@
 [node name="RoomBase" unique_id=1536920797 instance=ExtResource("1_5loe2")]
 
 [node name="Label" type="Label" parent="." index="4" unique_id=294307785]
-offset_left = 190.0
-offset_top = 1109.0
-offset_right = 2819.0
-offset_bottom = 1462.0
+offset_left = 207.0
+offset_top = 963.0
+offset_right = 2836.0
+offset_bottom = 1494.0
 theme_override_font_sizes/font_size = 128
 text = "Oxygen is in your top left, when it runs out
-you have a couple seconds until you die"
+you have a couple seconds until you die
+(You can't die in the tutorial!)"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="." index="5" unique_id=875840234]
