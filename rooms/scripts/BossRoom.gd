@@ -15,7 +15,8 @@ func _ready():
 		else: 
 			boss = boss_scene.instantiate()
 		boss.position = spawn_point[0].position
-		add_child(boss)
+		add_child(boss) 
+		boss.add_to_group("boss")
 		Globals.boss_spawned = true
 		lock_doors()
 

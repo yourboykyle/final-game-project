@@ -5,5 +5,5 @@ extends Area2D
 var triggered := false
 
 func _on_body_entered(body):
-	if body.name == "Player" and !Globals.doors_locked :
+	if body.is_in_group("player") and !Globals.doors_locked:
 		Globals.dungeon_manager.change_room(direction)
