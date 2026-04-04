@@ -18,7 +18,8 @@ var player = null
 var dungeon_hotbar_ui: Node2D = null
 var death_effect = null
 
-func _ready() -> void:
+func _ready() -> void: 
+	Globals.canvas_modulate = $CanvasModulate
 	gameplayUI.hide()
 	
 	load_main_menu()

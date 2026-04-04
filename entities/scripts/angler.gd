@@ -28,7 +28,11 @@ var has_spawned = false
 #RANGED VARIABLES
 var ranged_cooldown = 5 
 var salvos_left = 3
-var salvo_timer = 0
+var salvo_timer = 0 
+#ULTIMATE VARIABLES
+var ultimate = false 
+var ultimate_duration = 20
+var teeth_timer = .5
 func _ready(): 
 	attack_timer = 2.0
 	max_health = 1000 
@@ -45,13 +49,15 @@ func _physics_process(delta:float):
 			velocity = Vector2i.ZERO 
 			$Sprite2D.rotation = 0
 			if cooldown <= 0: 
-				state = State.CHASE 
-				dash_cooldown = 10
+				state = State.CHASE
 		State.CHASE: 
 			chase_player() 
 			dash_cooldown -= delta 
 			bite_cooldown -= delta 
 			ranged_cooldown -= delta
+			if health <= 1000 and !ultimate: 
+				print("TRIGGERED") 
+				state = State.ULTIMATE
 			if bite_cooldown <= 0: 
 				state = State.BITE 
 				bite_timer = 5
@@ -97,8 +103,28 @@ func _physics_process(delta:float):
 				state = State.IDLE
 				cooldown = 1
 				ranged_cooldown = 5
-		State.ULTIMATE: 
-			print("ULTIMATE")
+		State.ULTIMATE:
+			velocity = Vector2.ZERO 
+			if !ultimate: 
+				self.hide() 
+				$CollisionShape2D.set_disabled(true) 
+				ultimate = true
+				fade_darkness(Color(0.05, 0.05, 0.05), 0.5) 
+				Globals.player.light.visible = true
+			else: 
+				ultimate_duration -= delta 
+				teeth_timer -= delta
+				if teeth_timer <= 0:  
+					get_parent().teeth_attack()
+					teeth_timer = 3 
+				if ultimate_duration <= 0:
+					fade_darkness(Color(1, 1, 1), 0.5) 
+					Globals.player.light.visible = false 
+					self.show() 
+					$CollisionShape2D.set_deferred("disabled", false)
+					state = State.IDLE
+				
+			cooldown = 1
 		State.BITE: 
 			bite_timer -= delta
 			if bite_timer > 0:
@@ -118,7 +144,8 @@ func _physics_process(delta:float):
 				bite_end -= delta
 				if bite_end <= 0:
 					state = State.IDLE 
-					bite_cooldown = 20
+					bite_cooldown = 20 
+					dash_cooldown = 10
 					has_spawned = false
 					velocity = Vector2i.ZERO 
 					rotation = velocity.angle()
@@ -155,4 +182,18 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		has_hit_player = true 
 		state = State.IDLE
 		cooldown = 1 
-		print("get bit") # Replace with function body.
+		print("get bit")
+func fade_darkness(target_color: Color, duration: float):
+	if not Globals.canvas_modulate:
+		return
+	
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(
+		Globals.canvas_modulate,
+		"color",
+		target_color,
+		duration
+	) 
+		
