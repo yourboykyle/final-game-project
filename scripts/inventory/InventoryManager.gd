@@ -189,10 +189,10 @@ func _init_debug_items():
 	var max_stack_3001 = _get_max_stack_size(3001)
 	var max_stack_3003 = _get_max_stack_size(3003)
 	var max_stack_1001 = _get_max_stack_size(1001)
-	var max_stack_3005 = _get_max_stack_size(3005)
+	#var max_stack_3005 = _get_max_stack_size(3005)
 
 	stash.add_item(3001, 1, {}, max_stack_3001)
-	stash.add_item(3005, 1, {}, max_stack_3005)
+	#stash.add_item(3005, 1, {}, max_stack_3005)
 	hotbar.add_item(3003, 1, {}, max_stack_3003)
 	stash.add_item(1001, 5, {}, max_stack_1001)
 
