@@ -379,3 +379,7 @@ func _refresh_upgrades():
 
 func _on_level_changed(new_level: int):
 	_refresh_upgrades()
+
+
+func _on_button_pressed() -> void:
+	get_tree().quit()

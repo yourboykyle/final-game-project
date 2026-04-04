@@ -5,7 +5,6 @@
 [node name="MainMenu" type="HSplitContainer" unique_id=569172943]
 offset_right = 1868.0
 offset_bottom = 993.0
-#Thomas --- Change this to resize stash horizontal
 split_offsets = PackedInt32Array(450)
 split_offset = 450
 script = ExtResource("1_i26rj")
@@ -47,7 +46,7 @@ offset_bottom = 60.0
 text = "Music: ON"
 
 [node name="XPBar" type="Control" parent="RightPanel" unique_id=1827035184]
-layout_mode = 0
+anchors_preset = 0
 offset_left = 850.0
 offset_top = 880.0
 offset_right = 1150.0
@@ -59,7 +58,6 @@ offset_top = 20.0
 offset_right = 80.0
 offset_bottom = 60.0
 text = "Level: 0/5"
-horizontal_alignment = 0
 
 [node name="XPProgress" type="ProgressBar" parent="RightPanel/XPBar" unique_id=1827035186]
 layout_mode = 0
@@ -85,11 +83,9 @@ offset_top = 975.0
 offset_right = 1150.0
 offset_bottom = 980.0
 text = "Gain XP from killing enemies, collecting items, and trashing items"
-horizontal_alignment = 0
-theme_overrides/font_sizes/font_size = 9
 
 [node name="UpgradeSlotsPanel" type="Control" parent="RightPanel" unique_id=1827035188]
-layout_mode = 0
+anchors_preset = 0
 offset_left = 850.0
 offset_top = 780.0
 offset_right = 1150.0
@@ -97,19 +93,23 @@ offset_bottom = 870.0
 
 [node name="UpgradeSlotsLabel" type="Label" parent="RightPanel/UpgradeSlotsPanel" unique_id=1827035189]
 layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
 offset_right = 200.0
 offset_bottom = 25.0
 text = "Upgrade Slots:"
-horizontal_alignment = 0
-theme_overrides/font_sizes/font_size = 14
 
 [node name="UpgradeSlotsContainer" type="HBoxContainer" parent="RightPanel/UpgradeSlotsPanel" unique_id=1827035190]
 layout_mode = 0
-offset_left = 0.0
 offset_top = 30.0
 offset_right = 350.0
 offset_bottom = 90.0
 
+[node name="Button" type="Button" parent="RightPanel" unique_id=961547360]
+layout_mode = 0
+offset_left = -423.0
+offset_top = 974.0
+offset_right = -112.0
+offset_bottom = 1023.0
+text = "Quit Game"
+
 [connection signal="pressed" from="RightPanel/CenterContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="RightPanel/Button" to="." method="_on_button_pressed"]
