@@ -36,11 +36,14 @@ var can_dive = true
 var can_flip = false
 var flip_normal = Vector2.ZERO
 var flip_timer = 0.0
-# Movement variables end
+# Movement variables end 
+#Light Variable (For Angler Boss) 
+@onready var light = $PointLight2D
 
 func _ready() -> void:
 	# Set current weapon to the weapon holders first child
-	self.add_to_group("player")
+	self.add_to_group("player") 
+	light.visible = false
 	
 	current_weapon = weapon_holder.get_child(0)
 	

@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cpq3n1y0ow824" path="res://items/Weapons/MachineGun.tscn" id="7_p37y2"]
 [ext_resource type="PackedScene" uid="uid://dqad0jehp48yc" path="res://items/Weapons/SniperRifle.tscn" id="8_idcse"]
 [ext_resource type="PackedScene" uid="uid://tbyeo045ivp2" path="res://items/Weapons/Axe.tscn" id="10_vkqcq"]
+[ext_resource type="Texture2D" uid="uid://digvi5s68tpe8" path="res://assets/sprites/player_light_texture.png" id="11_vkqcq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ojs4q"]
 radius = 6.3008127
@@ -130,8 +131,10 @@ one_shot = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=845712464]
 libraries/ = SubResource("AnimationLibrary_vkqcq")
 
-[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1721682853]
-energy = 0.6
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=84428390]
+scale = Vector2(2.069323, 2.1644344)
+texture = ExtResource("11_vkqcq")
+texture_scale = 3.0
 
 [connection signal="timeout" from="DiveTime" to="." method="_on_dive_time_timeout"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

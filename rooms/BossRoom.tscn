@@ -17,7 +17,7 @@ room_type = 3
 
 [node name="Spawnpoint" type="Node2D" parent="." index="4" unique_id=1718120287]
 
-[node name="Marker2D" type="Marker2D" parent="Spawnpoint" index="0" unique_id=24593107]
+[node name="Spawner" type="Marker2D" parent="Spawnpoint" index="0" unique_id=24593107]
 position = Vector2(1561, 1507)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." index="5" unique_id=105535957]
@@ -28,5 +28,10 @@ navigation_polygon = SubResource("NavigationPolygon_5f03w")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0" unique_id=606033261]
 position = Vector2(1530, 1538.5)
 shape = SubResource("RectangleShape2D_5f03w")
+
+[node name="Teeth" type="Node2D" parent="." index="7" unique_id=1372659674]
+
+[node name="BASE" type="Marker2D" parent="Teeth" index="0" unique_id=107136721]
+position = Vector2(100, 96)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

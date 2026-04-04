@@ -93,7 +93,8 @@ var rewards_spawned = {}
 var player = null;
 var doors_locked = false; 
 var boss_spawned = false; 
-var room_box_positions = {}
+var room_box_positions = {} 
+var canvas_modulate = null
 
 func remove_room_pickup(room_id, position):
 	if room_pickups.has(room_id):

@@ -84,7 +84,9 @@ func shoot_projectile(weapon, dir, projectile_speed):
 	
 	bullet.direction = dir
 	bullet.damage = damage
-	bullet.speed = projectile_speed
+	bullet.speed = projectile_speed 
+	if weapon_owner.is_in_group("boss"): 
+		collision_mask = 1
 	bullet.collision_mask = collision_mask
 	
 	# set the bullets starting point to the guns position
