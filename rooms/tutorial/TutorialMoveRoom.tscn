@@ -1,16 +1,10 @@
 [gd_scene format=3 uid="uid://b0ceagpifodmn"]
 
 [ext_resource type="PackedScene" uid="uid://bbrsvqe0p684n" path="res://rooms/RoomBase.tscn" id="1_wiqe7"]
+[ext_resource type="Texture2D" uid="uid://cd2mju0m6yqhc" path="res://assets/sprites/rock4.png" id="2_1fwsl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wiqe7"]
 size = Vector2(671, 632)
-
-[sub_resource type="Gradient" id="Gradient_1fwsl"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_fsiut"]
-gradient = SubResource("Gradient_1fwsl")
-fill_from = Vector2(0.5760369, 0)
-fill_to = Vector2(0.5437788, 1)
 
 [node name="RoomBase" unique_id=1536920797 instance=ExtResource("1_wiqe7")]
 
@@ -42,6 +36,6 @@ position = Vector2(2269.5, 1603)
 shape = SubResource("RectangleShape2D_wiqe7")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" index="1" unique_id=257315339]
-position = Vector2(2268.75, 1602.375)
-scale = Vector2(10.539063, 9.957032)
-texture = SubResource("GradientTexture2D_fsiut")
+position = Vector2(2270, 1606)
+scale = Vector2(13.399998, 13)
+texture = ExtResource("2_1fwsl")
