@@ -70,10 +70,10 @@ func restore_enemies(room_id):
 		else:
 			enemy = enemy_scene.instantiate()
 		enemy.enemy_id = enemy_data["id"] 
-		enemy.position = enemy_data["position"] 
-		enemy.set_health(enemy_data["health"])
+		enemy.position = enemy_data["position"]
 		add_child(enemy)
-		enemy.add_to_group("enemy")
+		enemy.add_to_group("enemy") 
+		enemy.set_health(enemy_data["health"])
 		enemy.update_healthBar(enemy_data["health"])
 
 func restore_pickups(room_id):
