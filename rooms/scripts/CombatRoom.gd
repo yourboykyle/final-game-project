@@ -109,7 +109,7 @@ func spawn_boxes():
 	var room_size = Globals.ROOM_SIZE
 
 	var box_count = randi_range(2, 4)
-	var margin = 200  # distance from walls
+	var margin = 400  # distance from walls
 	var min_distance_between_boxes = 100
 	var spawned_positions = []
 

@@ -9,10 +9,16 @@ var shooter = ""
 
 func _ready():
 	rotation = direction.angle()
+	Globals.player.died.connect(bullet_death)
 
 func _process(delta):
-	position += direction * speed * delta
-	
+	position += direction * speed * delta 
+	if Globals.dungeon_manager.changing_room: 
+		queue_free()
+
+func bullet_death(): 
+	queue_free() 
+		
 
 func _on_body_entered(body):
 	if body == shooter: 
@@ -21,7 +27,8 @@ func _on_body_entered(body):
 		
 		body.take_damage(damage)
 	
-	queue_free()
+	queue_free() 
+
 
 
  
