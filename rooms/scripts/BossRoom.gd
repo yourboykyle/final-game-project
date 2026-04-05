@@ -22,7 +22,8 @@ func _ready():
 		boss.position = spawn_point[0].position
 		add_child(boss) 
 		boss.add_to_group("boss")
-		Globals.boss_spawned = true
+		Globals.boss_spawned = true 
+		Globals.boss_bar.show() 
 		lock_doors()
 
 func _on_enemy_defeated(enemy_position):

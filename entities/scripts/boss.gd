@@ -25,7 +25,9 @@ func _ready():
 	super._ready() 
 	use_base_movement = false
 	use_base_ai = false
-	type = "boss"
+	type = "boss" 
+	Globals.boss_bar.connect_boss(self) 
+	health_bar.hide()
 
 func _physics_process(delta: float) -> void: 
 	agent.target_position - player.global_position

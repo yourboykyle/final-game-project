@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cipl0eoyasmb2" path="res://interface/Crosshair.tscn" id="4_cm0pq"]
 [ext_resource type="PackedScene" uid="uid://bn3xisatdj0hl" path="res://interface/Minimap.tscn" id="5_fos0i"]
 [ext_resource type="Script" uid="uid://88prq6atj8eo" path="res://scripts/Transition.gd" id="6_3dxm6"]
+[ext_resource type="Script" uid="uid://bbysalpjc1xyd" path="res://scripts/boss_bar.gd" id="7_03owx"]
 [ext_resource type="PackedScene" uid="uid://xsfsc4yv2q4o" path="res://interface/OxygenBar.tscn" id="7_lgr22"]
 [ext_resource type="Texture2D" uid="uid://bydgxlltublcr" path="res://assets/tilesets/128darksquares.png" id="7_trn2v"]
 [ext_resource type="AudioStream" uid="uid://bgth2wlmq7kkl" path="res://assets/sfx/holdyourbreaththeme.mp3" id="8_trn2v"]
@@ -46,6 +47,22 @@ scale = Vector2(1.5, 1.5)
 [node name="OxygenBar" parent="CanvasLayer/GameplayUI" unique_id=1228586357 instance=ExtResource("7_lgr22")]
 offset_top = 3.0
 offset_bottom = 3.0
+
+[node name="BossBar" type="ProgressBar" parent="CanvasLayer/GameplayUI" unique_id=686509599]
+offset_left = 387.0
+offset_top = 52.0
+offset_right = 1478.0
+offset_bottom = 108.0
+show_percentage = false
+script = ExtResource("7_03owx")
+
+[node name="Label" type="Label" parent="CanvasLayer/GameplayUI/BossBar" unique_id=2079197736]
+layout_mode = 0
+offset_right = 1086.0
+offset_bottom = 55.0
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MenuUI" type="Node2D" parent="CanvasLayer" unique_id=645599288]
 

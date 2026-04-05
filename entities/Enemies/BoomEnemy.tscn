@@ -23,9 +23,12 @@ scale = Vector2(1.3, 1.3)
 texture = ExtResource("2_015hc")
 
 [node name="HealthBar" type="ProgressBar" parent="." unique_id=1759057869]
-offset_top = -61.0
-offset_right = 4.0
-offset_bottom = -34.0
+offset_left = -35.0
+offset_top = -57.0
+offset_right = 34.0
+offset_bottom = -46.0
+rounded = true
+show_percentage = false
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=517395236]
 

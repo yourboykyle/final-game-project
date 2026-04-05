@@ -42,6 +42,8 @@ func _ready():
 	use_base_ai = false
 	type = "boss"
 	state = State.CHASE 
+	Globals.boss_bar.connect_boss(self)  
+	health_bar.hide()
 func _physics_process(delta:float):
 	match state: 
 		State.IDLE: 

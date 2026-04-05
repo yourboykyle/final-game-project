@@ -23,10 +23,13 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_mrf38")
 
 [node name="HealthBar" type="ProgressBar" parent="." unique_id=1993505926]
-offset_top = -60.0
-offset_right = 4.0
-offset_bottom = -33.0
+offset_left = -35.0
+offset_top = -57.0
+offset_right = 34.0
+offset_bottom = -46.0
 value = 100.0
+rounded = true
+show_percentage = false
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1005246174]
 target_desired_distance = 20.0

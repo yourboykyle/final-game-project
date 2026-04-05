@@ -21,7 +21,8 @@ var type
 @export var use_base_ai = true
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
-@onready var health_bar = $HealthBar
+@onready var health_bar = $HealthBar 
+signal health_changed(current, max)
 
 func _ready():
 	max_health = floor(max_health * Globals.get_health_multiplier(Globals.current_floor))
@@ -35,7 +36,10 @@ func _ready():
 	add_child(weapon)
 	weapon.weapon_owner = self 
 	weapon.collision_mask = 1 
-	type = "ranged"
+	type = "ranged" 
+	var style = StyleBoxFlat.new() 
+	style.bg_color = Color.RED 
+	health_bar.add_theme_stylebox_override("fill", style)
 
 func _physics_process(delta: float) -> void: 
 	if !use_base_ai: 
@@ -81,6 +85,9 @@ func take_damage(amount):
 	
 	health-= amount
 	health_bar.value = health 
+	if self.is_in_group("boss"): 
+		print("emitting signal")
+		health_changed.emit(health, max_health) 
 	var room_id = get_parent().room_id
 	if Globals.room_enemies.has(room_id):
 		for data in Globals.room_enemies[room_id]:
@@ -92,7 +99,8 @@ func take_damage(amount):
 		Globals.entities_killed += 1
 		if self.is_in_group("boss"):
 			Globals.bosses_killed += 1
-			Globals.add_xp(50)
+			Globals.add_xp(50) 
+			Globals.boss_bar.hide()
 		else:
 			Globals.add_xp(25)
 		Globals.enemy_defeated.emit(position)

@@ -13,9 +13,12 @@ motion_mode = 1
 script = ExtResource("1_bh2oo")
 
 [node name="HealthBar" type="ProgressBar" parent="." unique_id=1308773056]
-offset_top = -59.0
-offset_right = 4.0
-offset_bottom = -32.0
+offset_left = -23.0
+offset_top = -31.0
+offset_right = 27.0
+offset_bottom = -20.0
+rounded = true
+show_percentage = false
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=262024074]
 texture_filter = 1
