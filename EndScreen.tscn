@@ -32,10 +32,10 @@ text = "Credits"
 
 [node name="Button2" type="Button" parent="." unique_id=521669371]
 layout_mode = 0
-offset_left = 1133.0
-offset_top = 699.0
-offset_right = 1295.0
-offset_bottom = 752.0
+offset_left = 1143.0
+offset_top = 712.0
+offset_right = 1271.0
+offset_bottom = 757.0
 text = "Main Menu"
 
 [node name="Button3" type="Button" parent="." unique_id=454708189]

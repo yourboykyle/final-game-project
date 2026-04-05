@@ -16,8 +16,8 @@ layout_mode = 0
 offset_right = 1918.0
 offset_bottom = 1088.0
 theme_override_font_sizes/font_size = 45
-text = "END CREDITS (IDK WHAT TO PUT HERE)
-"
+text = "Credits"
+horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="." unique_id=1968971502]
 layout_mode = 0
@@ -27,5 +27,37 @@ offset_right = 414.0
 offset_bottom = 1052.0
 theme_override_font_sizes/font_size = 40
 text = "Main Menu"
+
+[node name="Label2" type="Label" parent="." unique_id=4652460]
+layout_mode = 0
+offset_left = 264.0
+offset_top = 191.0
+offset_right = 826.0
+offset_bottom = 746.0
+theme_override_font_sizes/font_size = 44
+text = "Main Aspects:
+Programming 
+Art Design 
+Dynamic Design
+Mechanic Design 
+Brainstorming
+
+"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="." unique_id=1824535152]
+layout_mode = 0
+offset_left = 1136.0
+offset_top = 191.0
+offset_right = 1715.0
+offset_bottom = 746.0
+theme_override_font_sizes/font_size = 44
+text = "Team 
+Jasper Kaddatz 
+Thomas Imbert
+Kyle Lyon
+Zachary Seel
+"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

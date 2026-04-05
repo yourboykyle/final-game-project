@@ -14,14 +14,15 @@ enum State {
 var state = State.IDLE
 var speed
 var sword_range := 250.0
-var sword_cooldown := 1.0
+var sword_cooldown := 1.0 
+var sword_timer = 2.0
 var big_attack_cooldown := 10.0 
 var cooldown = 5
 
 func _ready(): 
 	attack_timer = 2.0
-	max_health = 500 
-	speed = 100 
+	max_health = 750 
+	speed = 400 
 	super._ready() 
 	use_base_movement = false
 	use_base_ai = false
@@ -34,21 +35,21 @@ func _physics_process(delta: float) -> void:
 	var distance = global_position.distance_to(player.global_position)
 	attack_timer -= delta 
 	cooldown -= delta
+	sword_timer -= delta
 	match state:
 		State.IDLE:
 			state = State.CHASE
 		State.CHASE:
-			chase_player()
+			chase_player() 
+			if distance <= sword_range and sword_timer <= 0:
+				state = State.SWORD_ATTACK
 			if attack_timer <= 0:
-				if distance <= sword_range:
-					state = State.SWORD_ATTACK
-				else:
-					state = State.BIG_ATTACK
+				state = State.BIG_ATTACK
 		State.SWORD_ATTACK:
 			velocity = Vector2.ZERO
 			move_and_slide()
 			do_sword_attack()
-			attack_timer = sword_cooldown
+			sword_timer = sword_cooldown
 			state = State.COOLDOWN
 			cooldown = .5
 		State.BIG_ATTACK:
