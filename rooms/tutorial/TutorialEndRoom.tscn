@@ -6,34 +6,46 @@
 [node name="RoomBase" unique_id=1536920797 instance=ExtResource("1_mabku")]
 
 [node name="Label" type="Label" parent="." index="4" unique_id=917224824]
-offset_left = -168.0
-offset_top = 1114.0
-offset_right = 1530.0
-offset_bottom = 1467.0
-theme_override_font_sizes/font_size = 128
+offset_left = 309.0
+offset_top = 1169.0
+offset_right = 1183.0
+offset_bottom = 1436.0
+theme_override_font_sizes/font_size = 96
 text = "Press E to interact
 with things"
 horizontal_alignment = 1
 
 [node name="ExtractionArea" parent="." index="5" unique_id=1658706922 instance=ExtResource("2_h22b4")]
-position = Vector2(2029, 1465)
+position = Vector2(2162, 1470)
 
 [node name="Label2" type="Label" parent="." index="6" unique_id=631637630]
-offset_left = -16.0
-offset_top = 1698.0
-offset_right = 1682.0
-offset_bottom = 2051.0
-theme_override_font_sizes/font_size = 128
+offset_left = 195.0
+offset_top = 1655.0
+offset_right = 1326.0
+offset_bottom = 1935.0
+theme_override_font_sizes/font_size = 96
 text = "Like chests, bubbles,
 and extraction zones"
 horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="." index="7" unique_id=348212265]
-offset_left = 1307.0
-offset_top = 1073.0
-offset_right = 3005.0
-offset_bottom = 1426.0
-theme_override_font_sizes/font_size = 128
+offset_left = 1676.0
+offset_top = 1211.0
+offset_right = 2854.0
+offset_bottom = 1440.0
+theme_override_colors/font_color = Color(1, 0.8235294, 0, 1)
+theme_override_font_sizes/font_size = 82
 text = "Press E on this extraction
 zone to leave the dungeon"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="." index="8" unique_id=752946571]
+offset_left = 1676.0
+offset_top = 1669.0
+offset_right = 2854.0
+offset_bottom = 1898.0
+theme_override_colors/font_color = Color(1, 0.8235294, 0, 1)
+theme_override_font_sizes/font_size = 72
+text = "You must extract
+to receive your loot!"
 horizontal_alignment = 1

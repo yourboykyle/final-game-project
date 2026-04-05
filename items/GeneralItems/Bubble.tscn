@@ -8,7 +8,7 @@
 texture_filter = 1
 script = ExtResource("1_8euei")
 item_name = "Bubble"
-item_description = "Consumable Bubble - Restores 5 Oxygen on use"
+item_description = "Consumable Bubble - Restores 10 Oxygen on use"
 weight = 2
 sfx_stream = ExtResource("3_q0ei8")
 item_id = 1001

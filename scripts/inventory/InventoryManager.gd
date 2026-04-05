@@ -194,6 +194,7 @@ func _init_debug_items():
 	stash.add_item(3001, 1, {}, max_stack_3001)
 	#stash.add_item(3005, 1, {}, max_stack_3005)
 	hotbar.add_item(3003, 1, {}, max_stack_3003)
+	hotbar.add_item(1001, 1, {}, max_stack_1001)
 	stash.add_item(1001, 5, {}, max_stack_1001)
 
 	#Upgrade Testing

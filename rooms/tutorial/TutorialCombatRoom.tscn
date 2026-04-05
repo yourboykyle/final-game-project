@@ -13,12 +13,13 @@ size = Vector2(141, 133)
 position = Vector2(2707, 1526)
 
 [node name="Label" type="Label" parent="." index="5" unique_id=1066150095]
-offset_left = 38.0
-offset_top = 1144.0
-offset_right = 2605.0
-offset_bottom = 1493.0
-theme_override_font_sizes/font_size = 128
-text = "There's an enemy, take it out!"
+offset_left = 849.0
+offset_top = 1212.0
+offset_right = 2623.0
+offset_bottom = 1480.0
+theme_override_font_sizes/font_size = 96
+text = "There's an enemy, take it out!
+→"
 horizontal_alignment = 1
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." index="6" unique_id=1084864995]

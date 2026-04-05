@@ -5,6 +5,6 @@ func _ready():
 
 func use_item(user):
 	play_sound_effect()
-	user.change_oxygen(5)
+	user.change_oxygen(10)
 	
 	decrease_quantity()

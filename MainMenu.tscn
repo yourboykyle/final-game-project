@@ -82,7 +82,7 @@ offset_left = 850.0
 offset_top = 975.0
 offset_right = 1150.0
 offset_bottom = 980.0
-text = "Gain XP from killing enemies, collecting items, and trashing items"
+text = "- Unlock slots by leveling up\n- Gain XP from killing enemies, collecting items, and trashing items"
 
 [node name="UpgradeSlotsPanel" type="Control" parent="RightPanel" unique_id=1827035188]
 anchors_preset = 0

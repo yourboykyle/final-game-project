@@ -9,6 +9,8 @@ signal play_pressed
 @onready var xp_label = $RightPanel/XPBar/XPLabel
 @onready var level_label = $RightPanel/XPBar/LevelLabel
 @onready var upgrade_slots_container = $RightPanel/UpgradeSlotsPanel/UpgradeSlotsContainer
+const TRASH_SFX = preload("res://assets/sfx/trash.mp3")
+const LOCK_SYMBOL = preload("res://assets/sprites/lock.png")
 
 var stash_slots: Array = []
 var upgrade_slots: Array = []
@@ -182,12 +184,22 @@ func _setup_upgrade_slots():
 		item_label.position = Vector2(10, 5)
 		overlay.add_child(item_label)
 		
+		var lock_rect = TextureRect.new()
+		lock_rect.custom_minimum_size = Vector2(36, 36)
+		lock_rect.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		lock_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT
+		lock_rect.position = Vector2(17, 17)
+		lock_rect.texture = LOCK_SYMBOL
+		lock_rect.visible = false
+		overlay.add_child(lock_rect)
+		
 		upgrade_slots_container.add_child(slot_panel)
 		
 		upgrade_slots.append({
 			"panel": slot_panel,
 			"sprite": sprite_rect,
 			"name": item_label,
+			"lock": lock_rect,
 			"index": i
 		})
 		
@@ -320,6 +332,7 @@ func update_xp_display():
 
 func _on_trash_pressed():
 	if selected_source_index != -1 and selected_source_container == "stash":
+		Globals.play_sfx(TRASH_SFX)
 		Globals.add_xp(5)
 		InventoryManager.stash.remove_item(selected_source_index)
 		selected_source_index = -1
@@ -365,12 +378,14 @@ func _refresh_upgrades():
 				var item_data = ItemDb.get_item_data(item.id)
 				slot_info.sprite.texture = item_data.texture
 				slot_info.name.text = item_data.name
+			slot_info.lock.visible = false
 			panel.mouse_filter = Control.MOUSE_FILTER_STOP
 		else:
 			#lock slot
 			panel.modulate = Color.RED
 			slot_info.sprite.texture = null
 			slot_info.name.text = ""
+			slot_info.lock.visible = true
 			panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	
 	for slot_info in upgrade_slots:

@@ -9,19 +9,20 @@ size = Vector2(671, 632)
 [node name="RoomBase" unique_id=1536920797 instance=ExtResource("1_wiqe7")]
 
 [node name="Label" type="Label" parent="." index="4" unique_id=537329062]
-offset_left = 186.0
-offset_top = 1758.0
-offset_right = 1915.0
-offset_bottom = 1933.0
-theme_override_font_sizes/font_size = 128
-text = "Press CTRL to dodge attacks"
+offset_left = 1161.0
+offset_top = 1936.0
+offset_right = 2593.0
+offset_bottom = 2204.0
+theme_override_font_sizes/font_size = 96
+text = "→ Press CTRL to dodge attacks 
+and take far less damage"
 
 [node name="Label2" type="Label" parent="." index="5" unique_id=1335034917]
-offset_left = 51.0
-offset_top = 1054.0
-offset_right = 2179.0
-offset_bottom = 1407.0
-theme_override_font_sizes/font_size = 128
+offset_left = 339.0
+offset_top = 1109.0
+offset_right = 2467.0
+offset_bottom = 1511.0
+theme_override_font_sizes/font_size = 96
 text = "Press space to bounce off surfaces 
 (Including enemies)
 Try it against this box!"

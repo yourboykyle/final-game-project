@@ -5,22 +5,22 @@
 [node name="RoomBase" unique_id=1536920797 instance=ExtResource("1_5loe2")]
 
 [node name="Label" type="Label" parent="." index="4" unique_id=294307785]
-offset_left = 207.0
-offset_top = 963.0
-offset_right = 2836.0
-offset_bottom = 1494.0
-theme_override_font_sizes/font_size = 128
+offset_left = 576.0
+offset_top = 1124.0
+offset_right = 2653.0
+offset_bottom = 1552.0
+theme_override_font_sizes/font_size = 72
 text = "Oxygen is in your top left, when it runs out
 you have a couple seconds until you die
 (You can't die in the tutorial!)"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="." index="5" unique_id=875840234]
-offset_left = 236.0
-offset_top = 1668.0
-offset_right = 2865.0
-offset_bottom = 2021.0
-theme_override_font_sizes/font_size = 128
+offset_left = 641.0
+offset_top = 1665.0
+offset_right = 2667.0
+offset_bottom = 1938.0
+theme_override_font_sizes/font_size = 72
 text = "It drains passively, faster when sprinting,
 and you lose a flat amount when hit"
 horizontal_alignment = 1
