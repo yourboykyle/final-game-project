@@ -1,7 +1,8 @@
 extends Interactable
 
 @onready var player = get_node("/root/Main/DungeonContainer/Player")
-var in_extraction_zone = false
+var in_extraction_zone = false 
+signal end_credits
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
@@ -14,9 +15,12 @@ func _process(delta: float) -> void:
 func extract():
 	Globals.successful_extracts += 1
 	InventoryManager.extract_run_rewards()
-	
-	get_tree().current_scene.clear_dungeon()
-	get_tree().current_scene.load_main_menu()
+	if Globals.boss_spawned == true and Globals.current_floor == 3: 
+		get_tree().current_scene.clear_dungeon() 
+		get_tree().current_scene.load_end_scene() 
+	else:
+		get_tree().current_scene.clear_dungeon() 
+		get_tree().current_scene.load_main_menu()
 
 func interact():
 	if !in_extraction_zone:

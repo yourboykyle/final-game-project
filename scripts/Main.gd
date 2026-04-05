@@ -12,7 +12,8 @@ const LEVEL_SELECT = preload("res://LevelSelect.tscn")
 const PLAYER_SCENE = preload("res://entities/Player.tscn")
 const DEATH_SCENE = preload("res://DeathScreen.tscn")
 const DEATH_EFFECT = preload("res://interface/DeathEffect.tscn")
-
+const CREDITS = preload("res://EndCredits.tscn")
+const END_SCENE = preload("res://EndScreen.tscn")
 var current_scene = null
 var player = null
 var dungeon_hotbar_ui: Node2D = null
@@ -39,7 +40,16 @@ func clear_dungeon():
 	clear_pickup_dictionaries()
 	clear_room_data()
 	
-	Globals.boss_spawned = false
+	Globals.boss_spawned = false 
+func load_credits():
+	clear_scene() 
+	current_scene = CREDITS.instantiate() 
+	gameplayUI.hide()
+	container.add_child(current_scene) 
+func load_end_scene(): 
+	current_scene = END_SCENE.instantiate()
+	gameplayUI.hide()
+	container.add_child(current_scene) 
 
 # Clear the rooms that had picked up items in them so future dungeons can generate pickups in those rooms
 func clear_pickup_dictionaries():

@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://cnkt2tym1f062"]
+
+[ext_resource type="Script" uid="uid://dhpy0mf0f5aa1" path="res://scripts/end_screen.gd" id="1_ekb8w"]
+
+[node name="EndScreen" type="Control" unique_id=1427802386]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ekb8w")
+
+[node name="Label" type="Label" parent="." unique_id=560386982]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 3.0
+offset_right = 1643.0
+offset_bottom = 189.0
+theme_override_font_sizes/font_size = 100
+text = "YOU CONQUERED THE SEAS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="." unique_id=672838244]
+layout_mode = 0
+offset_left = 696.0
+offset_top = 712.0
+offset_right = 824.0
+offset_bottom = 757.0
+text = "Credits"
+
+[node name="Button2" type="Button" parent="." unique_id=521669371]
+layout_mode = 0
+offset_left = 1133.0
+offset_top = 699.0
+offset_right = 1295.0
+offset_bottom = 752.0
+text = "Main Menu"
+
+[node name="Button3" type="Button" parent="." unique_id=454708189]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 1019.0
+offset_right = 125.0
+offset_bottom = 1069.0
+text = "Quit"
+
+[node name="Panel" type="Panel" parent="." unique_id=2085634674]
+layout_mode = 0
+offset_left = 851.0
+offset_top = 363.0
+offset_right = 1117.0
+offset_bottom = 585.0
+
+[node name="Label" type="Label" parent="Panel" unique_id=469080368]
+layout_mode = 0
+offset_right = 265.0
+offset_bottom = 205.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="." unique_id=879662871]
+layout_mode = 0
+offset_left = 926.0
+offset_top = 327.0
+offset_right = 1029.0
+offset_bottom = 364.0
+text = "Stats"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]

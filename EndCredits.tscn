@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bxi0gus6bqlsp"]
+
+[ext_resource type="Script" uid="uid://bkhpaquqddoro" path="res://scripts/end_credits.gd" id="1_m371i"]
+
+[node name="EndCredits" type="Control" unique_id=1702511962]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m371i")
+
+[node name="Label" type="Label" parent="." unique_id=876553806]
+layout_mode = 0
+offset_right = 1918.0
+offset_bottom = 1088.0
+theme_override_font_sizes/font_size = 45
+text = "END CREDITS (IDK WHAT TO PUT HERE)
+"
+
+[node name="Button" type="Button" parent="." unique_id=1968971502]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 974.0
+offset_right = 414.0
+offset_bottom = 1052.0
+theme_override_font_sizes/font_size = 40
+text = "Main Menu"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
