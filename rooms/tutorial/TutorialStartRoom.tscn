@@ -12,18 +12,26 @@ offset_bottom = 1447.0
 theme_override_font_sizes/font_size = 96
 text = "WASD to move"
 
-[node name="Label2" type="Label" parent="." index="5" unique_id=1659974801]
-offset_left = 1267.0
-offset_top = 1228.0
-offset_right = 1778.0
-offset_bottom = 1931.0
-theme_override_font_sizes/font_size = 512
-text = "→"
-
-[node name="Label3" type="Label" parent="." index="6" unique_id=952147338]
+[node name="Label3" type="Label" parent="." index="5" unique_id=952147338]
 offset_left = 1176.0
 offset_top = 1805.0
 offset_right = 1828.0
 offset_bottom = 1962.0
 theme_override_font_sizes/font_size = 96
 text = "Shift to sprint"
+
+[node name="Arrow" type="Node2D" parent="." index="6" unique_id=235660740]
+position = Vector2(1500, 1500)
+
+[node name="ArrowStem" type="ColorRect" parent="Arrow" index="0" unique_id=1195096373]
+offset_left = -35.0
+offset_top = 115.0
+offset_right = -19.388306
+offset_bottom = 239.73242
+rotation = -1.5707964
+
+[node name="ArrowHead" type="Polygon2D" parent="Arrow" index="1" unique_id=128043691]
+position = Vector2(156, 151)
+rotation = 1.5708
+polygon = PackedVector2Array(-47.000122, -17.999756, -84.999756, 72.00037, -7.6000366, 70.799995)
+uv = PackedVector2Array(1.1999512, -10.799995, 60.399963, 26.800003, -7.6000366, 70.799995)

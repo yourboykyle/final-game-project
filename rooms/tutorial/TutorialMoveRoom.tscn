@@ -14,7 +14,7 @@ offset_top = 1974.0
 offset_right = 2779.0
 offset_bottom = 2242.0
 theme_override_font_sizes/font_size = 96
-text = "→ Press B (Or CTRL) to dodge attacks 
+text = "- Press B (Or CTRL) to dodge attacks 
 and take no damage"
 
 [node name="Label2" type="Label" parent="." index="5" unique_id=1335034917]
