@@ -134,6 +134,20 @@ func play_sfx(stream: AudioStream, volume_db: float = 2.5):
 	audio.play()
 	audio.finished.connect(audio.queue_free)
 
+func fade_darkness(target_color: Color, duration: float):
+	if not Globals.canvas_modulate:
+		return
+	
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(
+		Globals.canvas_modulate,
+		"color",
+		target_color,
+		duration
+	) 
+
 #XP stuffs
 func get_xp_required_for_level(level: int) -> int:
 	var total = 0

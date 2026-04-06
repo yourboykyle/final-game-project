@@ -35,7 +35,7 @@ var ultimate_duration = 20
 var teeth_timer = .5
 func _ready(): 
 	attack_timer = 2.0
-	max_health = 1000 
+	max_health = 1250 
 	speed = 100 
 	super._ready() 
 	use_base_movement = false
@@ -57,7 +57,7 @@ func _physics_process(delta:float):
 			dash_cooldown -= delta 
 			bite_cooldown -= delta 
 			ranged_cooldown -= delta
-			if health <= 1000 and !ultimate: 
+			if health <= max_health * 1/2 and !ultimate: 
 				print("TRIGGERED") 
 				state = State.ULTIMATE
 			if bite_cooldown <= 0: 
@@ -111,7 +111,7 @@ func _physics_process(delta:float):
 				self.hide() 
 				$CollisionShape2D.set_disabled(true) 
 				ultimate = true
-				fade_darkness(Color(0.05, 0.05, 0.05), 0.5) 
+				Globals.fade_darkness(Color(0.05, 0.05, 0.05), 0.5) 
 				Globals.player.light.visible = true
 			else: 
 				ultimate_duration -= delta 
@@ -120,7 +120,7 @@ func _physics_process(delta:float):
 					get_parent().teeth_attack()
 					teeth_timer = 3 
 				if ultimate_duration <= 0:
-					fade_darkness(Color(1, 1, 1), 0.5) 
+					Globals.fade_darkness(Color(1, 1, 1), 0.5) 
 					Globals.player.light.visible = false 
 					self.show() 
 					$CollisionShape2D.set_deferred("disabled", false)
@@ -185,17 +185,5 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		state = State.IDLE
 		cooldown = 1 
 		print("get bit")
-func fade_darkness(target_color: Color, duration: float):
-	if not Globals.canvas_modulate:
-		return
-	
-	var tween = create_tween()
-	tween.set_trans(Tween.TRANS_SINE)
-	tween.set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property(
-		Globals.canvas_modulate,
-		"color",
-		target_color,
-		duration
-	) 
+
 		

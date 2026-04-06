@@ -13,6 +13,7 @@ var can_die = true
 signal died
 var death_effect = null
 var is_in_death_state = false
+@onready var label: Label = $Label
 #Life variables end
 
 # Weapon Varaibles Start
@@ -44,7 +45,7 @@ func _ready() -> void:
 	# Set current weapon to the weapon holders first child
 	self.add_to_group("player") 
 	light.visible = false
-	
+	label.hide()
 	current_weapon = weapon_holder.get_child(0)
 	
 	for child in weapon_holder.get_children():
@@ -97,6 +98,13 @@ func _process(delta):
 		sprite_2d.flip_h = true
 
 	_update_oxygen(delta)
+	
+	if is_in_death_state:
+		label.show()
+		
+		label.text = str(int(death_timer.time_left) + 1)
+	else:
+		label.hide()
 
 func _physics_process(delta):
 	var input_vector = Vector2(

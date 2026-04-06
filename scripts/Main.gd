@@ -66,6 +66,7 @@ func clear_room_data():
 func load_main_menu():
 	audio_stream_player.stop()
 	Globals.death_disabled = false
+	Globals.fade_darkness(Color(1, 1, 1), 0.5)
 	if dungeon_hotbar_ui:
 		dungeon_hotbar_ui.queue_free()
 		dungeon_hotbar_ui = null

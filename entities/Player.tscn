@@ -136,6 +136,16 @@ scale = Vector2(2.069323, 2.1644344)
 texture = ExtResource("11_vkqcq")
 texture_scale = 3.0
 
+[node name="Label" type="Label" parent="." unique_id=1370503062]
+offset_left = -55.0
+offset_top = -102.0
+offset_right = 53.0
+offset_bottom = -57.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+
 [connection signal="timeout" from="DiveTime" to="." method="_on_dive_time_timeout"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
 [connection signal="timeout" from="DiveCD" to="." method="_on_dive_cd_timeout"]
