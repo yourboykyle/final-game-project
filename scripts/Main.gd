@@ -60,6 +60,7 @@ func clear_pickup_dictionaries():
 func clear_room_data():
 	Globals.room_pickups.clear()
 	Globals.room_enemies.clear()
+	Globals.room_box_positions.clear()
 
 
 
@@ -94,6 +95,7 @@ func load_level_select():
 	current_scene.back_pressed.connect(load_main_menu)
 
 func load_death_screen():
+	Globals.fade_darkness(Color(1, 1, 1), 0.5)
 	audio_stream_player.stop()
 	if dungeon_hotbar_ui:
 		dungeon_hotbar_ui.queue_free()
