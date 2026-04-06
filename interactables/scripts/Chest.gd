@@ -25,7 +25,10 @@ func loot():
 	
 	is_looted = true
 	Globals.play_sfx(sfx_stream)
-	InventoryManager.add_to_run_loot(contained_item.item_id, 1)
+	var quantity = 1
+	if contained_item.item_id == 1001:
+		quantity = 2
+	InventoryManager.add_to_run_loot(contained_item.item_id, quantity)
 	InventoryManager.run_loot_changed.emit()
 	opened.emit()
 	Globals.add_xp(10)
