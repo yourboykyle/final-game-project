@@ -14,7 +14,7 @@ offset_top = 1936.0
 offset_right = 2593.0
 offset_bottom = 2204.0
 theme_override_font_sizes/font_size = 96
-text = "→ Press CTRL to dodge attacks 
+text = "→ Press B to dodge attacks 
 and take far less damage"
 
 [node name="Label2" type="Label" parent="." index="5" unique_id=1335034917]
@@ -37,6 +37,7 @@ position = Vector2(2269.5, 1603)
 shape = SubResource("RectangleShape2D_wiqe7")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" index="1" unique_id=257315339]
+texture_filter = 1
 position = Vector2(2270, 1606)
 scale = Vector2(13.399998, 13)
 texture = ExtResource("2_1fwsl")
